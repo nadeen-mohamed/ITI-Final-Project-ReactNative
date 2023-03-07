@@ -1,13 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, ViewComponent } from 'react-native';
-import FooterSection from './Components/FooterSection'
-import CustomerRating from './Components/CustomerRating';
+import Index from './Components/Index';
+import LoginComponent from './Components/Login&SignUp/LoginComponent';
+import SignUPComponent from './Components/Login&SignUp/SignUpComponent';
+
 export default function App() {
   return (
 <View  style={styles.container}>
     
-  <CustomerRating/>
-     <FooterSection/>
+ {/* <Index></Index> */}
+ <SignUPComponent></SignUPComponent>
+{/*  <LoginComponent></LoginComponent> */}
  </View>
    
   );
