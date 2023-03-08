@@ -12,6 +12,9 @@ import FooterSection from './Components/FooterSection'
 import CustomerRating from './Components/CustomerRating';
 import DownloadApp from './Components/DownloadApp';
 import { ScrollView } from 'react-native-gesture-handler';
+import Aboutcheif from './Components/UserAfterLogin/AboutCheif/Aboutcheif';
+import Cheif from './Components/UserAfterLogin/CheifView/Cheif';
+
 export default function App() {
   const Tab=createBottomTabNavigator();
   return (
@@ -46,6 +49,28 @@ export default function App() {
           <Tab.Screen name="SignUPComponent" component={SignUPComponent}  
           options={{
             tabBarLabel: 'SignUP',
+            tabBarIcon: () => (
+              <MaterialCommunityIcons name="login" color="orange" size={40} />
+            ),
+            
+          }}
+          
+          
+          />
+            <Tab.Screen name="Cheif" component={Cheif}  
+          options={{
+            tabBarLabel: 'Cheif',
+            tabBarIcon: () => (
+              <MaterialCommunityIcons name="star" color="orange" size={40} />
+            ),
+            
+          }}
+          
+          
+          />
+           <Tab.Screen name="Aboutcheif" component={Aboutcheif}  
+          options={{
+            tabBarLabel: 'Aboutcheif',
             tabBarIcon: () => (
               <MaterialCommunityIcons name="star" color="orange" size={40} />
             ),
