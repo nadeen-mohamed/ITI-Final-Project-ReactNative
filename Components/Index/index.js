@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { ScrollView, Text, StyleSheet, View, Image, Button } from "react-native";
 import CustomerRating from "../CustomerRating";
 import FooterSection from "../FooterSection";
+import DownloadApp from "../DownloadApp";
 
 function Index() {
 
@@ -75,6 +76,7 @@ function Index() {
             </View>
            
             <CustomerRating></CustomerRating>
+            <DownloadApp/>
             <FooterSection></FooterSection>
         </ScrollView>
     )
