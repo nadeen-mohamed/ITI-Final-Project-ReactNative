@@ -10,7 +10,7 @@ export default function App() {
     
  {/* <Index></Index> */}
  <SignUPComponent></SignUPComponent>
-{/*  <LoginComponent></LoginComponent> */}
+ {/* <LoginComponent></LoginComponent> */}
  </View>
    
   );
