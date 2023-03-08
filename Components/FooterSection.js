@@ -48,7 +48,7 @@ return (
 const styles = StyleSheet.create({
  
     headerFooterStyle: {
-     
+     marginTop:30,
       width: '100%',
       height: 140,
       backgroundColor: 'rgba(0, 0, 0, .04)'

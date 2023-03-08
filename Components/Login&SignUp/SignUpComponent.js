@@ -11,7 +11,7 @@ function SignUPComponent() {
 
 
     return (
-        <>
+         <ScrollView>
             <Text style={{ textAlign: 'center', fontSize: 30, margin: 10, color: "green", fontFamily: 'Open Sans' }}>انشاء حساب</Text>
             <Formik style={Styles.form}
                 initialValues={{ email: '' }}
@@ -105,7 +105,7 @@ function SignUPComponent() {
 
                 )}
             </Formik>
-        </>
+        </ScrollView>
 
 
 
@@ -135,7 +135,7 @@ const Styles = StyleSheet.create({
     },
     input2: {
         height: 40,
-        width: 410,
+        width: 390,
         borderRadius: 40,
         margin: 12,
         borderWidth: 1,
@@ -144,7 +144,7 @@ const Styles = StyleSheet.create({
     },
     peacker: {
         height: 40,
-        width: 410,
+        width: 390,
         borderRadius: 40,
         margin: 12,
         borderWidth: 1,
