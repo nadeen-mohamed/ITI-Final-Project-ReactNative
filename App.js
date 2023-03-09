@@ -12,6 +12,7 @@ import FooterSection from './Components/FooterSection'
 import CustomerRating from './Components/CustomerRating';
 import DownloadApp from './Components/DownloadApp';
 import { ScrollView } from 'react-native-gesture-handler';
+import Home from './HomeAfterLoginForUser/HomeUser/Home/Home';
 import FoodCard from './Components/CookerAfterLogin/Cheif\'s Eat/FoodCard';
 import DeleteEat from './Components/CookerAfterLogin/DeletePOPup/DeleteEat';
 // import AddFoodForm from './Components/CookerAfterLogin/AddFoodForm/AddFoodForm'
@@ -26,20 +27,20 @@ export default function App() {
       <NavigationContainer  >
        
           <Tab.Navigator > 
-          <Tab.Screen   name="Index" component={Index}  
+      { /*   <Tab.Screen   name="صفحة البداية" component={Index}  
           options={{
-            tabBarLabel: 'Home',
+            tabBarLabel: 'صفحة البداية',
             tabBarIcon: () => (
               <MaterialCommunityIcons name="home" color={'rgb(155, 193, 155)'} size={40} />
             ),
           }}
           
-          />
+        />*/}
           
           
-          <Tab.Screen name="LoginComponent" component={LoginComponent}  
+          <Tab.Screen name="تسجيل الدخول" component={LoginComponent}  
           options={{
-            tabBarLabel: 'Login',
+            tabBarLabel: 'تسجيل الدخول',
             tabBarIcon: () => (
               <MaterialCommunityIcons name="login" color={'rgb(155, 193, 155)'} size={40} />
             ),
@@ -48,9 +49,9 @@ export default function App() {
           
           
           />
-          <Tab.Screen name="SignUPComponent" component={SignUPComponent}  
+          <Tab.Screen name="إنشاء حساب" component={SignUPComponent}  
           options={{
-            tabBarLabel: 'SignUP',
+            tabBarLabel: 'إنشاء حساب',
             tabBarIcon: () => (
               <MaterialCommunityIcons name="sign-text" color={'rgb(155, 193, 155)'} size={40} />
             ),
@@ -67,9 +68,18 @@ export default function App() {
             ),
             
           }}
-          
+          />
+       
+       <Tab.Screen   name="الصفحة الرئيسية" component={Home}  
+          options={{
+            tabBarLabel: "الصفحة الرئيسية",
+            tabBarIcon: () => (
+              <MaterialCommunityIcons name="home" color="orange" size={40} />
+            ),
+          }}
           
           />
+          
            {/* <Tab.Screen name="EditeEat" component={EditeEat}  
           options={{
             tabBarLabel: 'AddFoodForm',
