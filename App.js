@@ -14,6 +14,8 @@ import DownloadApp from './Components/DownloadApp';
 import { ScrollView } from 'react-native-gesture-handler';
 import Aboutcheif from './Components/UserAfterLogin/AboutCheif/Aboutcheif';
 import Cheif from './Components/UserAfterLogin/CheifView/Cheif';
+import HeaderComponent from './Components/CookerHomePage/Header';
+import CookHome from './Components/CookerHomePage/CookHome';
 
 export default function App() {
   const Tab=createBottomTabNavigator();
@@ -77,6 +79,16 @@ export default function App() {
             
           }}
           
+          />
+
+         <Tab.Screen name="CheifHome" component={CookHome}  
+          options={{
+            tabBarLabel: 'Aboutcheif',
+            tabBarIcon: () => (
+              <MaterialCommunityIcons name="star" color="orange" size={40} />
+            ),
+            
+          }}
           
           />
        
