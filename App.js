@@ -18,6 +18,7 @@ import DeleteEat from './Components/CookerAfterLogin/DeletePOPup/DeleteEat';
 // import AddFoodForm from './Components/CookerAfterLogin/AddFoodForm/AddFoodForm'
 // import AddFoodForm from './Components/CookerAfterLogin/AddFoodForm/AddFoodForm';
 // import EditeEat from './Components/CookerAfterLogin/AddFoodForm/EditeEat';
+import MyFav from './HomeAfterLoginForUser/HomeUser/Addto fav/MyFav';
 export default function App() {
   const Tab=createBottomTabNavigator();
   return (
@@ -27,7 +28,7 @@ export default function App() {
       <NavigationContainer  >
        
           <Tab.Navigator > 
-      { /*   <Tab.Screen   name="صفحة البداية" component={Index}  
+    <Tab.Screen   name="صفحة البداية" component={Index}  
           options={{
             tabBarLabel: 'صفحة البداية',
             tabBarIcon: () => (
@@ -35,7 +36,7 @@ export default function App() {
             ),
           }}
           
-        />*/}
+        /> 
           
           
           <Tab.Screen name="تسجيل الدخول" component={LoginComponent}  
@@ -74,15 +75,15 @@ export default function App() {
           options={{
             tabBarLabel: "الصفحة الرئيسية",
             tabBarIcon: () => (
-              <MaterialCommunityIcons name="home" color="orange" size={40} />
+              <MaterialCommunityIcons name="home" color={'rgb(155, 193, 155)'} size={40} />
             ),
           }}
           
           />
           
-           {/* <Tab.Screen name="EditeEat" component={EditeEat}  
+           <Tab.Screen name="MyFav" component={MyFav}  
           options={{
-            tabBarLabel: 'AddFoodForm',
+            tabBarLabel: 'MyFav',
             tabBarIcon: () => (
               <MaterialCommunityIcons name="star" color={'rgb(155, 193, 155)'} size={40} />
             ),
@@ -90,7 +91,7 @@ export default function App() {
           }}
           
           
-          /> */}
+          />
        
         </Tab.Navigator>  
      
