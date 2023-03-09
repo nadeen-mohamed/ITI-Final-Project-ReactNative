@@ -159,7 +159,7 @@ import { Picker } from "react-native-web";
 export default function AddFoodForm() {
     return (
         <Formik
-        initialValues={{desc: "", name: "", type:""}}
+        initialValues={{desc: "", name: "", type:"", price:""}}
         validationSchema= {Yup.object({
             name: Yup.string()
             .min(3, 'جب الا يقل اسم الاكلة  عن 3 احرف')
@@ -173,6 +173,9 @@ export default function AddFoodForm() {
               type: Yup.string()
               .max(15, 'Must be 15 characters or less')
               .required('برجاء ادخال نوع الأكلة'),
+              price: Yup.string()
+              
+              .required('برجاء ادخال سعر الأكلة'),
           })}
           onSubmit ={(values) => {
             navigation.navigate("Films")
@@ -213,6 +216,11 @@ export default function AddFoodForm() {
                 <View style={styles.inputWrapper}>
                     <TextInput  onChangeText={props.handleChange("desc")}  style={styles.inputStyle} placeholder="تفاصيل  الأكلة"></TextInput>
                     { props.touched.desc && props.errors.desc ? (<Text style={styles.errorTxt}>{ props.errors.desc} </Text> ) : null}
+             
+                </View>
+                <View style={styles.inputWrapper}>
+                    <TextInput  onChangeText={props.handleChange("price")}  style={styles.inputStyle} placeholder="  ادخل سعر الأكلة"></TextInput>
+                    { props.touched.price && props.errors.price ? (<Text style={styles.errorTxt}>{ props.errors.price} </Text> ) : null}
              
                 </View>
 

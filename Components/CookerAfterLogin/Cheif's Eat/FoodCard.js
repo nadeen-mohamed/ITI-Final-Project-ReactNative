@@ -12,14 +12,23 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import AddFormPopUp from '../AddFoodForm/AddFormPopUp';
 import DeleteEat from '../DeletePOPup/DeleteEat';
 import Card from './Card';
-
+import EditFormPopUp from '../EditFoodForm/EditFormPopUp';
 export default function FoodCard({ navigation }) {
     
         return (
+            <>
+            <View style={{borderColor:'green', borderStyle:'dashed',  marginTop: 10, marginBottom: 10, padding: 10, borderRadius: 10,borderWidth: 1,backgroundColor:'white'}}>
+<View style={{display:'flex'}}>
+
+<AddFormPopUp/>
+</View>
+
+
+</View>
             <View style={styles.container}>
                 <ScrollView>
                     <Card source={require('../../../assets/potatoKofta.jpg') }
-                    
+                  
                                width={300}
                                height={200}
                             //    titleColor={'black'}
@@ -31,7 +40,7 @@ export default function FoodCard({ navigation }) {
                                description={ <Text style={styles.icon}>
                               <DeleteEat/>
                               
-                              <AddFormPopUp/>
+                              <EditFormPopUp/>
                                 <Icon
                                    name='info' size={20} color={'orange'} style={{ margin: '6px' }} ></Icon>
                               
@@ -61,7 +70,7 @@ export default function FoodCard({ navigation }) {
                                height={200}
                                titleColor={'black'}
                                descColor={'yellow'}
-                              
+                              borderRadius='50px'
                                backColor={'rgba(0, 0, 0, .04)'}
                                description={ <Text style={styles.icon}>
                                <Icon
@@ -77,6 +86,7 @@ export default function FoodCard({ navigation }) {
                 
                 </ScrollView>
             </View>
+            </>
         );
     }
 
@@ -85,7 +95,8 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         alignItems: 'center',
-        paddingTop: 40
+        paddingTop: 40,
+        
     },
     desc:{
         alignItems:'center', 

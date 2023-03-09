@@ -1,5 +1,5 @@
 import React from 'react';
-import AddFoodForm from './AddFoodForm';
+import EditFoodForm from './EditFoodForm';
 import {
     View,
     StyleSheet,
@@ -46,7 +46,7 @@ const ModalPoup = ({ visible, children }) => {
     );
 };
 
-const AddFormPopUp = () => {
+const EditFormPopUp = () => {
     const [visible, setVisible] = React.useState(false);
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -63,7 +63,7 @@ const AddFormPopUp = () => {
           </View>
         </View>
                 <View style={{ alignItems: 'center' }}>
-<AddFoodForm/>
+<EditFoodForm/>
                 </View>
                 
 
@@ -80,12 +80,12 @@ const AddFormPopUp = () => {
                     </Text>
                 </TouchableOpacity> */}
             </ModalPoup>
-            <Icon name='plus-circle' size={30} color={'rgb(155, 193, 155)'} style={{ textAlign:'center' }}  onPress={() => setVisible(true)} ><Text style={{marginLeft:'30px'}}>
-إضــافــة أكــلــة
-</Text>
-</Icon>
+            <Icon
+                name='edit' size={20} color={'orange'} style={{ margin: '6px' }} onPress={() => setVisible(true)}></Icon>
+
                              
            
+
         </View>
     );
 };
@@ -140,4 +140,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default AddFormPopUp;
+export default EditFormPopUp;
