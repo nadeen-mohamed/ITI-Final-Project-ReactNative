@@ -11,7 +11,7 @@ TouchableWithoutFeedback,
 StyleSheet
 } from 'react-native';
 
-export default class ImageCard extends Component {
+export default class Card extends Component {
     constructor(props) {
         super(props);
         console.log(props);
