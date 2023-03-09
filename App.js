@@ -12,9 +12,11 @@ import FooterSection from './Components/FooterSection'
 import CustomerRating from './Components/CustomerRating';
 import DownloadApp from './Components/DownloadApp';
 import { ScrollView } from 'react-native-gesture-handler';
-import Aboutcheif from './Components/UserAfterLogin/AboutCheif/Aboutcheif';
-import Cheif from './Components/UserAfterLogin/CheifView/Cheif';
-
+import FoodCard from './Components/CookerAfterLogin/Cheif\'s Eat/FoodCard';
+import DeleteEat from './Components/CookerAfterLogin/DeletePOPup/DeleteEat';
+// import AddFoodForm from './Components/CookerAfterLogin/AddFoodForm/AddFoodForm'
+// import AddFoodForm from './Components/CookerAfterLogin/AddFoodForm/AddFoodForm';
+// import EditeEat from './Components/CookerAfterLogin/AddFoodForm/EditeEat';
 export default function App() {
   const Tab=createBottomTabNavigator();
   return (
@@ -28,7 +30,7 @@ export default function App() {
           options={{
             tabBarLabel: 'Home',
             tabBarIcon: () => (
-              <MaterialCommunityIcons name="home" color="orange" size={40} />
+              <MaterialCommunityIcons name="home" color={'rgb(155, 193, 155)'} size={40} />
             ),
           }}
           
@@ -39,7 +41,7 @@ export default function App() {
           options={{
             tabBarLabel: 'Login',
             tabBarIcon: () => (
-              <MaterialCommunityIcons name="login" color="orange" size={40} />
+              <MaterialCommunityIcons name="login" color={'rgb(155, 193, 155)'} size={40} />
             ),
             
           }}
@@ -50,35 +52,35 @@ export default function App() {
           options={{
             tabBarLabel: 'SignUP',
             tabBarIcon: () => (
-              <MaterialCommunityIcons name="login" color="orange" size={40} />
+              <MaterialCommunityIcons name="sign-text" color={'rgb(155, 193, 155)'} size={40} />
             ),
             
           }}
           
           
           />
-            <Tab.Screen name="Cheif" component={Cheif}  
+            <Tab.Screen name="FoodCard" component={FoodCard}  
           options={{
-            tabBarLabel: 'Cheif',
+            tabBarLabel: 'FoodCard',
             tabBarIcon: () => (
-              <MaterialCommunityIcons name="star" color="orange" size={40} />
+              <MaterialCommunityIcons name="food" color={'rgb(155, 193, 155)'} size={40} />
             ),
             
           }}
           
           
           />
-           <Tab.Screen name="Aboutcheif" component={Aboutcheif}  
+           {/* <Tab.Screen name="EditeEat" component={EditeEat}  
           options={{
-            tabBarLabel: 'Aboutcheif',
+            tabBarLabel: 'AddFoodForm',
             tabBarIcon: () => (
-              <MaterialCommunityIcons name="star" color="orange" size={40} />
+              <MaterialCommunityIcons name="star" color={'rgb(155, 193, 155)'} size={40} />
             ),
             
           }}
           
           
-          />
+          /> */}
        
         </Tab.Navigator>  
      
@@ -104,3 +106,65 @@ const styles = StyleSheet.create({
 
   },
 });
+
+
+
+
+// import React, { useState } from "react";
+// import { View, Button, StyleSheet, Alert } from "react-native";
+
+// export default function App() {
+//   const [showBox, setShowBox] = useState(true);
+
+//   const off = () => {
+//     return Alert.alert(
+//       "Are your sure?",
+//       "Are you sure you want to remove this beautiful box?",
+//       [
+//         // The "Yes" button
+//         {
+//           text: "Yes",
+//           onPress: () => {
+//             setShowBox(false);
+//           },
+//         },
+//         // The "No" button
+//         // Does nothing but dismiss the dialog when tapped
+//         {
+//           text: "No",
+//         },
+//       ]
+//     );
+//   };
+
+//   return (
+//     <View style={styles.screen}>
+//       {showBox && <View style={styles.box}></View>}
+//       <Button title="Delete" onPress={() => off()} />
+//     </View>
+//   );
+// }
+
+// // Kindacode.com
+// // Just some styles
+// const styles = StyleSheet.create({
+//   screen: {
+//     flex: 1,
+//     justifyContent: "center",
+//     alignItems: "center",
+//     backgroundColor:'black'
+//   },
+//   box: {
+//     width: 300,
+//     height: 300,
+//     backgroundColor:'white',
+//     marginBottom: 30,
+//   },
+//   text: {
+//     backgroundColor:'red',
+//     fontSize: 30,
+//   },
+// });
+
+
+
