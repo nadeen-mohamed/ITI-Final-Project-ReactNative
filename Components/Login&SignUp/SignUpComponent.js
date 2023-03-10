@@ -6,22 +6,68 @@ import { ScrollView, Text, StyleSheet, I18nManager } from "react-native";
 import { Button, TextInput, View } from 'react-native';
 import { Formik } from 'formik';
 import { Picker } from "react-native-web";
+import { auth } from '../../firebase'
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import * as Yup from "yup";
+
 
 function SignUPComponent() {
+
+//   const [SelectedValue1,setSelectedValue1]=useState('')
+//   const [SelectedValue2,setSelectedValue2]=useState('')
 
 
     return (
         <ScrollView>
-        <view style={Styles.container}>
+        <View style={Styles.container}>
 
         
       
             <Text style={{ textAlign: 'center', fontSize: 30, margin: 10, color: "green", fontFamily: 'Open Sans' }}>انشاء حساب</Text>
             <Formik style={Styles.form}
-                initialValues={{ email: '' }}
-                onSubmit={values => console.log(values)}
+                initialValues={{ email: '', firstname:'' ,secondname:'' ,password:'',phone:'',address:'' ,setSelectedValue1 :'',setSelectedValue2:''}}
+                validationSchema={Yup.object({
+                    firstname : Yup.string()
+                        .min(2, 'يجب الا يقل الاسم عن 3 احرف')
+                        .required('برجاء ادخال اسم الاول'),
+                     secondname: Yup.string()
+                        .min(2, 'يجب الا يقل الاسم عن 3 احرف')
+                        .required('برجاء ادخال الاسم الثاني '),
+                    email: Yup.string()
+                     .matches(/^[a-z0-9._]+@gmail\?|.com|.org|.net|.edu|.eg$/,'برجاء ادخال البريد الالكتروني صحيحا')
+                     .required('برجاء ادخال البريد الالكتروني '),
+                    password: Yup.string()
+                        .min(8, "يجب أن تدخل كلمة المرور")
+                        .matches(/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%?-_*&]).{8,}/, 'كلمة المرور يجب أن تحتوي علي الأقل ٨ أحرف إنجليزية، حرف كبير علي الأقل، حرف صغير علي الأقل، رقم واحد علي الأقل، علامة ترقيم واحدة علي الأقل')
+                        .required('برجاء ادخال كلمه المرور '),
+                    phone: Yup.string()
+                        .matches( /^01[0125][0-9]{8}$/,"يجب أن تدخل رقم الموبايل")
+                        .required('برجاء ادخال رقم التليفون صحيحا '),
+                    address: Yup.string()
+                    .matches(/^\S[a-zA-Z\u0600-\u06FF,-\s\d][\s\d\a-zA-Z\u0600-\u06FF,-]{1,50}$/i,"العنوان غير صحيح")
+                    .required("يجب أن تدخل العنوان"),
+                    setSelectedValue1:Yup.string()
+                    .required('يجب أن تختر بلدتك'),
+                    setSelectedValue2:Yup.string()
+                    .required('يجب أن تختر نوع حسابك '),
+
+                    
+                })}
+                onSubmit={values =>{
+                    console.log(values)
+
+                    const res = createUserWithEmailAndPassword(
+                                 auth,
+                                values.email,
+                               values.password
+                             );
+                
+                
+                
+                
+                } }
             >
-                {({ handleChange, handleBlur, handleSubmit, values }) => (
+                {({   errors, touched, handleChange, handleBlur,handleSubmit,values }) => (
                     <View style={{
                         flex: -1, flexDirection: 'column', justifyContent: 'center', margin: 30,
                         borderWidth: 2,
@@ -33,20 +79,24 @@ function SignUPComponent() {
                         <View style={{ flex: -1, flexDirection: 'row', justifyContent: 'center' }}>
                             <TextInput
                                 style={Styles.input}
-                                onChangeText={handleChange('email')}
-                                onBlur={handleBlur('email')}
-                                value={values.email}
-                                placeholder="الاسم الثاني"
+                                onChangeText={handleChange('secondname')}
+                                onBlur={handleBlur('secondname')}
+                                value={values.secondname}
+p                               placeholder="الاسم الثاني"
                                 keyboardType="numeric"
                             />
+                            {touched.secondname && errors.secondname ? (<Text style={Styles.errorTxt}>{errors.secondname} </Text>) : null}
+
                             <TextInput
-                                style={Styles.input}
-                                onChangeText={handleChange('email')}
-                                onBlur={handleBlur('email')}
-                                value={values.email}
+                                 style={Styles.input}
+                                 onChangeText={handleChange('firstname')}
+                                onBlur={handleBlur('firstname')}
+                                value={values.firstname}
                                 placeholder="الاسم الاول"
                                 keyboardType="numeric"
                             />
+                          {touched.firstname && errors.firstname ? (<Text style={Styles.errorTxt}>{errors.firstname} </Text>) : null} 
+
 
                         </View>
                         <TextInput
@@ -57,41 +107,52 @@ function SignUPComponent() {
                             placeholder="البريد الالكتروني"
                             keyboardType="email-address"
                         />
+                        {touched.email && errors.email ? (<Text style={Styles.errorTxt}>{errors.email} </Text>) : null}
+                       
                         <TextInput
                             style={Styles.input2}
-                            onChangeText={handleChange('email')}
-                            onBlur={handleBlur('email')}
-                            value={values.email}
+                            onChangeText={handleChange('password')}
+                            onBlur={handleBlur('password')}
+                            value={values.password}
                             placeholder="كلمة السر "
                             keyboardType="email-address"
                         />
+                      {touched.password && errors.password ? (<Text style={Styles.errorTxt}>{errors.password} </Text>) : null}
+
                         <TextInput
                             style={Styles.input2}
-                            onChangeText={handleChange('email')}
-                            onBlur={handleBlur('email')}
-                            value={values.email}
+                             onChangeText={handleChange('phone')}
+                            onBlur={handleBlur('phone')}
+                            value={values.phone}
                             placeholder="رقم التليفون"
                             keyboardType="email-address"
                         />
+                     {touched.phone && errors.phone ? (<Text style={Styles.errorTxt}>{errors.phone} </Text>) : null}
+
 
 
                         <View style={{ flex: -1, flexDirection: 'row', justifyContent: 'center' }}>
                             <TextInput
                                 style={Styles.input}
-                                onChangeText={handleChange('email')}
-                                onBlur={handleBlur('email')}
-                                value={values.email}
+                                onChangeText={handleChange('address')}
+                                onBlur={handleBlur('address')}
+                                value={values.address}
                                 placeholder="العنوان"
                                 keyboardType="numeric"
                             />
+                        {touched.address && errors.address ? (<Text style={Styles.errorTxt}>{errors.address} </Text>) : null}
+                         
                             <Picker
 
                                 style={Styles.peacker}
-                                onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+                                onValueChange={handleChange('setSelectedValue1')}
+
                             >
                                 <Picker.Item label="بني سويف" value="بني سويف" />
                                 <Picker.Item label="المنبا" value="المنياs" />
                             </Picker>
+                            {touched.setSelectedValue1 && errors.setSelectedValue1 ? (<Text style={Styles.errorTxt}>{errors.setSelectedValue1} </Text>) : null}
+
 
 
                         </View>
@@ -99,11 +160,13 @@ function SignUPComponent() {
                         <Picker
 
                             style={Styles.peacker}
-                            onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+                            onValueChange={handleChange('setSelectedValue2')}
                         >
                             <Picker.Item label=" طباخ" value=" طباخ" />
                             <Picker.Item label="مستخدم" value="مستخدم" />
                         </Picker>
+                        {touched.setSelectedValue2 && errors.setSelectedValue2 ? (<Text style={Styles.errorTxt}>{errors.setSelectedValue2} </Text>) : null}
+
                         <Button color="green" onPress={handleSubmit} title="انشاء" />
                     </View>
 
@@ -111,7 +174,7 @@ function SignUPComponent() {
             </Formik>
    
 
-        </view>
+        </View>
         </ScrollView>
     )
 }
@@ -171,6 +234,152 @@ const Styles = StyleSheet.create({
   margin:'auto',
   padding:'auto',
         borderColor: "green"
-    }
+    },
+    errorTxt: {
+        color: 'red',
+        fontSize: 12
+    },
 
 })
+
+// import { useNavigation } from '@react-navigation/core'
+// import React, { useEffect, useState } from 'react'
+// import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+// import { auth } from '../../firebase'
+// import { createUserWithEmailAndPassword } from "firebase/auth";
+
+
+
+// const LoginScreen = () => {
+//   const [email, setEmail] = useState('')
+//   const [password, setPassword] = useState('')
+ 
+
+//   const navigation = useNavigation()
+
+// //   useEffect(() => {
+// //     const unsubscribe = auth.onAuthStateChanged(user => {
+// //       if (user) {
+// //         navigation.replace("Home")
+// //       }
+// //     })
+
+// //     return unsubscribe
+// //   }, [])
+
+//   const handleSignUp = () => {
+//     console.log(email,password)
+//     const res = createUserWithEmailAndPassword(
+//         auth,
+//         email,
+//         password
+//       );
+
+
+//       console.log(res.user);
+//     // auth
+//     //   .createUserWithEmailAndPassword(email, password)
+//     //   .then(userCredentials => {
+//     //     const user = userCredentials.user;
+//     //     console.log('Registered with:', user.email);
+//     //   })
+//     //   .catch(error => alert(error.message))
+//   }
+
+//   const handleLogin = () => {
+//     // auth
+//     //   .signInWithEmailAndPassword(email, password)
+//     //   .then(userCredentials => {
+//     //     const user = userCredentials.user;
+//     //     console.log('Logged in with:', user.email);
+//     //   })
+//     //   .catch(error => alert(error.message))
+//   }
+
+//   return (
+//     <KeyboardAvoidingView
+//       style={styles.container}
+//       behavior="padding"
+//     >
+//       <View style={styles.inputContainer}>
+//         <TextInput
+//           placeholder="Email"
+//           value={email}
+//           onChangeText={text => setEmail(text)}
+//           style={styles.input}
+//         />
+//         <TextInput
+//           placeholder="Password"
+//           value={password}
+//           onChangeText={text => setPassword(text)}
+//           style={styles.input}
+//           secureTextEntry
+//         />
+//       </View>
+
+//       <View style={styles.buttonContainer}>
+//         <TouchableOpacity
+//           onPress={handleLogin}
+//           style={styles.button}
+//         >
+//           <Text style={styles.buttonText}>Login</Text>
+//         </TouchableOpacity>
+//         <TouchableOpacity
+//           onPress={handleSignUp}
+//           style={[styles.button, styles.buttonOutline]}
+//         >
+//           <Text style={styles.buttonOutlineText}>Register</Text>
+//         </TouchableOpacity>
+//       </View>
+//     </KeyboardAvoidingView>
+//   )
+// }
+
+// export default LoginScreen
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//   },
+//   inputContainer: {
+//     width: '80%'
+//   },
+//   input: {
+//     backgroundColor: 'white',
+//     paddingHorizontal: 15,
+//     paddingVertical: 10,
+//     borderRadius: 10,
+//     marginTop: 5,
+//   },
+//   buttonContainer: {
+//     width: '60%',
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//     marginTop: 40,
+//   },
+//   button: {
+//     backgroundColor: '#0782F9',
+//     width: '100%',
+//     padding: 15,
+//     borderRadius: 10,
+//     alignItems: 'center',
+//   },
+//   buttonOutline: {
+//     backgroundColor: 'white',
+//     marginTop: 5,
+//     borderColor: '#0782F9',
+//     borderWidth: 2,
+//   },
+//   buttonText: {
+//     color: 'white',
+//     fontWeight: '700',
+//     fontSize: 16,
+//   },
+//   buttonOutlineText: {
+//     color: '#0782F9',
+//     fontWeight: '700',
+//     fontSize: 16,
+//   },
+// })
