@@ -12,12 +12,20 @@ import FooterSection from './Components/FooterSection'
 import CustomerRating from './Components/CustomerRating';
 import DownloadApp from './Components/DownloadApp';
 import { ScrollView } from 'react-native-gesture-handler';
+
+
+import HeaderComponent from './Components/HomePageCooker/Header';
+import CookHome from './Components/HomePageCooker/CookHome';
+
+
 import Home from './HomeAfterLoginForUser/HomeUser/Home/Home';
 import FoodCard from './Components/CookerAfterLogin/Cheif\'s Eat/FoodCard';
 import DeleteEat from './Components/CookerAfterLogin/DeletePOPup/DeleteEat';
+import CookHomeComponent from './Components/HomePageCooker/CookHome';
 // import AddFoodForm from './Components/CookerAfterLogin/AddFoodForm/AddFoodForm'
 // import AddFoodForm from './Components/CookerAfterLogin/AddFoodForm/AddFoodForm';
 // import EditeEat from './Components/CookerAfterLogin/AddFoodForm/EditeEat';
+
 import MyFav from './HomeAfterLoginForUser/HomeUser/Addto fav/MyFav';
 import Details from './HomeAfterLoginForUser/Details/Details';
 export default function App() {
@@ -49,7 +57,6 @@ export default function App() {
             
           }}
           
-          
           />
           <Tab.Screen name="إنشاء حساب" component={SignUPComponent}  
           options={{
@@ -62,7 +69,7 @@ export default function App() {
           
           
           />
-            <Tab.Screen name="FoodCard" component={FoodCard}  
+            <Tab.Screen name="FoodCard" component={CookHomeComponent}  
           options={{
             tabBarLabel: 'FoodCard',
             tabBarIcon: () => (
@@ -82,6 +89,8 @@ export default function App() {
           
           />
           
+           {/* <Tab.Screen name="EditeEat" component={EditeEat}  
+          
            <Tab.Screen name="MyFav" component={MyFav}  
           options={{
             tabBarLabel: 'MyFav',
@@ -91,6 +100,16 @@ export default function App() {
             
           }}
           
+          />
+
+         <Tab.Screen name="CheifHome" component={CookHome}  
+          options={{
+            tabBarLabel: 'Aboutcheif',
+            tabBarIcon: () => (
+              <MaterialCommunityIcons name="star" color="orange" size={40} />
+            ),
+            
+          }}
           
           />
        
@@ -116,11 +135,12 @@ export default function App() {
       {/* <CustomerRating/>
   <DownloadApp/>
      <FooterSection/> */}
-
+       </Tab.Navigator > 
+</NavigationContainer>
     </View>
 
   );
-}
+  }
 
 const styles = StyleSheet.create({
   container: {
@@ -131,64 +151,6 @@ const styles = StyleSheet.create({
   },
 });
 
-
-
-
-// import React, { useState } from "react";
-// import { View, Button, StyleSheet, Alert } from "react-native";
-
-// export default function App() {
-//   const [showBox, setShowBox] = useState(true);
-
-//   const off = () => {
-//     return Alert.alert(
-//       "Are your sure?",
-//       "Are you sure you want to remove this beautiful box?",
-//       [
-//         // The "Yes" button
-//         {
-//           text: "Yes",
-//           onPress: () => {
-//             setShowBox(false);
-//           },
-//         },
-//         // The "No" button
-//         // Does nothing but dismiss the dialog when tapped
-//         {
-//           text: "No",
-//         },
-//       ]
-//     );
-//   };
-
-//   return (
-//     <View style={styles.screen}>
-//       {showBox && <View style={styles.box}></View>}
-//       <Button title="Delete" onPress={() => off()} />
-//     </View>
-//   );
-// }
-
-// // Kindacode.com
-// // Just some styles
-// const styles = StyleSheet.create({
-//   screen: {
-//     flex: 1,
-//     justifyContent: "center",
-//     alignItems: "center",
-//     backgroundColor:'black'
-//   },
-//   box: {
-//     width: 300,
-//     height: 300,
-//     backgroundColor:'white',
-//     marginBottom: 30,
-//   },
-//   text: {
-//     backgroundColor:'red',
-//     fontSize: 30,
-//   },
-// });
 
 
 

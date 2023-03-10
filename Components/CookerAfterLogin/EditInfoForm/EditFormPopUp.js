@@ -1,5 +1,5 @@
 import React from 'react';
-import EditFoodForm from './EditFoodForm';
+import EditInfoForm from './EditInfoForm';
 import {
     View,
     StyleSheet,
@@ -63,7 +63,7 @@ const EditFormPopUp = () => {
           </View>
         </View>
                 <View style={{ alignItems: 'center' }}>
-<EditFoodForm/>
+<EditInfoForm/>
                 </View>
                 
 
@@ -81,7 +81,7 @@ const EditFormPopUp = () => {
                 </TouchableOpacity> */}
             </ModalPoup>
             <Icon
-                name='edit' size={20} color={'orange'} style={{ margin: '6px' }} onPress={() => setVisible(true)}></Icon>
+                name='edit' size={30} color={'green'} style={{ margin: '6px' }} onPress={() => setVisible(true)}></Icon>
 
                              
            

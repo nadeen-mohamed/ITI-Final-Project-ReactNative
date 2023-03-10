@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, View, Text, Image,  TouchableOpacity, } from 'react-native';
-import * as Animatable from 'react-native-animatable';
+
 
 export default function DownloadApp() {
 
