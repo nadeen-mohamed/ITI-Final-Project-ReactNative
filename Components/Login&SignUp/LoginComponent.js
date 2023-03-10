@@ -71,8 +71,8 @@ const Styles = StyleSheet.create({
 
     },
     input: {
-        height: 40,
-        width: 250,
+        height: 60,
+        width: "97%",
         borderRadius: 40,
         margin: 12,
 
@@ -81,8 +81,8 @@ const Styles = StyleSheet.create({
         borderColor: 'green'
     },
     input2: {
-        height: 40,
-        width: 410,
+        height: 60,
+        width: "97%",
         borderRadius: 40,
         margin: 12,
         borderWidth: 1,

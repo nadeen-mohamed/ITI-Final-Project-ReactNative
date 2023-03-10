@@ -11,7 +11,11 @@ function SignUPComponent() {
 
 
     return (
-         <ScrollView>
+        <ScrollView>
+        <view style={Styles.container}>
+
+        
+      
             <Text style={{ textAlign: 'center', fontSize: 30, margin: 10, color: "green", fontFamily: 'Open Sans' }}>انشاء حساب</Text>
             <Formik style={Styles.form}
                 initialValues={{ email: '' }}
@@ -105,27 +109,27 @@ function SignUPComponent() {
 
                 )}
             </Formik>
+   
+
+        </view>
         </ScrollView>
-
-
-
     )
 }
 
 export default SignUPComponent;
 const Styles = StyleSheet.create({
     container: {
-        textAlign: 'center',
-        backgroundColor: '#000',
-        borderWidth: 3,
-        borderColor: 'green',
-        margin: 10,
-        padding: 10,
+        width: '100%',
+  height: '100%',
+  justifyContent: 'center',
+  alignItems: 'center',
+  margin:'auto',
+  padding:'auto'
 
     },
     input: {
-        height: 40,
-        width: 250,
+        height: 60,
+        width: "100%",
         borderRadius: 40,
         margin: 12,
 
@@ -134,21 +138,23 @@ const Styles = StyleSheet.create({
         borderColor: 'green'
     },
     input2: {
-        height: 40,
-        width: 390,
+        height: 60,
+        width: "97%",
         borderRadius: 40,
-        margin: 12,
+        margin: 10,
+
         borderWidth: 1,
         padding: 10,
         borderColor: 'green'
     },
     peacker: {
-        height: 40,
-        width: 390,
+        height: 60,
+        width: "97%",
         borderRadius: 40,
         margin: 12,
-        borderWidth: 1,
 
+        borderWidth: 1,
+        padding: 10,
         borderColor: 'green'
     },
     img: {
@@ -158,7 +164,12 @@ const Styles = StyleSheet.create({
     },
     form: {
         borderWidth: 5,
-        padding: 10,
+        width: '100%',
+  height: '100%',
+  justifyContent: 'center',
+  alignItems: 'center',
+  margin:'auto',
+  padding:'auto',
         borderColor: "green"
     }
 

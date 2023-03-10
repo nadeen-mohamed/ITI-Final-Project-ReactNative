@@ -29,10 +29,11 @@ const MyFav = () => {
       
         activeOpacity={0.9}
         style={{
-          width: '100%',
+          width: '90%',
           height: 180,
           justifyContent: 'center',
           alignItems: 'center',
+          marginLeft:'0px',
         }}
        
         >
@@ -104,7 +105,7 @@ const MyFav = () => {
         بيتزا محشيه كل انواع الجبن ومحشيه الاطراف
             </Text>
           </View>
-          <View style={{width: 150, height: 150, marginRight: -45, borderRadius:'400px'}}>
+          <View style={{width: 140, height: 140, marginRight: -40, borderRadius:'400px'}}>
             <Image
             source={require('../../../assets/photo_2023-02-14_19-47-11.jpg')}
               style={{
@@ -159,10 +160,13 @@ const MyFav = () => {
       
 activeOpacity={0.9}
 style={{
-  width: '100%',
+  width: '90%',
   height: 180,
   justifyContent: 'center',
   alignItems: 'center',
+  marginLeft:'0px',
+ 
+  
 }}
 
 >
@@ -234,7 +238,7 @@ style={{
 بيتزا محشيه كل انواع الجبن ومحشيه الاطراف
     </Text>
   </View>
-  <View style={{width: 150, height: 150, marginRight: -45, borderRadius:'400px'}}>
+  <View style={{width: 140, height: 140, marginRight: -40, borderRadius:'400px'}}>
     <Image
     source={require('../../../assets/photo_2023-02-14_19-47-11.jpg')}
       style={{
