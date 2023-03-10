@@ -12,13 +12,15 @@ function ReviewCard() {
 
     return (
         <>
+                        <Text style={{textAlign:"center",fontSize:20,fontWeight:"bold"}}>رأي العميل</Text>
+                  
             <View style={{ padding: 10 }}>
                 <View style={{
                     flexDirection: 'row', justifyContent: 'flex-end', borderWidth: 2,
                     borderColor: 'green', borderRadius: 40
                 }}>
                     <View style={{ flexDirection: 'column', justifyContent: 'center' ,marginRight:15}}>
-                        <Text style={{ fontSize: 23 }}>تقوي علي</Text>
+                        <Text style={{ fontSize: 23,fontWeight:"bold" }}>تقوي علي</Text>
                         <Text style={{ fontSize: 20 }}>الاكل اكتر من رائع تسلم ايدك</Text>
                         <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
 
@@ -64,7 +66,7 @@ function ReviewCard() {
 
                         </View>
                     </View>
-                    <Image style={Styles.profile} source={require('../../assets/team1.jpg')} resizeMode="cover"></Image>
+                    <Image style={Styles.profile} source={require('../../assets/user1.jpg')} resizeMode="cover"></Image>
 
                 </View>
             </View>
@@ -76,9 +78,10 @@ export default ReviewCard;
 const Styles = StyleSheet.create({
     profile: {
 
-        width: 100,
-        height: 100,
-        borderRadius: 100 / 2
+        width: 120,
+        height: 120,
+        borderRadius: 120 / 2,
+        margin:10
 
     },
 })

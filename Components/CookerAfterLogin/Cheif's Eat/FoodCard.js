@@ -12,7 +12,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import AddFormPopUp from '../AddFoodForm/AddFormPopUp';
 import DeleteEat from '../DeletePOPup/DeleteEat';
 import Card from './Card';
-import EditFormPopUp from '../EditFoodForm/EditFormPopUp';
+import EditFormPopUp from '../EditInfoForm/EditFormPopUp';
 export default function FoodCard({ navigation }) {
     
         return (

@@ -12,15 +12,18 @@ import FooterSection from './Components/FooterSection'
 import CustomerRating from './Components/CustomerRating';
 import DownloadApp from './Components/DownloadApp';
 import { ScrollView } from 'react-native-gesture-handler';
+
+
+import HeaderComponent from './Components/HomePageCooker/Header';
+import CookHome from './Components/HomePageCooker/CookHome';
+
+
 import FoodCard from './Components/CookerAfterLogin/Cheif\'s Eat/FoodCard';
 import DeleteEat from './Components/CookerAfterLogin/DeletePOPup/DeleteEat';
+import CookHomeComponent from './Components/HomePageCooker/CookHome';
 // import AddFoodForm from './Components/CookerAfterLogin/AddFoodForm/AddFoodForm'
 // import AddFoodForm from './Components/CookerAfterLogin/AddFoodForm/AddFoodForm';
 // import EditeEat from './Components/CookerAfterLogin/AddFoodForm/EditeEat';
-import Aboutcheif from './Components/UserAfterLogin/AboutCheif/Aboutcheif';
-import Cheif from './Components/UserAfterLogin/CheifView/Cheif';
-import HeaderComponent from './Components/CookerHomePage/Header';
-import CookHome from './Components/CookerHomePage/CookHome';
 
 export default function App() {
   const Tab=createBottomTabNavigator();
@@ -64,7 +67,7 @@ export default function App() {
           
           
           />
-            <Tab.Screen name="FoodCard" component={FoodCard}  
+            <Tab.Screen name="FoodCard" component={CookHomeComponent}  
           options={{
             tabBarLabel: 'FoodCard',
             tabBarIcon: () => (
@@ -75,6 +78,7 @@ export default function App() {
           
           
           />
+          
            {/* <Tab.Screen name="EditeEat" component={EditeEat}  
           options={{
             tabBarLabel: 'AddFoodForm',

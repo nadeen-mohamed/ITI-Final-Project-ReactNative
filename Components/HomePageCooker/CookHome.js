@@ -10,7 +10,7 @@ import Icon from 'react-native-vector-icons/Entypo';
 import HeaderComponent from "./Header";
 import CookInfoComponent from "./CookerInfo";
 import ReviewCard from "./ClientReview";
-function CookHome(){
+function CookHomeComponent(){
 
     return(
         <>
@@ -27,4 +27,4 @@ function CookHome(){
     )
 }
 
-export default CookHome;
+export default CookHomeComponent;
