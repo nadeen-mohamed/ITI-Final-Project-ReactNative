@@ -72,7 +72,7 @@ export default function App() {
           }}
           />
        
-       {/*<Tab.Screen   name="الصفحة الرئيسية" component={Home}  
+       <Tab.Screen   name="الصفحة الرئيسية" component={Home}  
           options={{
             tabBarLabel: "الصفحة الرئيسية",
             tabBarIcon: () => (
@@ -94,7 +94,7 @@ export default function App() {
           
           />
        
-        />*/}
+        
         
         <Tab.Screen   name="تفاصيل الأكله" component={Details}  
           options={{
