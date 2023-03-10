@@ -47,8 +47,8 @@ export default function CustomerRating() {
                 </Text>
                 <Text
                   style={{
-                    fontSize: 20,
-                 paddingLeft:20,
+                    fontSize: 15,
+               
                     color: 'gray',
                     fontWeight: 'bold',
                     fontFamily: 'nunitoBold',
@@ -113,8 +113,7 @@ export default function CustomerRating() {
                 </Text>
                 <Text
                   style={{
-                    fontSize: 20,
-                    paddingLeft:20,
+                    fontSize: 15,
                        color: 'gray',
                        fontWeight: 'bold',
                        fontFamily: 'nunitoBold',

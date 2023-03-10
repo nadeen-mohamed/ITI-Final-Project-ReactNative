@@ -23,7 +23,7 @@ function Index() {
 
             </View>
 
-            <View style={{ flex: 2, flexDirection: 'column', justifyContent: 'flex-start', margin: 30 }}>
+            <View style={{ flex: 2, flexDirection: 'column', justifyContent: 'flex-start' }}>
 
                 <Image style={{ width: 400, height: 300 }} source={require('../../assets/hero.png')}></Image>
                 <Text style={{ textAlign: 'center', fontSize: 25, color: 'orange' }}>نحن نقدم لك مذاقك الخاص &#129316;</Text>
@@ -61,13 +61,13 @@ function Index() {
 
             </View>
 
-            <View style={{ flex: 2, flexDirection: 'row', justifyContent: 'flex-start', margin: 30 }}>
+            <View style={{ flex: 2, flexDirection: 'row', justifyContent: 'flex-start'}}>
 
                 <Image style={{ width: 400, height: 300 }} source={require('../../assets/service.png')}></Image>
 
             </View>
 
-            <View style={{ flex: -1, flexDirection: 'column', justifyContent: 'center', margin: 30 }}>
+            <View style={{ flex: -1, flexDirection: 'column', justifyContent: 'center', marginTop: 30 }}>
 
                 <Image style={{ width: 400, height: 300, borderRadius: 100 }} source={require('../../assets/Eat.jpg')}></Image>
                 <Text style={{ textAlign: 'center', fontSize: 25, color: 'orange', marginTop: 5 }}>محتار تتعشي إيه!؟ 🙄</Text>
@@ -89,8 +89,7 @@ const Styles = StyleSheet.create({
         backgroundColor: '#000',
         borderWidth: 3,
         borderColor: '#ffd700',
-        margin: 10,
-        padding: 10
+      
     },
     img: {
         height: 400,
