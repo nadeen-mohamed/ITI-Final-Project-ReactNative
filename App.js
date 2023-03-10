@@ -13,6 +13,7 @@ import CustomerRating from './Components/CustomerRating';
 import DownloadApp from './Components/DownloadApp';
 import { ScrollView } from 'react-native-gesture-handler';
 import Home from './HomeAfterLoginForUser/HomeUser/Home/Home';
+import Details from './HomeAfterLoginForUser/Details/Details';
 export default function App() {
   const Tab=createBottomTabNavigator();
   return (
@@ -54,7 +55,7 @@ export default function App() {
           }}
           />
        
-       <Tab.Screen   name="الصفحة الرئيسية" component={Home}  
+       {/*<Tab.Screen   name="الصفحة الرئيسية" component={Home}  
           options={{
             tabBarLabel: "الصفحة الرئيسية",
             tabBarIcon: () => (
@@ -62,8 +63,18 @@ export default function App() {
             ),
           }}
           
-          />
+        />*/}
+        
+        <Tab.Screen   name="تفاصيل الأكله" component={Details}  
+          options={{
+            tabBarLabel: "تفاصيل الأكله",
+            tabBarIcon: () => (
+              <MaterialCommunityIcons name="home" color="orange" size={40} />
+            ),
+          }}
           
+        />
+
         </Tab.Navigator>  
      
       </NavigationContainer>
