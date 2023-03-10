@@ -1,6 +1,9 @@
 import React from 'react'
-import { StyleSheet, View, Text, Image } from 'react-native';
+import { StyleSheet, View, Text, Image,  TouchableOpacity, } from 'react-native';
+import * as Animatable from 'react-native-animatable';
+
 export default function DownloadApp() {
+
   return (
    <View style={{display:'flex', flexDirection:'coulmn'}}>
  <Image
@@ -9,7 +12,9 @@ export default function DownloadApp() {
            />
            <View >
            <Text style={{fontSize:'15px', textAlign:'center', color:'orange'}}>  لا تشعر بالجوع ابدا وحمل تطبيقنا الأن واستمتع ب ألذ الأطعمة </Text>
-           <View  style={{display:'flex', flexDirection:'row'}} >
+         
+<View  style={{display:'flex', flexDirection:'row', justifyContent:'space-around', alignItems:'center'}} >
+
             <View>
             <Image
                source={require('../assets/Android.png')}
@@ -38,9 +43,7 @@ const styles = StyleSheet.create({
       },
       imag:{
         width:200,
-        height:50,
-       marginLeft:10,
-       marginButtom:10,
-       marginTop:10,
+        height:60,
+     margin:'auto'
       }
   });
