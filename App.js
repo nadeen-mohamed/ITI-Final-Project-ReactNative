@@ -12,6 +12,7 @@ import FooterSection from './Components/FooterSection'
 import CustomerRating from './Components/CustomerRating';
 import DownloadApp from './Components/DownloadApp';
 import { ScrollView } from 'react-native-gesture-handler';
+import FavPage from './Components/UserAfterLogin/FavPage/FavPage';
 export default function App() {
   const Tab=createBottomTabNavigator();
   return (
@@ -51,9 +52,12 @@ export default function App() {
             ),
             
           }}
+
+          
           
           
           />
+         
        
         </Tab.Navigator>  
      

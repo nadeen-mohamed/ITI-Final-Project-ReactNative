@@ -83,6 +83,7 @@ export default function CustomerRating() {
             </View>
           
           </View>
+          
           <View style={styles.mainCardView}>
             <View style={{flexDirection: 'row', alignItems: 'center',width:'50%'}}>
               <View style={styles.subCardView}>
