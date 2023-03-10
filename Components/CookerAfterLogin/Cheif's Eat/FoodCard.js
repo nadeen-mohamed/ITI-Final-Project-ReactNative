@@ -12,7 +12,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import AddFormPopUp from '../AddFoodForm/AddFormPopUp';
 import DeleteEat from '../DeletePOPup/DeleteEat';
 import Card from './Card';
-import EditFormPopUp from '../EditInfoForm/EditFormPopUp';
+import EditFoodFormPopUp from '../EditeFoodForm/EditFoodFormPopUp';
 export default function FoodCard({ navigation }) {
     
         return (
@@ -40,7 +40,7 @@ export default function FoodCard({ navigation }) {
                                description={ <Text style={styles.icon}>
                               <DeleteEat/>
                               
-                              <EditFormPopUp/>
+                              <EditFoodFormPopUp/>
                                 <Icon
                                    name='info' size={20} color={'orange'} style={{ margin: '6px' }} ></Icon>
                               

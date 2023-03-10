@@ -9,10 +9,10 @@ return (
 
        
      
-           <Image 
+           {/* <Image 
         source={require('../assets/logo.png')}
   style={styles.img}
-    /> 
+    />  */}
        <Text style={styles.icon}>
        <Icon 
         name='facebook-square' size={30} color={'orange'} style={{margin:'6px'}}onPress={() => {
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     headerFooterStyle: {
      marginTop:30,
       width: '100%',
-      height: 140,
+      height: 50,
       backgroundColor: 'rgba(0, 0, 0, .04)'
     },
     textStyle: {
@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
   alignSelf:'center'
   },
   icon:{
+    marginTop:'10px',
     justifyContent: "space-between",
     alignSelf:'center'
   }

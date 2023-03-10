@@ -69,7 +69,16 @@ export default function App() {
           
           
           />
-            <Tab.Screen name="FoodCard" component={CookHomeComponent}  
+            <Tab.Screen name="CookHomeComponent" component={CookHomeComponent}  
+          options={{
+            tabBarLabel: 'CookHomeComponent',
+            tabBarIcon: () => (
+              <MaterialCommunityIcons name="food" color={'rgb(155, 193, 155)'} size={40} />
+            ),
+            
+          }}
+          />
+            <Tab.Screen name="FoodCard" component={FoodCard}  
           options={{
             tabBarLabel: 'FoodCard',
             tabBarIcon: () => (
@@ -88,6 +97,24 @@ export default function App() {
           }}
           
           />
+           <Tab.Screen   name="تفاصيل الأكله" component={Details}  
+          options={{
+            tabBarLabel: "تفاصيل الأكله",
+            tabBarIcon: () => (
+              <MaterialCommunityIcons name="home" color="orange" size={40} />
+            ),
+          }}
+          
+        />
+         <Tab.Screen   name=" MyFav" component={MyFav}  
+          options={{
+            tabBarLabel: "تفاصيل الأكله",
+            tabBarIcon: () => (
+              <MaterialCommunityIcons name="home" color="orange" size={40} />
+            ),
+          }}
+          
+        />
           
            {/* <Tab.Screen name="EditeEat" component={EditeEat}  
           
@@ -115,15 +142,7 @@ export default function App() {
        
         
         
-        <Tab.Screen   name="تفاصيل الأكله" component={Details}  
-          options={{
-            tabBarLabel: "تفاصيل الأكله",
-            tabBarIcon: () => (
-              <MaterialCommunityIcons name="home" color="orange" size={40} />
-            ),
-          }}
-          
-        />
+       
 
         </Tab.Navigator>  
      
