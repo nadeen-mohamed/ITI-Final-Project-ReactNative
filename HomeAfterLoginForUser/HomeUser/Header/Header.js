@@ -6,7 +6,7 @@ export default function Header() {
     console.log( user,'usssser')
     return (
         <View style={styles.header}>
-            <Image source={user.photoURL}  style={styles.Image}/>
+            <Image source={user?.photoURL}  style={styles.Image}/>
             <View style={styles.searchBox}>
                 <View style={styles.searchBtn}>
                     <Icon name="search"></Icon>

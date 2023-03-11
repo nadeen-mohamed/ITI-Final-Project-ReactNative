@@ -108,6 +108,27 @@ export default function App() {
 
             }}
           />*/}
+          <Tab.Screen name="صفحة البداية" component={Index}
+            options={{
+              tabBarLabel: 'صفحة البداية',
+              tabBarIcon: () => (
+                <MaterialCommunityIcons name="home" color={'rgb(155, 193, 155)'} size={40} />
+              ),
+            }}
+
+          />
+
+          
+          <Tab.Screen name="تسجيل الدخول" component={LoginComponent}
+            options={{
+              tabBarLabel: 'تسجيل الدخول',
+              tabBarIcon: () => (
+                <MaterialCommunityIcons name="login" color={'rgb(155, 193, 155)'} size={40} />
+              ),
+
+            }}
+
+          />
 
           <Tab.Screen name="الصفحة الرئيسية" component={Home}
             options={{
