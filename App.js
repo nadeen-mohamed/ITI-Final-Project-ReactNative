@@ -29,6 +29,7 @@ import CookHomeComponent from './Components/HomePageCooker/CookHome';
 import MyFav from './HomeAfterLoginForUser/HomeUser/Addto fav/MyFav';
 import Details from './HomeAfterLoginForUser/Details/Details';
 import StackNavigate from './StackNavigate';
+import StackNavCooker from './StackNavCooker';
 export default function App() {
   const Tab=createBottomTabNavigator();
   return (
@@ -79,12 +80,13 @@ export default function App() {
             
           }}
           />
-            <Tab.Screen name="FoodCard" component={FoodCard}  
+            <Tab.Screen name="FoodCard" component={StackNavCooker}  
           options={{
             tabBarLabel: 'FoodCard',
             tabBarIcon: () => (
               <MaterialCommunityIcons name="food" color={'rgb(155, 193, 155)'} size={40} />
             ),
+            headerShown: false
             
           }}
           />

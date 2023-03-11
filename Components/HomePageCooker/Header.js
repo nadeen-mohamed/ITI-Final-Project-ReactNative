@@ -21,7 +21,7 @@ function HeaderComponent(props){
     {/* <View style={Styles.profile} >
     <Image style={Styles.img} resizeMode="center" source={require('../../assets/team1.jpg')}></Image>
     </View> */}
-     <Image style={Styles.profile} resizeMode="cover" source={require('../../assets/team1.jpg')}></Image>
+     <Image style={Styles.profile} resizeMode="cover" source={props?.photo} ></Image>
     </View>
   </View>
     </>

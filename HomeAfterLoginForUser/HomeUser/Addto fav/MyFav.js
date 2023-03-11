@@ -131,24 +131,13 @@ const MyFav = () => {
                 paddingTop: 10,
                 textAlign: 'center'
               }}>
-              {item.foodName}
+              {item?.foodName}
             </Text>
-            <Text
-              style={{
-                fontSize: 12,
-                color: 'black',
-                opacity: 0.5,
-                textAlign: 'center',
-                marginTop: '15',
-                flexWrap: 'wrap'
-
-              }}>
-              {item.foodDiscription}
-            </Text>
+ 
           </View>
           <View style={{ width: 140, height: 140, marginRight: -40, borderRadius: '50%' }}>
             <Image
-              source={item.foodImg[0]}
+              source={item?.foodImg[0]}
               style={{
                 width: '100%',
                 height: '100%',
