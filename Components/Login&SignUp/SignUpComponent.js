@@ -6,9 +6,12 @@ import { ScrollView, Text, StyleSheet, I18nManager } from "react-native";
 import { Button, TextInput, View } from 'react-native';
 import { Formik } from 'formik';
 import { Picker } from "react-native-web";
-import { auth } from '../../firebase'
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth , db, myserverTimestamp  } from '../../firebase'
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { doc, setDoc } from "@firebase/firestore";
+
 import * as Yup from "yup";
+import { async } from "@firebase/util";
 
 
 function SignUPComponent() {
@@ -53,15 +56,37 @@ function SignUPComponent() {
 
                     
                 })}
-                onSubmit={values =>{
+                onSubmit={async values =>{
                     console.log(values)
+                   
 
-                    const res = createUserWithEmailAndPassword(
+                    const res = await createUserWithEmailAndPassword(
                                  auth,
                                 values.email,
                                values.password
                              );
-                
+                    console.log(res)
+                    console.log(res.user);
+
+                    await updateProfile(res.user, {
+                                displayName: `${values.firstname} ${values.secondname}@${values.setSelectedValue2}`,
+                                // photoURL: downloadURL,
+                              });
+                  
+                            //   console.log("res.kindUser",data.kindUser)
+                            await  setDoc(doc(db, `${values.setSelectedValue2 == "cook" ? "cookers":"users"}`, res.user.uid), {
+                                userid: res.user.uid,
+                                fullName: values.firstname + " " + values.secondname,
+                                email:  values.email,
+                                phone: values.phone,
+                                address: values.address,
+                                kindUser:values.setSelectedValue2,
+                                country:values.setSelectedValue1,
+                                // photo: downloadURL,
+                                registerTime: myserverTimestamp
+                              })
+
+                           
                 
                 
                 
@@ -162,8 +187,8 @@ p                               placeholder="الاسم الثاني"
                             style={Styles.peacker}
                             onValueChange={handleChange('setSelectedValue2')}
                         >
-                            <Picker.Item label=" طباخ" value=" طباخ" />
-                            <Picker.Item label="مستخدم" value="مستخدم" />
+                            <Picker.Item label=" طباخ" value="cook" />
+                            <Picker.Item label="مستخدم" value="user" />
                         </Picker>
                         {touched.setSelectedValue2 && errors.setSelectedValue2 ? (<Text style={Styles.errorTxt}>{errors.setSelectedValue2} </Text>) : null}
 
