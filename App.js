@@ -28,95 +28,106 @@ import CookHomeComponent from './Components/HomePageCooker/CookHome';
 
 import MyFav from './HomeAfterLoginForUser/HomeUser/Addto fav/MyFav';
 import Details from './HomeAfterLoginForUser/Details/Details';
+import Orders from './Components/CookerAfterLogin/Orders/Orders'
 export default function App() {
-  const Tab=createBottomTabNavigator();
+  const Tab = createBottomTabNavigator();
   return (
     <View style={styles.container}>
-      
-      
+
+
       <NavigationContainer  >
-       
-          <Tab.Navigator > 
-    <Tab.Screen   name="صفحة البداية" component={Index}  
-          options={{
-            tabBarLabel: 'صفحة البداية',
-            tabBarIcon: () => (
-              <MaterialCommunityIcons name="home" color={'rgb(155, 193, 155)'} size={40} />
-            ),
-          }}
-          
-        /> 
-          
-          
-          <Tab.Screen name="تسجيل الدخول" component={LoginComponent}  
-          options={{
-            tabBarLabel: 'تسجيل الدخول',
-            tabBarIcon: () => (
-              <MaterialCommunityIcons name="login" color={'rgb(155, 193, 155)'} size={40} />
-            ),
-            
-          }}
-          
+
+        <Tab.Navigator >
+         {/* <Tab.Screen name="صفحة البداية" component={Index}
+            options={{
+              tabBarLabel: 'صفحة البداية',
+              tabBarIcon: () => (
+                <MaterialCommunityIcons name="home" color={'rgb(155, 193, 155)'} size={40} />
+              ),
+            }}
+
           />
-          <Tab.Screen name="إنشاء حساب" component={SignUPComponent}  
-          options={{
-            tabBarLabel: 'إنشاء حساب',
-            tabBarIcon: () => (
-              <MaterialCommunityIcons name="sign-text" color={'rgb(155, 193, 155)'} size={40} />
-            ),
-            
-          }}
-          
-          
+
+
+          <Tab.Screen name="تسجيل الدخول" component={LoginComponent}
+            options={{
+              tabBarLabel: 'تسجيل الدخول',
+              tabBarIcon: () => (
+                <MaterialCommunityIcons name="login" color={'rgb(155, 193, 155)'} size={40} />
+              ),
+
+            }}
+
           />
-            <Tab.Screen name="CookHomeComponent" component={CookHomeComponent}  
-          options={{
-            tabBarLabel: 'CookHomeComponent',
-            tabBarIcon: () => (
-              <MaterialCommunityIcons name="food" color={'rgb(155, 193, 155)'} size={40} />
-            ),
-            
-          }}
+          <Tab.Screen name="إنشاء حساب" component={SignUPComponent}
+            options={{
+              tabBarLabel: 'إنشاء حساب',
+              tabBarIcon: () => (
+                <MaterialCommunityIcons name="sign-text" color={'rgb(155, 193, 155)'} size={40} />
+              ),
+
+            }}
+
+
           />
-            <Tab.Screen name="FoodCard" component={FoodCard}  
-          options={{
-            tabBarLabel: 'FoodCard',
-            tabBarIcon: () => (
-              <MaterialCommunityIcons name="food" color={'rgb(155, 193, 155)'} size={40} />
-            ),
-            
-          }}
+          <Tab.Screen name="CookHomeComponent" component={CookHomeComponent}
+            options={{
+              tabBarLabel: 'CookHomeComponent',
+              tabBarIcon: () => (
+                <MaterialCommunityIcons name="food" color={'rgb(155, 193, 155)'} size={40} />
+              ),
+
+            }}
           />
-       
-       <Tab.Screen   name="الصفحة الرئيسية" component={Home}  
-          options={{
-            tabBarLabel: "الصفحة الرئيسية",
-            tabBarIcon: () => (
-              <MaterialCommunityIcons name="home" color={'rgb(155, 193, 155)'} size={40} />
-            ),
-          }}
-          
+          <Tab.Screen name="FoodCard" component={FoodCard}
+            options={{
+              tabBarLabel: 'FoodCard',
+              tabBarIcon: () => (
+                <MaterialCommunityIcons name="food" color={'rgb(155, 193, 155)'} size={40} />
+              ),
+
+            }}
+          />*/}
+
+          <Tab.Screen name="الصفحة الرئيسية" component={Home}
+            options={{
+              tabBarLabel: "الصفحة الرئيسية",
+              tabBarIcon: () => (
+                <MaterialCommunityIcons name="home" color={'rgb(155, 193, 155)'} size={40} />
+              ),
+            }}
+
           />
-           <Tab.Screen   name="تفاصيل الأكله" component={Details}  
-          options={{
-            tabBarLabel: "تفاصيل الأكله",
-            tabBarIcon: () => (
-              <MaterialCommunityIcons name="home" color="orange" size={40} />
-            ),
-          }}
-          
-        />
-         <Tab.Screen   name=" MyFav" component={MyFav}  
-          options={{
-            tabBarLabel: "تفاصيل الأكله",
-            tabBarIcon: () => (
-              <MaterialCommunityIcons name="home" color="orange" size={40} />
-            ),
-          }}
-          
-        />
-          
-           {/* <Tab.Screen name="EditeEat" component={EditeEat}  
+          <Tab.Screen name="تفاصيل الأكله" component={Details}
+            options={{
+              tabBarLabel: "تفاصيل الأكله",
+              tabBarIcon: () => (
+                <MaterialCommunityIcons name="home" color="orange" size={40} />
+              ),
+            }}
+
+          />
+        {/*}  <Tab.Screen name=" MyFav" component={MyFav}
+            options={{
+              tabBarLabel: " المفضلة",
+              tabBarIcon: () => (
+                <MaterialCommunityIcons name="home" color="orange" size={40} />
+              ),
+            }}
+
+          />*/}
+
+          <Tab.Screen name="طلباتي" component={Orders}
+            options={{
+              tabBarLabel: "طلباتي",
+              tabBarIcon: () => (
+                <MaterialCommunityIcons name="home" color="orange" size={40} />
+              ),
+            }}
+
+          />
+
+          {/* <Tab.Screen name="EditeEat" component={EditeEat}  
           
            <Tab.Screen name="MyFav" component={MyFav}  
           options={{
@@ -151,15 +162,15 @@ export default function App() {
 
       {/* <SignUPComponent></SignUPComponent>
  <LoginComponent></LoginComponent> */}
-      {/* <CustomerRating/>
+          {/* <CustomerRating/>
   <DownloadApp/>
      <FooterSection/> */}
-       </Tab.Navigator > 
-</NavigationContainer>
+        </Tab.Navigator >
+      </NavigationContainer>
     </View>
 
   );
-  }
+}
 
 const styles = StyleSheet.create({
   container: {
