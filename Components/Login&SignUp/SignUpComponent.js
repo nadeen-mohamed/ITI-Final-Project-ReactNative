@@ -174,7 +174,7 @@ p                               placeholder="الاسم الثاني"
 
                             >
                                 <Picker.Item label="بني سويف" value="بني سويف" />
-                                <Picker.Item label="المنبا" value="المنياs" />
+                                <Picker.Item label="المنبا" value="المنيا" />
                             </Picker>
                             {touched.setSelectedValue1 && errors.setSelectedValue1 ? (<Text style={Styles.errorTxt}>{errors.setSelectedValue1} </Text>) : null}
 
