@@ -29,11 +29,8 @@ import CookHomeComponent from './Components/HomePageCooker/CookHome';
 import MyFav from './HomeAfterLoginForUser/HomeUser/Addto fav/MyFav';
 import Details from './HomeAfterLoginForUser/Details/Details';
 import StackNavigate from './StackNavigate';
-<<<<<<< HEAD
 import Orders from './Components/CookerAfterLogin/Orders/Orders'
-=======
 import StackNavCooker from './StackNavCooker';
->>>>>>> 1e9013fc1b7d8fd01a55720abbcdfa4eb551b130
 export default function App() {
   const Tab = createBottomTabNavigator();
   return (
@@ -135,12 +132,13 @@ export default function App() {
 
           />
 
-          <Tab.Screen name="الصفحة الرئيسية" component={Home}
+          <Tab.Screen name="الصفحة الرئيسية" component={StackNavigate}
             options={{
               tabBarLabel: "الصفحة الرئيسية",
               tabBarIcon: () => (
                 <MaterialCommunityIcons name="home" color={'rgb(155, 193, 155)'} size={40} />
               ),
+              headerShown: false
             }}
 
           />
@@ -162,6 +160,16 @@ export default function App() {
           }}
           
         />
+
+           <Tab.Screen name="FoodCard" component={StackNavCooker}
+            options={{
+              tabBarLabel: 'FoodCard',
+              tabBarIcon: () => (
+                <MaterialCommunityIcons name="food" color={'rgb(155, 193, 155)'} size={40} />
+              ),
+              headerShown: false
+            }}
+          />
           
            {/* <Tab.Screen name="EditeEat" component={EditeEat}  
           <Tab.Screen name="تفاصيل الأكله" component={Details}
@@ -191,6 +199,16 @@ export default function App() {
               ),
             }}
 
+          />
+           <Tab.Screen name="CheifHome" component={CookHome}  
+          options={{
+            tabBarLabel: 'Aboutcheif',
+            tabBarIcon: () => (
+              <MaterialCommunityIcons name="star" color="orange" size={40} />
+            ),
+            
+          }}
+          
           />
 
           {/* <Tab.Screen name="EditeEat" component={EditeEat}  
