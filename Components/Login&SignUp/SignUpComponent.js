@@ -6,18 +6,93 @@ import { ScrollView, Text, StyleSheet, I18nManager } from "react-native";
 import { Button, TextInput, View } from 'react-native';
 import { Formik } from 'formik';
 import { Picker } from "react-native-web";
+import { auth , db, myserverTimestamp  } from '../../firebase'
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { doc, setDoc } from "@firebase/firestore";
+
+import * as Yup from "yup";
+import { async } from "@firebase/util";
+
 
 function SignUPComponent() {
 
+//   const [SelectedValue1,setSelectedValue1]=useState('')
+//   const [SelectedValue2,setSelectedValue2]=useState('')
+
 
     return (
-         <ScrollView>
+        <ScrollView>
+        <View style={Styles.container}>
+
+        
+      
             <Text style={{ textAlign: 'center', fontSize: 30, margin: 10, color: "green", fontFamily: 'Open Sans' }}>انشاء حساب</Text>
             <Formik style={Styles.form}
-                initialValues={{ email: '' }}
-                onSubmit={values => console.log(values)}
+                initialValues={{ email: '', firstname:'' ,secondname:'' ,password:'',phone:'',address:'' ,setSelectedValue1 :'',setSelectedValue2:''}}
+                validationSchema={Yup.object({
+                    firstname : Yup.string()
+                        .min(2, 'يجب الا يقل الاسم عن 3 احرف')
+                        .required('برجاء ادخال اسم الاول'),
+                     secondname: Yup.string()
+                        .min(2, 'يجب الا يقل الاسم عن 3 احرف')
+                        .required('برجاء ادخال الاسم الثاني '),
+                    email: Yup.string()
+                     .matches(/^[a-z0-9._]+@gmail\?|.com|.org|.net|.edu|.eg$/,'برجاء ادخال البريد الالكتروني صحيحا')
+                     .required('برجاء ادخال البريد الالكتروني '),
+                    password: Yup.string()
+                        .min(8, "يجب أن تدخل كلمة المرور")
+                        .matches(/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%?-_*&]).{8,}/, 'كلمة المرور يجب أن تحتوي علي الأقل ٨ أحرف إنجليزية، حرف كبير علي الأقل، حرف صغير علي الأقل، رقم واحد علي الأقل، علامة ترقيم واحدة علي الأقل')
+                        .required('برجاء ادخال كلمه المرور '),
+                    phone: Yup.string()
+                        .matches( /^01[0125][0-9]{8}$/,"يجب أن تدخل رقم الموبايل")
+                        .required('برجاء ادخال رقم التليفون صحيحا '),
+                    address: Yup.string()
+                    .matches(/^\S[a-zA-Z\u0600-\u06FF,-\s\d][\s\d\a-zA-Z\u0600-\u06FF,-]{1,50}$/i,"العنوان غير صحيح")
+                    .required("يجب أن تدخل العنوان"),
+                    setSelectedValue1:Yup.string()
+                    .required('يجب أن تختر بلدتك'),
+                    setSelectedValue2:Yup.string()
+                    .required('يجب أن تختر نوع حسابك '),
+
+                    
+                })}
+                onSubmit={async values =>{
+                    console.log(values)
+                   
+
+                    const res = await createUserWithEmailAndPassword(
+                                 auth,
+                                values.email,
+                               values.password
+                             );
+                    console.log(res)
+                    console.log(res.user);
+
+                    await updateProfile(res.user, {
+                                displayName: `${values.firstname} ${values.secondname}@${values.setSelectedValue2}`,
+                                // photoURL: downloadURL,
+                              });
+                  
+                            //   console.log("res.kindUser",data.kindUser)
+                            await  setDoc(doc(db, `${values.setSelectedValue2 == "cook" ? "cookers":"users"}`, res.user.uid), {
+                                userid: res.user.uid,
+                                fullName: values.firstname + " " + values.secondname,
+                                email:  values.email,
+                                phone: values.phone,
+                                address: values.address,
+                                kindUser:values.setSelectedValue2,
+                                country:values.setSelectedValue1,
+                                // photo: downloadURL,
+                                registerTime: myserverTimestamp
+                              })
+
+                           
+                
+                
+                
+                } }
             >
-                {({ handleChange, handleBlur, handleSubmit, values }) => (
+                {({   errors, touched, handleChange, handleBlur,handleSubmit,values }) => (
                     <View style={{
                         flex: -1, flexDirection: 'column', justifyContent: 'center', margin: 30,
                         borderWidth: 2,
@@ -29,20 +104,24 @@ function SignUPComponent() {
                         <View style={{ flex: -1, flexDirection: 'row', justifyContent: 'center' }}>
                             <TextInput
                                 style={Styles.input}
-                                onChangeText={handleChange('email')}
-                                onBlur={handleBlur('email')}
-                                value={values.email}
-                                placeholder="الاسم الثاني"
+                                onChangeText={handleChange('secondname')}
+                                onBlur={handleBlur('secondname')}
+                                value={values.secondname}
+p                               placeholder="الاسم الثاني"
                                 keyboardType="numeric"
                             />
+                            {touched.secondname && errors.secondname ? (<Text style={Styles.errorTxt}>{errors.secondname} </Text>) : null}
+
                             <TextInput
-                                style={Styles.input}
-                                onChangeText={handleChange('email')}
-                                onBlur={handleBlur('email')}
-                                value={values.email}
+                                 style={Styles.input}
+                                 onChangeText={handleChange('firstname')}
+                                onBlur={handleBlur('firstname')}
+                                value={values.firstname}
                                 placeholder="الاسم الاول"
                                 keyboardType="numeric"
                             />
+                          {touched.firstname && errors.firstname ? (<Text style={Styles.errorTxt}>{errors.firstname} </Text>) : null} 
+
 
                         </View>
                         <TextInput
@@ -53,41 +132,53 @@ function SignUPComponent() {
                             placeholder="البريد الالكتروني"
                             keyboardType="email-address"
                         />
+                        {touched.email && errors.email ? (<Text style={Styles.errorTxt}>{errors.email} </Text>) : null}
+                       
                         <TextInput
                             style={Styles.input2}
-                            onChangeText={handleChange('email')}
-                            onBlur={handleBlur('email')}
-                            value={values.email}
+                            onChangeText={handleChange('password')}
+                            onBlur={handleBlur('password')}
+                            value={values.password}
                             placeholder="كلمة السر "
                             keyboardType="email-address"
                         />
+                      {touched.password && errors.password ? (<Text style={Styles.errorTxt}>{errors.password} </Text>) : null}
+
                         <TextInput
                             style={Styles.input2}
-                            onChangeText={handleChange('email')}
-                            onBlur={handleBlur('email')}
-                            value={values.email}
+                             onChangeText={handleChange('phone')}
+                            onBlur={handleBlur('phone')}
+                            value={values.phone}
                             placeholder="رقم التليفون"
                             keyboardType="email-address"
                         />
+                     {touched.phone && errors.phone ? (<Text style={Styles.errorTxt}>{errors.phone} </Text>) : null}
+
 
 
                         <View style={{ flex: -1, flexDirection: 'row', justifyContent: 'center' }}>
                             <TextInput
                                 style={Styles.input}
-                                onChangeText={handleChange('email')}
-                                onBlur={handleBlur('email')}
-                                value={values.email}
+                                onChangeText={handleChange('address')}
+                                onBlur={handleBlur('address')}
+                                value={values.address}
                                 placeholder="العنوان"
                                 keyboardType="numeric"
                             />
+                        {touched.address && errors.address ? (<Text style={Styles.errorTxt}>{errors.address} </Text>) : null}
+                         
                             <Picker
 
                                 style={Styles.peacker}
-                                onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+                                onValueChange={handleChange('setSelectedValue1')}
+
                             >
                                 <Picker.Item label="بني سويف" value="بني سويف" />
-                                <Picker.Item label="المنبا" value="المنياs" />
+                                <Picker.Item label="المنيا" value="المنيا" />
+                                <Picker.Item label="الفيوم" value="الفيوم" />
                             </Picker>
+                            {touched.setSelectedValue1 && errors.setSelectedValue1 ? (<Text style={Styles.errorTxt}>{errors.setSelectedValue1} </Text>) : null}
+
 
 
                         </View>
@@ -95,37 +186,39 @@ function SignUPComponent() {
                         <Picker
 
                             style={Styles.peacker}
-                            onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+                            onValueChange={handleChange('setSelectedValue2')}
                         >
-                            <Picker.Item label=" طباخ" value=" طباخ" />
-                            <Picker.Item label="مستخدم" value="مستخدم" />
+                            <Picker.Item label=" طباخ" value="cook" />
+                            <Picker.Item label="مستخدم" value="user" />
                         </Picker>
+                        {touched.setSelectedValue2 && errors.setSelectedValue2 ? (<Text style={Styles.errorTxt}>{errors.setSelectedValue2} </Text>) : null}
+
                         <Button color="green" onPress={handleSubmit} title="انشاء" />
                     </View>
 
                 )}
             </Formik>
+   
+
+        </View>
         </ScrollView>
-
-
-
     )
 }
 
 export default SignUPComponent;
 const Styles = StyleSheet.create({
     container: {
-        textAlign: 'center',
-        backgroundColor: '#000',
-        borderWidth: 3,
-        borderColor: 'green',
-        margin: 10,
-        padding: 10,
+        width: '100%',
+  height: '100%',
+  justifyContent: 'center',
+  alignItems: 'center',
+  margin:'auto',
+  padding:'auto'
 
     },
     input: {
-        height: 40,
-        width: 250,
+        height: 60,
+        width: "100%",
         borderRadius: 40,
         margin: 12,
 
@@ -134,21 +227,23 @@ const Styles = StyleSheet.create({
         borderColor: 'green'
     },
     input2: {
-        height: 40,
-        width: 390,
+        height: 60,
+        width: "97%",
         borderRadius: 40,
-        margin: 12,
+        margin: 10,
+
         borderWidth: 1,
         padding: 10,
         borderColor: 'green'
     },
     peacker: {
-        height: 40,
-        width: 390,
+        height: 60,
+        width: "97%",
         borderRadius: 40,
         margin: 12,
-        borderWidth: 1,
 
+        borderWidth: 1,
+        padding: 10,
         borderColor: 'green'
     },
     img: {
@@ -158,8 +253,159 @@ const Styles = StyleSheet.create({
     },
     form: {
         borderWidth: 5,
-        padding: 10,
+        width: '100%',
+  height: '100%',
+  justifyContent: 'center',
+  alignItems: 'center',
+  margin:'auto',
+  padding:'auto',
         borderColor: "green"
-    }
+    },
+    errorTxt: {
+        color: 'red',
+        fontSize: 12
+    },
 
 })
+
+// import { useNavigation } from '@react-navigation/core'
+// import React, { useEffect, useState } from 'react'
+// import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+// import { auth } from '../../firebase'
+// import { createUserWithEmailAndPassword } from "firebase/auth";
+
+
+
+// const LoginScreen = () => {
+//   const [email, setEmail] = useState('')
+//   const [password, setPassword] = useState('')
+ 
+
+//   const navigation = useNavigation()
+
+// //   useEffect(() => {
+// //     const unsubscribe = auth.onAuthStateChanged(user => {
+// //       if (user) {
+// //         navigation.replace("Home")
+// //       }
+// //     })
+
+// //     return unsubscribe
+// //   }, [])
+
+//   const handleSignUp = () => {
+//     console.log(email,password)
+//     const res = createUserWithEmailAndPassword(
+//         auth,
+//         email,
+//         password
+//       );
+
+
+//       console.log(res.user);
+//     // auth
+//     //   .createUserWithEmailAndPassword(email, password)
+//     //   .then(userCredentials => {
+//     //     const user = userCredentials.user;
+//     //     console.log('Registered with:', user.email);
+//     //   })
+//     //   .catch(error => alert(error.message))
+//   }
+
+//   const handleLogin = () => {
+//     // auth
+//     //   .signInWithEmailAndPassword(email, password)
+//     //   .then(userCredentials => {
+//     //     const user = userCredentials.user;
+//     //     console.log('Logged in with:', user.email);
+//     //   })
+//     //   .catch(error => alert(error.message))
+//   }
+
+//   return (
+//     <KeyboardAvoidingView
+//       style={styles.container}
+//       behavior="padding"
+//     >
+//       <View style={styles.inputContainer}>
+//         <TextInput
+//           placeholder="Email"
+//           value={email}
+//           onChangeText={text => setEmail(text)}
+//           style={styles.input}
+//         />
+//         <TextInput
+//           placeholder="Password"
+//           value={password}
+//           onChangeText={text => setPassword(text)}
+//           style={styles.input}
+//           secureTextEntry
+//         />
+//       </View>
+
+//       <View style={styles.buttonContainer}>
+//         <TouchableOpacity
+//           onPress={handleLogin}
+//           style={styles.button}
+//         >
+//           <Text style={styles.buttonText}>Login</Text>
+//         </TouchableOpacity>
+//         <TouchableOpacity
+//           onPress={handleSignUp}
+//           style={[styles.button, styles.buttonOutline]}
+//         >
+//           <Text style={styles.buttonOutlineText}>Register</Text>
+//         </TouchableOpacity>
+//       </View>
+//     </KeyboardAvoidingView>
+//   )
+// }
+
+// export default LoginScreen
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//   },
+//   inputContainer: {
+//     width: '80%'
+//   },
+//   input: {
+//     backgroundColor: 'white',
+//     paddingHorizontal: 15,
+//     paddingVertical: 10,
+//     borderRadius: 10,
+//     marginTop: 5,
+//   },
+//   buttonContainer: {
+//     width: '60%',
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//     marginTop: 40,
+//   },
+//   button: {
+//     backgroundColor: '#0782F9',
+//     width: '100%',
+//     padding: 15,
+//     borderRadius: 10,
+//     alignItems: 'center',
+//   },
+//   buttonOutline: {
+//     backgroundColor: 'white',
+//     marginTop: 5,
+//     borderColor: '#0782F9',
+//     borderWidth: 2,
+//   },
+//   buttonText: {
+//     color: 'white',
+//     fontWeight: '700',
+//     fontSize: 16,
+//   },
+//   buttonOutlineText: {
+//     color: '#0782F9',
+//     fontWeight: '700',
+//     fontSize: 16,
+//   },
+// })
