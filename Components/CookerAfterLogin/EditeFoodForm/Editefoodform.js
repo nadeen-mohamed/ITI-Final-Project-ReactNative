@@ -16,6 +16,7 @@ import { Formik } from "formik";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Picker } from "react-native-web";
 export default function EditFoodForm() {
+  
     return (
         <Formik
             initialValues={{ desc: "", name: "", type: "", price: "" }}
@@ -37,7 +38,9 @@ export default function EditFoodForm() {
                     .required('برجاء ادخال سعر الأكلة'),
             })}
             onSubmit={(values) => {
-                navigation.navigate("Films")
+                // navigation.navigate("Films")
+                console.log(values.name)
+                console.log(values.price)
             }}
         // onsubmit 
         >

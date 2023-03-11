@@ -1,19 +1,18 @@
 
-/*import { useEffect, useState } from 'react';
-import Box from './box';
-import './FoodCard.css';
+import { useEffect, useState } from 'react';
+
+
 import { collection,  onSnapshot,   query ,orderBy, limit} from 'firebase/firestore';
 import { db } from '../../../firebase';
-import { useSelector } from 'react-redux';*/
-//import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { View,StyleSheet} from 'react-native';
 import Box from './box';
-export default function FoodCard(){
-    //const [allfood, setallFood] = useState([])
-   // const [editedFood, setEDitedFood] = useState([])
-   // const myFilterValue=useSelector((state)=>state)
+export default function FoodCard(props){
+    const [allfood, setallFood] = useState([])
+   const [editedFood, setEDitedFood] = useState([])
+  //  const myFilterValue=useSelector((state)=>state)
 
-    /*useEffect(() => {
+   useEffect(() => {
    
 
         const q = query(collection(db, "foods"), orderBy("timestamP", "desc"));
@@ -32,16 +31,16 @@ export default function FoodCard(){
 
 
 
-        useEffect(()=>{
+        // useEffect(()=>{
    
-          setEDitedFood(allfood&&myFilterValue?.currentFilter!="all"?allfood.filter(ele=>ele.foodCateogry==myFilterValue.currentFilter):allfood)
+        //   setEDitedFood(allfood&&myFilterValue?.currentFilter!="all"?allfood.filter(ele=>ele.foodCateogry==myFilterValue.currentFilter):allfood)
        
 
-        },[myFilterValue])
+        // },[myFilterValue])
     
 // let arr =['','','','','','']
 // myFilterValue&&setFood(food.filter(ele=>ele.cteogry==myFilterValue.currentFilter))
-*/
+
 
 
   /* {console.log(food)} */
@@ -51,9 +50,7 @@ export default function FoodCard(){
 /*editedFood?.map(ele=><View><Box  element={ele}/></View>)*/
 return(
     <View>
-       <Box/>
-       <Box/>
-       <Box/>
+       {editedFood?.map(ele=><View ><Box  element={ele} nav={props.nv}/></View>)}
     </View>
 )
 

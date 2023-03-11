@@ -28,6 +28,7 @@ import CookHomeComponent from './Components/HomePageCooker/CookHome';
 
 import MyFav from './HomeAfterLoginForUser/HomeUser/Addto fav/MyFav';
 import Details from './HomeAfterLoginForUser/Details/Details';
+import StackNavigate from './StackNavigate';
 import Orders from './Components/CookerAfterLogin/Orders/Orders'
 export default function App() {
   const Tab = createBottomTabNavigator();
@@ -79,6 +80,25 @@ export default function App() {
 
             }}
           />
+            <Tab.Screen name="FoodCard" component={FoodCard}  
+          options={{
+            tabBarLabel: 'FoodCard',
+            tabBarIcon: () => (
+              <MaterialCommunityIcons name="food" color={'rgb(155, 193, 155)'} size={40} />
+            ),
+            
+          }}
+          />
+       
+       <Tab.Screen   name="الصفحة الرئيسية" component={StackNavigate}  
+          options={{
+            tabBarLabel: "الصفحة الرئيسية",
+            tabBarIcon: () => (
+              <MaterialCommunityIcons name="home" color={'rgb(155, 193, 155)'} size={40} />
+            ),
+            headerShown: false
+          }}
+          
           <Tab.Screen name="FoodCard" component={FoodCard}
             options={{
               tabBarLabel: 'FoodCard',
@@ -98,6 +118,26 @@ export default function App() {
             }}
 
           />
+           {/* <Tab.Screen   name="تفاصيل الأكله" component={Details}  
+          options={{
+            tabBarLabel: "تفاصيل الأكله",
+            tabBarIcon: () => (
+              <MaterialCommunityIcons name="home" color="orange" size={40} />
+            ),
+          }}
+          
+        /> */}
+         <Tab.Screen   name=" MyFav" component={MyFav}  
+          options={{
+            tabBarLabel: " المفضله",
+            tabBarIcon: () => (
+              <MaterialCommunityIcons name="home" color="orange" size={40} />
+            ),
+          }}
+          
+        />
+          
+           {/* <Tab.Screen name="EditeEat" component={EditeEat}  
           <Tab.Screen name="تفاصيل الأكله" component={Details}
             options={{
               tabBarLabel: "تفاصيل الأكله",

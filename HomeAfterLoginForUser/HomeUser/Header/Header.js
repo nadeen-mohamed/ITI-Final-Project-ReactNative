@@ -2,9 +2,11 @@ import { View, Text, TextInput,Image } from "react-native";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from "./HeaderStyle.js";
 export default function Header() {
+    let user=JSON.parse(localStorage.getItem('user'))
+    console.log( user,'usssser')
     return (
         <View style={styles.header}>
-            <Image source={{uri:"https://via.placeholder.com/50/09f/fff.png"}}  style={styles.Image}/>
+            <Image source={user.photoURL}  style={styles.Image}/>
             <View style={styles.searchBox}>
                 <View style={styles.searchBtn}>
                     <Icon name="search"></Icon>
