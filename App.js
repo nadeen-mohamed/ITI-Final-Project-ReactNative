@@ -28,6 +28,7 @@ import CookHomeComponent from './Components/HomePageCooker/CookHome';
 
 import MyFav from './HomeAfterLoginForUser/HomeUser/Addto fav/MyFav';
 import Details from './HomeAfterLoginForUser/Details/Details';
+import StackNavigate from './StackNavigate';
 export default function App() {
   const Tab=createBottomTabNavigator();
   return (
@@ -88,16 +89,17 @@ export default function App() {
           }}
           />
        
-       <Tab.Screen   name="الصفحة الرئيسية" component={Home}  
+       <Tab.Screen   name="الصفحة الرئيسية" component={StackNavigate}  
           options={{
             tabBarLabel: "الصفحة الرئيسية",
             tabBarIcon: () => (
               <MaterialCommunityIcons name="home" color={'rgb(155, 193, 155)'} size={40} />
             ),
+            headerShown: false
           }}
           
           />
-           <Tab.Screen   name="تفاصيل الأكله" component={Details}  
+           {/* <Tab.Screen   name="تفاصيل الأكله" component={Details}  
           options={{
             tabBarLabel: "تفاصيل الأكله",
             tabBarIcon: () => (
@@ -105,10 +107,10 @@ export default function App() {
             ),
           }}
           
-        />
+        /> */}
          <Tab.Screen   name=" MyFav" component={MyFav}  
           options={{
-            tabBarLabel: "تفاصيل الأكله",
+            tabBarLabel: " المفضله",
             tabBarIcon: () => (
               <MaterialCommunityIcons name="home" color="orange" size={40} />
             ),

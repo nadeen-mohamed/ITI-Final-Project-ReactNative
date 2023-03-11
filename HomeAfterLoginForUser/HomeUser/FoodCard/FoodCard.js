@@ -7,7 +7,7 @@ import { db } from '../../../firebase';
 import { useSelector } from 'react-redux';
 import { View,StyleSheet} from 'react-native';
 import Box from './box';
-export default function FoodCard(){
+export default function FoodCard(props){
     const [allfood, setallFood] = useState([])
    const [editedFood, setEDitedFood] = useState([])
   //  const myFilterValue=useSelector((state)=>state)
@@ -50,7 +50,7 @@ export default function FoodCard(){
 /*editedFood?.map(ele=><View><Box  element={ele}/></View>)*/
 return(
     <View>
-       {editedFood?.map(ele=><View ><Box  element={ele}/></View>)}
+       {editedFood?.map(ele=><View ><Box  element={ele} nav={props.nv}/></View>)}
     </View>
 )
 
