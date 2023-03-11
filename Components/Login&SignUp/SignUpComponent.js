@@ -107,7 +107,7 @@ function SignUPComponent() {
                                 onChangeText={handleChange('secondname')}
                                 onBlur={handleBlur('secondname')}
                                 value={values.secondname}
-p                               placeholder="الاسم الثاني"
+                               placeholder="الاسم الثاني"
                                 keyboardType="numeric"
                             />
                             {touched.secondname && errors.secondname ? (<Text style={Styles.errorTxt}>{errors.secondname} </Text>) : null}
