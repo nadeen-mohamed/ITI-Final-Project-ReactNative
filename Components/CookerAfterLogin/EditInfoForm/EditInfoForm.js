@@ -23,7 +23,7 @@ export default function EditInfoForm() {
 
     
 
-     /* 
+     
         async function docPicker() {
        
          try {
@@ -40,7 +40,7 @@ export default function EditInfoForm() {
              throw err;
            }
          }
-       } */
+       }
      
     return (
         <Formik
