@@ -1,14 +1,19 @@
-import {StyleSheet, View, ScrollView } from "react-native-web";
+import {StyleSheet, View, ScrollView ,Pressable } from "react-native";
 import FoodCard from "../FoodCard/FoodCard";
 import Header from "../Header/Header";
 
-export default function Home() {
+
+
+export default function Home({navigation}) {
 
   return (
     <ScrollView>
       <View style={styles.container}>
         <Header/>
-        <FoodCard/>
+       
+        
+        <FoodCard nv={navigation}/>
+
       </View>
       </ScrollView>
   );
