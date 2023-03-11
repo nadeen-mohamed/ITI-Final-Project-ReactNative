@@ -1,13 +1,14 @@
 
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../../firebase';
 import { ScrollView, Text, StyleSheet, I18nManager,Image,ImageBackground } from "react-native";
 import { Button, TextInput, View } from 'react-native';
 import { Formik } from 'formik';
 import { Picker } from "react-native-web";
 
-function HeaderComponent(){
+function HeaderComponent(props){
 
     return(
         <>
@@ -16,11 +17,11 @@ function HeaderComponent(){
     <ImageBackground source={require('../../assets/Try.jpg')} resizeMode="cover" style={Styles.image}>
     </ImageBackground>
     <View style={Styles.profileview}>
-    <Text style={Styles.profiletext}>تقوي علي</Text>
+    <Text style={Styles.profiletext}>{props.Name} </Text>
     {/* <View style={Styles.profile} >
     <Image style={Styles.img} resizeMode="center" source={require('../../assets/team1.jpg')}></Image>
     </View> */}
-     <Image style={Styles.profile} resizeMode="cover" source={require('../../assets/team1.jpg')}></Image>
+     <Image style={Styles.profile} resizeMode="cover" source={props?.photo} ></Image>
     </View>
   </View>
     </>

@@ -11,9 +11,9 @@ export default function DownloadApp() {
                style={styles.img}
            />
            <View >
-           <Text style={{fontSize:'15px', textAlign:'center', color:'orange'}}>  لا تشعر بالجوع ابدا وحمل تطبيقنا الأن واستمتع ب ألذ الأطعمة </Text>
+           <Text style={{fontSize:'20px', textAlign:'center', color:'orange'}}>  لا تشعر بالجوع ابدا وحمل تطبيقنا الأن واستمتع ب ألذ الأطعمة </Text>
          
-<View  style={{display:'flex', flexDirection:'row'}} >
+<View  style={{display:'flex', flexDirection:'row', justifyContent:'space-around', alignItems:'center'}} >
 
             <View>
             <Image
@@ -42,10 +42,11 @@ const styles = StyleSheet.create({
         alignSelf:'center'
       },
       imag:{
-        width:200,
-        height:50,
-       marginLeft:10,
-       marginButtom:10,
-       marginTop:10,
+        width:180,
+        height:60,
+     margin:'auto',
+     marginTop:'20',
+     borderColor:'black',
+     borderWidth:1
       }
   });

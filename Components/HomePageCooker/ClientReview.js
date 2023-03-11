@@ -20,8 +20,8 @@ function ReviewCard() {
                     borderColor: 'green', borderRadius: 40
                 }}>
                     <View style={{ flexDirection: 'column', justifyContent: 'center' ,marginRight:15}}>
-                        <Text style={{ fontSize: 23,fontWeight:"bold" }}>تقوي علي</Text>
-                        <Text style={{ fontSize: 20 }}>الاكل اكتر من رائع تسلم ايدك</Text>
+                        <Text style={{ fontSize: 23,fontWeight:"bold" , textAlign:"center"}}>تقوي علي</Text>
+                        <Text style={{ fontSize: 18 ,}}>الاكل اكتر من رائع تسلم ايدك</Text>
                         <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
 
                             <Icon

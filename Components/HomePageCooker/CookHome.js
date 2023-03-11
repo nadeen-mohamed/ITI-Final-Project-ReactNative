@@ -10,14 +10,29 @@ import Icon from 'react-native-vector-icons/Entypo';
 import HeaderComponent from "./Header";
 import CookInfoComponent from "./CookerInfo";
 import ReviewCard from "./ClientReview";
+import { doc, getDocs,onSnapshot,query,collection } from 'firebase/firestore';
+import { db } from '../../firebase';
+
 function CookHomeComponent(){
+    let user=JSON.parse(localStorage.getItem('user'))
+    const [userInfo, setuserInfo] = useState('')
+  
+  
+    useEffect(() => {
+      const q = doc(db, "cookers",`${user.uid}`);
+      onSnapshot(q, (snapshot) => {
+       console.log(snapshot.data())
+       setuserInfo( snapshot.data() )
+        })
+  
+   },[])
 
     return(
         <>
         <ScrollView>
 
-         <HeaderComponent></HeaderComponent>
-         <CookInfoComponent></CookInfoComponent>
+         <HeaderComponent Name = {userInfo?.fullName} photo={user? user.photoURL:profile} typeofworkcooker={userInfo?.typeofworkcooker}></HeaderComponent>
+         <CookInfoComponent  alldata={userInfo} phone={userInfo?.phone} address={userInfo?.address} country={userInfo?.country}></CookInfoComponent>
          <ReviewCard></ReviewCard>
         </ScrollView>
     

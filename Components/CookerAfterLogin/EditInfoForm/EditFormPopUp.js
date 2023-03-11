@@ -46,7 +46,8 @@ const ModalPoup = ({ visible, children }) => {
     );
 };
 
-const EditFormPopUp = () => {
+const EditFormPopUp = (props) => {
+    
     const [visible, setVisible] = React.useState(false);
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -63,7 +64,7 @@ const EditFormPopUp = () => {
           </View>
         </View>
                 <View style={{ alignItems: 'center' }}>
-<EditInfoForm/>
+<EditInfoForm cookerpersonal={props.editecookerpersonal}/>
                 </View>
                 
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import EditFoodForm from './Editefoodform';
 import {
     View,
     StyleSheet,
@@ -9,8 +10,6 @@ import {
     TouchableOpacity,
     Animated,
 } from 'react-native';
-import { deleteDoc, doc } from 'firebase/firestore';
-import { db } from '../../../firebase';
 import Icon from 'react-native-vector-icons/FontAwesome';
 const ModalPoup = ({ visible, children }) => {
     const [showModal, setShowModal] = React.useState(visible);
@@ -47,39 +46,31 @@ const ModalPoup = ({ visible, children }) => {
     );
 };
 
-const DeleteEat = (props) => {
-   
+const EditFoodFormPopUp = () => {
     const [visible, setVisible] = React.useState(false);
-    const handleDelete=()=>{
-        setVisible(false)
-        console.log(props.targetitem)
-        deleteDoc(doc(db,"foods",`${props.targetitem.id}`))
-        .then(() => {
-          console.log("Entire Document has been deleted successfully.");
-        })
-        .catch((error) => {
-          console.log(error);
-        }); 
-       }
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            
             <ModalPoup visible={visible}>
+            <View style={{alignItems: 'center'}}>
+          <View style={styles.header}>
+            <TouchableOpacity onPress={() => setVisible(false)}>
+              <Image
+                source={require('../../../assets/cancle.png')}
+                style={{height: 15, width: 20}}
+              />
+            </TouchableOpacity>
+          </View>
+        </View>
                 <View style={{ alignItems: 'center' }}>
-
+<EditFoodForm/>
                 </View>
-                <View style={{ alignItems: 'center' }}>
-                    <Image
-                        source={require('../../../assets/warning.png')}
-                        style={{ height: 150, width: 150, marginVertical: 10 }}
-                    />
-                </View>
+                
 
-                <Text style={{ marginVertical: 30, fontSize: 20, textAlign: 'center' }}>
-                    هل انت متأكد من حذف الاكلة
-                </Text>
+              
 
-                <TouchableOpacity style={styles.SureText}  onPress={()=>handleDelete()}>
-                    <Text style={{ textAlign: 'center' }}>
+                {/* <TouchableOpacity style={styles.SureText} > */}
+                    {/* <Text style={{ textAlign: 'center' }}>
                         حذف
                     </Text>
                 </TouchableOpacity>
@@ -87,10 +78,13 @@ const DeleteEat = (props) => {
                     <Text style={{ textAlign: 'center' }}>
                         إلغاء
                     </Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
             </ModalPoup>
             <Icon
-                name='trash' size={20} color={'orange'} style={{ margin: '6px' }} onPress={() => setVisible(true)}></Icon>
+                name='edit' size={20} color={'orange'} style={{ margin: '6px' }} onPress={() => setVisible(true)}></Icon>
+
+                             
+           
 
         </View>
     );
@@ -99,25 +93,25 @@ const DeleteEat = (props) => {
 const styles = StyleSheet.create({
     modalBackGround: {
         flex: 1,
-        backgroundColor: 'rgba(0,0,0,0.5)',
+  
         justifyContent: 'center',
         alignItems: 'center',
     },
     modalContainer: {
-        width: '80%',
+        width: '100%',
       
-        backgroundColor: 'white',
+     
         paddingHorizontal: 20,
         paddingVertical: 30,
         borderRadius: 20,
         elevation: 20,
     },
-    header: {
-        width: '100%',
-        height: 40,
-        alignItems: 'flex-end',
-        justifyContent: 'center',
-    },
+    // header: {
+    //     width: '100%',
+    //     height: 40,
+    //     alignItems: 'flex-end',
+    //     justifyContent: 'center',
+    // },
     SureText: {
         width: "50%",
         borderRadius: 25,
@@ -146,4 +140,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default DeleteEat;
+export default  EditFoodFormPopUp
