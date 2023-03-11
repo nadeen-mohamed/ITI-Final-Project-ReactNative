@@ -13,6 +13,7 @@ export default function Box(props) {
 
  
   return (
+
     <View style={style.box} >
       <Image source={props.element.foodImg[0]} style={style.Image} />
       <View style={style.boxDetails}>

@@ -27,6 +27,7 @@ export default class Card extends Component {
             backgroundColor: props.backColor,
             title: props.title,
             description: props.description,
+            icon:props.icon,
             titleColor: props.titleColor,
             descColor: props.descColor,
             titlestyle:props.titlestyle
@@ -98,12 +99,13 @@ export default class Card extends Component {
 
 
     renderBack() {
-        var {title, description, titleColor, descColor} = this.state;
+        var {title, description, titleColor, descColor,icon} = this.state;
         var {opacity} = this.state;
         return (
             <Animated.View style={{opacity, padding: 16}}>
                 <Text style={{fontSize: 24, color: titleColor, fontWeight: '800'}}>{title}</Text>
                 <Text style={{fontSize: 12, color: descColor}}>{description}</Text>
+                <Text style={{fontSize: 12, color: descColor}}>{icon}</Text>
             </Animated.View>
         )
     }
@@ -114,8 +116,9 @@ export default class Card extends Component {
         return (
             <TouchableWithoutFeedback onPress={this.flip}>
                 <View style={{margin: 16}}>
-                    <Animated.View style={{height: frontHeight, width: frontWidth}}>
+                    <Animated.View style={{height: frontHeight, width:frontWidth}}>
                         <Image source={source} style={styles.image}/>
+                       
                     </Animated.View>
                     <Animated.View style={[{justifyContent: 'center', alignItems: 'center',
                     backgroundColor, height: backHeight, width: frontWidth}]}>
