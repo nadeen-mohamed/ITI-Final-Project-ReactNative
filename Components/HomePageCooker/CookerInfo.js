@@ -9,7 +9,7 @@ import { Picker } from "react-native-web";
 import Icon from 'react-native-vector-icons/Entypo';
 import EditFormPopUp from "../CookerAfterLogin/EditInfoForm/EditFormPopUp";
 
-function CookInfoComponent(){
+function CookInfoComponent(props){
 
     return(
         <>
@@ -22,11 +22,11 @@ function CookInfoComponent(){
             <View style={Styles.containerinfo}><Text style={{fontSize:23 ,marginLeft:15}}>مواعيد العمل</Text></View>
             </View>
             <View style={{  flexDirection: 'row', justifyContent: 'flex-end' ,marginTop:25}}>
-            <View ><Text style={{fontSize:20 }}>01147791094</Text></View>
+            <View ><Text style={{fontSize:20 }}>{props?.phone}</Text></View>
             <View style={Styles.containerinfo}><Text style={{fontSize:23 ,marginLeft:15}}>رقم التليفون </Text></View>
             </View>
             <View style={{  flexDirection: 'row', justifyContent: 'flex-end' ,marginTop:25}}>
-            <View ><Text style={{fontSize:20 ,marginRight:15}}>اهناسيا - بني سويف</Text></View>
+            <View ><Text style={{fontSize:20 ,marginRight:15}}>{props?.country}, {props?.address}</Text></View>
             <View style={Styles.containerinfo}><Text style={{fontSize:23 ,marginLeft:15}}>العنوان</Text></View>
             </View>
            

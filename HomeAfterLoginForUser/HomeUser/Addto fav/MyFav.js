@@ -11,8 +11,8 @@ import {
 } from 'react-native';
 import { doc, onSnapshot, updateDoc} from 'firebase/firestore';
 import { useEffect, useState } from 'react';
-import './AddToFav.css'
-import { db } from '../../firebase';
+
+import { db } from '../../../firebase';
 import Material from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome5';
@@ -21,42 +21,42 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const MyFav = () => {
 
-  let activeItem = ['', '', '', '']
-  const [myactive, setmyactive] = useState(activeItem)
-  const changeActive = (status) => {
-      activeItem  = ['', '', '', '']
-      activeItem [status]= 'active'
-      setmyactive(activeItem)
-    }
-    let user=JSON.parse(localStorage.getItem('user'))
-const [favFoodInfo, setFavFoodInfo] = useState([])
+//   let activeItem = ['', '', '', '']
+//   const [myactive, setmyactive] = useState(activeItem)
+//   const changeActive = (status) => {
+//       activeItem  = ['', '', '', '']
+//       activeItem [status]= 'active'
+//       setmyactive(activeItem)
+//     }
+//     let user=JSON.parse(localStorage.getItem('user'))
+// const [favFoodInfo, setFavFoodInfo] = useState([])
 
-useEffect(() => {
-  const q = doc(db, "users", user.uid);
-  onSnapshot(q, (snapshot) => {
-   console.log(snapshot.data(), "fav food info")
-   setFavFoodInfo( snapshot.data().favoriteFood )
-    })
+// useEffect(() => {
+//   const q = doc(db, "users", user.uid);
+//   onSnapshot(q, (snapshot) => {
+//    console.log(snapshot.data(), "fav food info")
+//    setFavFoodInfo( snapshot.data().favoriteFood )
+//     })
 
-},[])
+// },[])
 
 
-const removeFav = (item) =>{
-  let removeArr = favFoodInfo?.filter(ele=> ele != item)
+// const removeFav = (item) =>{
+//   let removeArr = favFoodInfo?.filter(ele=> ele != item)
   
-  const q = doc(db, "users", user.uid);
-  updateDoc(q, {
-    favoriteFood:(removeArr),
-  })
-    .then((q) => {
-      console.log(
-        "An item has been removed from an existing Field"
-      );
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}
+//   const q = doc(db, "users", user.uid);
+//   updateDoc(q, {
+//     favoriteFood:(removeArr),
+//   })
+//     .then((q) => {
+//       console.log(
+//         "An item has been removed from an existing Field"
+//       );
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//     });
+// }
 
 
  
@@ -130,7 +130,7 @@ const removeFav = (item) =>{
                 paddingTop: 10,
                 textAlign:'center'
               }}>
-          {item.foodName}
+          {/* {item.foodName} */}
             </Text>
             <Text
               style={{
@@ -141,7 +141,7 @@ const removeFav = (item) =>{
                 marginTop:'15'
                 
               }}>
-      {item.foodDiscription}
+      {/* {item.foodDiscription} */}
             </Text>
           </View>
           <View style={{width: 140, height: 140, marginRight: -40, borderRadius:'400px'}}>
