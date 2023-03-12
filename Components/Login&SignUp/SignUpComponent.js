@@ -15,7 +15,7 @@ import { async } from "@firebase/util";
 
 import * as ImagePicker from 'expo-image-picker';
 
-function SignUPComponent() {
+function SignUPComponent({navigation}) {
     const [image,setImage]=useState([])
     // const [uploading, setUploading] = useState(false)
      const pickImage = async () => {
@@ -74,6 +74,7 @@ function SignUPComponent() {
                                 values.email,
                                values.password
                              );
+               
 
                     await updateProfile(res.user, {
                                 displayName: `${values.firstname} ${values.secondname}@${values.setSelectedValue2}`,
@@ -94,6 +95,35 @@ function SignUPComponent() {
                               })
                               console.log(res)
                               console.log(res.user);
+                              let y= res.user.displayName
+                               let x=res.user&&res.user.displayName.split('@')[1]
+                               localStorage.setItem("user",JSON.stringify(res.user))
+
+                               onAuthStateChanged(auth, (user) => {
+                    
+                                if (user.displayName.split('@')[1]=="user") {
+                                  console.log(user);
+                        
+                                  dispatch(authStatuesForUser(true))
+                                  sessionStorage.setItem('authUser',true)
+                                  sessionStorage.removeItem('authCooker')
+                                        
+                                } 
+                        
+                        
+                        
+                                else if(user.displayName.split('@')[1]=="cook"){
+                                  dispatch(authStatuesForCooker(true))
+                                  sessionStorage.setItem('authCooker',true)
+                                  sessionStorage.removeItem('authUser')
+                                }
+                                else {
+                                  console.log("else",user);
+                                }
+                              }
+                              )
+                              
+                             await res.user&&(x=='user' ? navigation.navigate("NavbarForUser"):navigation.navigate("NavbarForCook"))
                            
                 
                 

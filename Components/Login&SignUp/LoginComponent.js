@@ -40,6 +40,7 @@ function LoginComponent({navigation}){
                   //   sessionStorage.setItem(`authorized${x}`,true)
                   
                     console.log(res.user)
+                    console.log(x ,'typpppppe')
               
               
               
@@ -67,7 +68,7 @@ function LoginComponent({navigation}){
                     }
                     )
                     
-                   await res.user&&(x=='user' ? navigation.navigate("صفحة البداية"):navigation.navigate("CookHomeComponent"))
+                   await res.user&&(x=='user' ? navigation.navigate("NavbarForUser"):navigation.navigate("NavbarForCook"))
               
                  
             }}
