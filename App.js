@@ -51,7 +51,7 @@ export default function App() {
             options={{
               tabBarLabel: 'صفحة البداية',
               tabBarIcon: () => (
-                <MaterialCommunityIcons name="home" color={'rgb(155, 193, 155)'} size={40} />
+                <MaterialCommunityIcons name="home" color={'rgb(155, 193, 155)'} size={30} />
               ),
               
             }}
@@ -62,7 +62,7 @@ export default function App() {
             options={{
               tabBarLabel: 'إنشاء حساب',
               tabBarIcon: () => (
-                <MaterialCommunityIcons name="sign-text" color={'rgb(155, 193, 155)'} size={40} />
+                <MaterialCommunityIcons name="sign-text" color={'rgb(155, 193, 155)'} size={30} />
               ),
 
             }}
@@ -74,7 +74,7 @@ export default function App() {
             options={{
               tabBarLabel: 'تسجيل الدخول',
               tabBarIcon: () => (
-                <MaterialCommunityIcons name="login" color={'rgb(155, 193, 155)'} size={40} />
+                <MaterialCommunityIcons name="login" color={'rgb(155, 193, 155)'} size={30} />
               ),
 
             }}
@@ -84,7 +84,7 @@ export default function App() {
             options={{
               tabBarLabel: 'صفحة المستخدم',
               tabBarIcon: () => (
-                <MaterialCommunityIcons name="home" color={'rgb(155, 193, 155)'} size={40} />
+                <MaterialCommunityIcons name="home" color={'rgb(155, 193, 155)'} size={30} />
               ),
               tabBarStyle: { display: "none" },
               headerShown: false,
@@ -98,7 +98,7 @@ export default function App() {
             options={{
               tabBarLabel: 'صفحة الطباخ',
               tabBarIcon: () => (
-                <MaterialCommunityIcons name="home" color={'rgb(155, 193, 155)'} size={40} />
+                <MaterialCommunityIcons name="home" color={'rgb(155, 193, 155)'} size={30} />
               ),
               tabBarStyle: { display: "none" },
               headerShown: false,

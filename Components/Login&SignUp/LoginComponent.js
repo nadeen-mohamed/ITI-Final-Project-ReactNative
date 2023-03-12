@@ -47,7 +47,7 @@ function LoginComponent({navigation}){
                     onAuthStateChanged(auth, (user) => {
                     
                       if (user.displayName.split('@')[1]=="user") {
-                        console.log(user);
+                        console.log(user,'usssssssssssssssssss');
               
                         dispatch(authStatuesForUser(true))
                         sessionStorage.setItem('authUser',true)

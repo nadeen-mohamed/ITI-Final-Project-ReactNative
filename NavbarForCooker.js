@@ -28,7 +28,7 @@ export default function NavbarForCooker () {
             options={{
               tabBarLabel: 'FoodCard',
               tabBarIcon: () => (
-                <MaterialCommunityIcons name="food" color={'rgb(155, 193, 155)'} size={40} />
+                <MaterialCommunityIcons name="food" color={'rgb(155, 193, 155)'} size={30} />
               ),
               headerShown: false
             }}
@@ -37,7 +37,7 @@ export default function NavbarForCooker () {
             options={{
               tabBarLabel: "طلباتي",
               tabBarIcon: () => (
-                <MaterialCommunityIcons name="home" color="orange" size={40} />
+                <MaterialCommunityIcons name="home" color={'rgb(155, 193, 155)'} size={30} />
               ),
             }}
 
@@ -46,7 +46,7 @@ export default function NavbarForCooker () {
             options={{
               tabBarLabel: 'Aboutcheif',
               tabBarIcon: () => (
-                <MaterialCommunityIcons name="star" color="orange" size={40} />
+                <MaterialCommunityIcons name="star" color={'rgb(155, 193, 155)'} size={30} />
               ),
 
             }}

@@ -7,7 +7,7 @@ import { Button, TextInput, View } from 'react-native';
 import { Formik } from 'formik';
 import { Picker } from "react-native-web";
 import { auth , db, myserverTimestamp  } from '../../firebase'
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import {onAuthStateChanged ,createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { arrayUnion, doc, setDoc } from "@firebase/firestore";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import * as Yup from "yup";
