@@ -9,6 +9,8 @@ import {
     TouchableOpacity,
     Animated,
 } from 'react-native';
+import { deleteDoc, doc } from 'firebase/firestore';
+import { db } from '../../../firebase';
 import Icon from 'react-native-vector-icons/FontAwesome';
 const ModalPoup = ({ visible, children }) => {
     const [showModal, setShowModal] = React.useState(visible);
@@ -45,8 +47,20 @@ const ModalPoup = ({ visible, children }) => {
     );
 };
 
-const DeleteEat = () => {
+const DeleteEat = (props) => {
+   
     const [visible, setVisible] = React.useState(false);
+    const handleDelete=()=>{
+        setVisible(false)
+        console.log(props.targetitem)
+        deleteDoc(doc(db,"foods",`${props.targetitem.id}`))
+        .then(() => {
+          console.log("Entire Document has been deleted successfully.");
+        })
+        .catch((error) => {
+          console.log(error);
+        }); 
+       }
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
             <ModalPoup visible={visible}>
@@ -64,7 +78,7 @@ const DeleteEat = () => {
                     هل انت متأكد من حذف الاكلة
                 </Text>
 
-                <TouchableOpacity style={styles.SureText} >
+                <TouchableOpacity style={styles.SureText}  onPress={()=>handleDelete()}>
                     <Text style={{ textAlign: 'center' }}>
                         حذف
                     </Text>

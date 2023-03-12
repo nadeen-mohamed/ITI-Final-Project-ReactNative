@@ -1,162 +1,92 @@
-// import { StatusBar } from "expo-status-bar";
-// import React, { useState } from "react";
-// import { Formik } from "formik";
-
-
-
-// import * as Yup from "yup";
-// import {
-//     StyleSheet,
-//     Text,
-//     View,
-//     Image,
-//     TextInput,
-//     Button,
-//     TouchableOpacity,
-// } from "react-native";
-
-// export default function AddFoodForm() {
-
-//     return (
-//         <View style={styles.container}>
-//             <Text style={styles.title}>🤤اضف اكله جديده</Text>
-//             <StatusBar style="auto" />
-
-//             <Formik
-//                 initialValues={{ email: "", name: "" }}
-//                 validationSchema={Yup.object({
-//                     name: Yup.string()
-//                         .max(15, 'Must be 15 characters or less')
-//                         .required('يرجي ادخال اسم الاكله'),
-//                     email: Yup.string().required('يرجي ادخال نوع الاكله'),
-//                 })}
-//                 onSubmit={(values) => {
-//                     navigation.navigate("Films")
-//                 }}
-//             // onsubmit 
-//             >
-//                 {props => (
-
-//                     <View>
-//                         <TextInput onChangeText={props.handleChange("email")} placeholder="enter email" style={styles.inputView} />
-
-//                         {props.touched.email && props.errors.email ? (<Text style={styles.error}>{props.errors.email} </Text>) : null}
-
-//                         <TextInput onChangeText={props.handleChange("name")} placeholder="enter name" style={styles.inputView} />
-
-//                         {props.touched.name && props.errors.name ? (<Text style={styles.error}>{props.errors.name} </Text>) : null}
-
-
-//                         <TouchableOpacity onPress={props.handleSubmit} style={styles.loginBtn}>
-//                             <Text style={styles.loginText} >حــــفـــظ </Text>
-//                         </TouchableOpacity>
-
-//                     </View>
-
-
-//                 )}
-
-
-//             </Formik>
-//         </View>
-//     );
-// }
-// const styles = StyleSheet.create({
-//     container: {
-//         flex: 1,
-//         borderWidth: 5,
-//         padding: 10,
-//         borderColor: "green",
-//         alignItems: "center",
-//         justifyContent: "center",
-//     },
-
-//     inputView: {
-//         backgroundColor: "white",
-//         color: 'orange',
-//         borderRadius: 30,
-//         width: "100%",
-//         height: 45,
-//         marginBottom: 20,
-//         alignItems: "center",
-//         height: 50,
-//         flex: 1,
-//         padding: 10,
-//         marginLeft: 20,
-//     },
-//      input: {
-//         height: 40,
-//         width: 250,
-//         borderRadius: 40,
-//         margin: 12,
-
-//         borderWidth: 1,
-//         padding: 10,
-//         borderColor: 'green'
-//     },
-//     input2: {
-//         height: 40,
-//         width: 390,
-//         borderRadius: 40,
-//         margin: 12,
-//         borderWidth: 1,
-//         padding: 10,
-//         borderColor: 'green'
-//     },
-//     peacker: {
-//         height: 40,
-//         width: 390,
-//         borderRadius: 40,
-//         margin: 12,
-//         borderWidth: 1,
-
-//         borderColor: 'green'
-//     },
-//     error: {
-//         color: 'red',
-//         fontSize: 20,
-//         alignItems: 'center',
-//         marginLeft: 70,
-//     },
-//     forgot_button: {
-//         height: 30,
-//         marginBottom: 30,
-//     },
-//     loginBtn: {
-//         width: "80%",
-//         borderRadius: 25,
-//         height: 50,
-//         alignItems: "center",
-//         justifyContent: "center",
-//         marginTop: 25,
-//         marginLeft: 20,
-//         color: 'white',
-//         backgroundColor: "green",
-//         width: "90%",
-//     },
-//     title:{
-//         fontSize:30,
-//         fontWeight:'bold',
-//         marginBottom:20
-//     }
-// });
-
 import React from 'react'
-import {
-    StyleSheet,
-    StatusBar,
-    Text,
-    View,
-    Image,
-    TextInput,
-    Button,
-    TouchableOpacity,
-} from "react-native";
+import {StyleSheet,StatusBar,Text,View,Image,TextInput,Button,TouchableOpacity, Pressable} from "react-native";
 import * as Yup from "yup";
 import { Formik } from "formik";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Picker } from "react-native-web";
+import { uploadBytes } from "firebase/storage";
+import { v4 } from "uuid";
+import { useRef, useState } from "react";
+//import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { arrayUnion, doc, setDoc, updateDoc } from "firebase/firestore";
+import { db, myserverTimestamp, storage } from "../../../firebase";
+import OrderMeal from '../../../assets/order.jpg';
+import * as ImagePicker from 'expo-image-picker';
+
 export default function AddFoodForm() {
+    const [image,setImage]=useState([])
+   // const [uploading, setUploading] = useState(false)
+    const pickImage = async () => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+          mediaTypes: ImagePicker.MediaTypeOptions.All,
+          allowsEditing: true,
+          aspect: [4, 3],
+          quality: 1,
+          allowsMultipleSelection: true,
+          selectionLimit:3
+        });
+       
+        console.log(result.uri)
+        
+        if(result.assets.length <= 3){
+            console.log(result.assets);
+           // setImage((previousImages) => previousImages.concat(result.assets[0].uri))
+           result.assets.map(item =>{
+            return(
+                setImage((previousImages) => previousImages.concat(item.uri))   
+            )
+           })
+        }
+        else{
+            alert('choose one image')
+            console.log(result.assets);
+        }
+
+       /* await  setDoc(doc(db, "foods", x), {
+            foodImg: result.assets[0].uri,
+          });*/
+        
+        //   setImage(result.assets[0].uri)
+      }
+
+   /*   const uploadImage = async () => {
+        const blob = await new Promise((resolve, reject) => {
+          const xhr = new XMLHttpRequest();
+          xhr.onload = function() {
+            resolve(xhr.response);
+          };
+          xhr.onerror = function() {
+            reject(new TypeError('Network request failed'));
+          };
+          xhr.responseType = 'blob';
+          xhr.open('GET', image, true);
+          xhr.send(null);
+        })
+        //const ref = firebase.storage().ref().child(`Pictures/Image1`)
+        const ref = ref(storage, `Pictures`);
+        const snapshot = ref.put(blob)
+        snapshot.on(firebase.storage.TaskEvent.STATE_CHANGED,
+          ()=>{
+            setUploading(true)
+          },
+          (error) => {
+            setUploading(false)
+            console.log(error)
+            blob.close()
+            return 
+          },
+          () => {
+            snapshot.snapshot.ref.getDownloadURL().then((url) => {
+              setUploading(false)
+              console.log("Download URL: ", url)
+              setImage(url)
+              blob.close()
+              return url
+            })
+          }
+          )
+      }*/
+       
     return (
         <Formik
         initialValues={{desc: "", name: "", type:"", price:""}}
@@ -178,7 +108,65 @@ export default function AddFoodForm() {
               .required('برجاء ادخال سعر الأكلة'),
           })}
           onSubmit ={(values) => {
-            navigation.navigate("Films")
+            //navigation.navigate("Films")
+            let user=JSON.parse(localStorage.getItem('user'))
+            try {
+            let x = `${values.name}${v4()}`;
+            setDoc (doc(db, "foods", x), {
+                  foodName: values.name,
+                  foodCateogry: values.type,
+                  bigPrice: values.price,
+                  smallPrice: 40,
+                  middlePrice: 70,
+                  foodDiscription:values.desc,
+                  timestamP: myserverTimestamp,
+                  userName: user.displayName,
+                  userid: user.uid,
+                  foodImg: image
+                })
+        
+
+                  console.log(image,'imaaage')
+               
+
+              /*  myimages.map((ele) => {
+                  const imageRef = ref(storage, `foodimages/${ele.name + v4()}`);
+                  uploadBytes(imageRef, ele).then((snapshot) => {
+                    getDownloadURL(snapshot.ref).then(async (url) => {
+                      await updateDoc(doc(db, "foods", x), {
+                        foodImg: arrayUnion(url),
+                      });
+                    });
+                  });
+                });*/
+        
+             /*   for(let i=0;i<8;i++){
+                  // console.log(e.target[i].value='');
+                  if(e.target[i].name!=('btnremove')){
+        
+                   e.target[i].value=""
+                   
+                  }
+                }*/
+                /*  setData({
+                    foodName: "",
+                    foodTextarea: "",
+                    cateogry: "",
+                    bigPrice: 0,
+                    middlePrice: 0,
+                    smallPrice: 0,
+                    images: [],
+                  })*/
+                  /*setSelectedImages([])
+                  textarea.current.value=""
+               //  console.log(     textarea.current.textContent, textarea, textarea.current,textarea.textContent)*/
+
+             
+              }
+               catch (err){
+                console.log("errrrrrrrrrrrrrrrrrrrrr",err);
+              }
+
           }}
         // onsubmit 
         >
@@ -208,9 +196,13 @@ export default function AddFoodForm() {
               
 
                     <View style={{borderColor:'green', borderStyle:'dashed',  marginTop: 10, padding: 10, borderRadius: 10,borderWidth: 1}}>
-
-                        <Icon name='cloud-upload' size={50} color={'rgb(155, 193, 155)'} style={{ textAlign:'center' }} ></Icon>
-
+                <Pressable onPress={pickImage} disabled={image.length>=3 ? true : false}>
+                    <Icon name='cloud-upload' size={50} color={image.length>=3? 'rgb(255, 0, 0)':'rgb(155, 193, 155)'} style={{ textAlign:'center'}}></Icon>
+                    {image.length>=3 &&<Text style={{color:'red'}}>الحد الأقصي للصور ٣ </Text>}
+                    </Pressable>
+               {/* <Image source={OrderMeal} style={{width:100}} />*/}
+               {/* <Image source={{uri:image}} />*/}
+                {/*!uploading ? <Button title='Upload Image' onPress={uploadImage} />: <ActivityIndicator size={'small'} color='black' />*/}
                     </View>
                 </View>
                 <View style={styles.inputWrapper}>
