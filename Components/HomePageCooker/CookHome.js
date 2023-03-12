@@ -12,7 +12,7 @@ import CookInfoComponent from "./CookerInfo";
 import ReviewCard from "./ClientReview";
 import { doc, getDocs,onSnapshot,query,collection } from 'firebase/firestore';
 import { db } from '../../firebase';
-import {profile} from './../../assets/team4.jpg'
+
 
 function CookHomeComponent(){
     let user=JSON.parse(localStorage.getItem('user'))
@@ -32,7 +32,7 @@ function CookHomeComponent(){
         <>
         <ScrollView>
 
-         <HeaderComponent Name = {userInfo?.fullName} photo={user? user.photoURL:profile} typeofworkcooker={userInfo?.typeofworkcooker}></HeaderComponent>
+         <HeaderComponent Name = {userInfo?.fullName} photo={userInfo.photo && userInfo.photo} typeofworkcooker={userInfo?.typeofworkcooker}></HeaderComponent>
          <CookInfoComponent  alldata={userInfo} phone={userInfo?.phone} address={userInfo?.address} country={userInfo?.country}></CookInfoComponent>
          <ReviewCard></ReviewCard>
         </ScrollView>
