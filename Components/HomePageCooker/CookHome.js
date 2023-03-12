@@ -12,6 +12,7 @@ import CookInfoComponent from "./CookerInfo";
 import ReviewCard from "./ClientReview";
 import { doc, getDocs,onSnapshot,query,collection } from 'firebase/firestore';
 import { db } from '../../firebase';
+import {profile} from './../../assets/team4.jpg'
 
 function CookHomeComponent(){
     let user=JSON.parse(localStorage.getItem('user'))
