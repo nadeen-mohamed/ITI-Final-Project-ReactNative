@@ -7,24 +7,46 @@ import { Picker } from "react-native-web";
 import { uploadBytes } from "firebase/storage";
 import { v4 } from "uuid";
 import { useRef, useState } from "react";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+//import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { arrayUnion, doc, setDoc, updateDoc } from "firebase/firestore";
 import { db, myserverTimestamp, storage } from "../../../firebase";
-
+import OrderMeal from '../../../assets/order.jpg';
 import * as ImagePicker from 'expo-image-picker';
 
 export default function AddFoodForm() {
-    const [image,setImage]=useState('')
-    const [uploading, setUploading] = useState(false)
+    const [image,setImage]=useState([])
+   // const [uploading, setUploading] = useState(false)
     const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
           mediaTypes: ImagePicker.MediaTypeOptions.All,
           allowsEditing: true,
           aspect: [4, 3],
           quality: 1,
+          allowsMultipleSelection: true,
+          selectionLimit:3
         });
-        console.log(result);
-        setImage(result.uri)
+       
+        console.log(result.uri)
+        
+        if(result.assets.length <= 3){
+            console.log(result.assets);
+           // setImage((previousImages) => previousImages.concat(result.assets[0].uri))
+           result.assets.map(item =>{
+            return(
+                setImage((previousImages) => previousImages.concat(item.uri))   
+            )
+           })
+        }
+        else{
+            alert('choose one image')
+            console.log(result.assets);
+        }
+
+       /* await  setDoc(doc(db, "foods", x), {
+            foodImg: result.assets[0].uri,
+          });*/
+        
+        //   setImage(result.assets[0].uri)
       }
 
    /*   const uploadImage = async () => {
@@ -89,8 +111,8 @@ export default function AddFoodForm() {
             //navigation.navigate("Films")
             let user=JSON.parse(localStorage.getItem('user'))
             try {
-                let x = `${values.name}${v4()}`;
-                setDoc(doc(db, "foods", x), {
+            let x = `${values.name}${v4()}`;
+            setDoc (doc(db, "foods", x), {
                   foodName: values.name,
                   foodCateogry: values.type,
                   bigPrice: values.price,
@@ -99,18 +121,13 @@ export default function AddFoodForm() {
                   foodDiscription:values.desc,
                   timestamP: myserverTimestamp,
                   userName: user.displayName,
-                  userid: user.uid
-                });
+                  userid: user.uid,
+                  foodImg: image
+                })
         
 
-                /*const imageRef = ref(storage, `food/${'food'+ v4()}`);
-                  uploadBytes(imageRef, image).then((snapshot) => {
-                    getDownloadURL(snapshot.ref).then(async (url) => {
-                      await updateDoc(doc(db, "foods", x), {
-                        foodImg: arrayUnion(url),
-                      });
-                    });
-                  });*/
+                  console.log(image,'imaaage')
+               
 
               /*  myimages.map((ele) => {
                   const imageRef = ref(storage, `foodimages/${ele.name + v4()}`);
@@ -179,7 +196,12 @@ export default function AddFoodForm() {
               
 
                     <View style={{borderColor:'green', borderStyle:'dashed',  marginTop: 10, padding: 10, borderRadius: 10,borderWidth: 1}}>
-                <Pressable onPress={pickImage}><Icon name='cloud-upload' size={50} color={'rgb(155, 193, 155)'} style={{ textAlign:'center'}}></Icon></Pressable>
+                <Pressable onPress={pickImage} disabled={image.length>=3 ? true : false}>
+                    <Icon name='cloud-upload' size={50} color={image.length>=3? 'rgb(255, 0, 0)':'rgb(155, 193, 155)'} style={{ textAlign:'center'}}></Icon>
+                    {image.length>=3 &&<Text style={{color:'red'}}>الحد الأقصي للصور ٣ </Text>}
+                    </Pressable>
+               {/* <Image source={OrderMeal} style={{width:100}} />*/}
+               {/* <Image source={{uri:image}} />*/}
                 {/*!uploading ? <Button title='Upload Image' onPress={uploadImage} />: <ActivityIndicator size={'small'} color='black' />*/}
                     </View>
                 </View>
