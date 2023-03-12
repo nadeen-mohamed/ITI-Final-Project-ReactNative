@@ -50,9 +50,9 @@ export default function FoodCard({ navigation }) {
 </View>
             <View style={styles.container}>
                 <ScrollView>
-               { userfood&& userfood?.filter(ele=>ele.userid==user.uid)?.map((CheifItem, index) => {
+               { userfood&& userfood.filter(ele=>ele.userid==user.uid)?.map((CheifItem, index) => {
                                 return (
-                    <Card source={CheifItem?.foodImg[0]}
+                    <Card source={CheifItem.foodImg[0]&&CheifItem.foodImg[0]}
                   
                                width={300}
                                height={200}

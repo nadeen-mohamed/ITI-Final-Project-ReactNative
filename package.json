@@ -24,8 +24,10 @@
     "@rneui/themed": "*",
     "axios": "^1.3.2",
     "cardon": "^1.0.2",
+    "exp": "^57.2.1",
     "expo": "^48.0.6",
     "expo-constants": "~13.2.4",
+    "expo-image-picker": "^14.1.1",
     "expo-status-bar": "~1.4.0",
     "file-saver": "^2.0.5",
     "firebase": "^9.17.2",
@@ -56,6 +58,7 @@
     "react-redux": "^8.0.5",
     "redux": "^4.2.1",
     "redux-thunk": "^2.4.2",
+    "uuid": "^9.0.0",
     "yap": "^0.0.2",
     "yup": "^1.0.2"
   },
