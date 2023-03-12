@@ -24,7 +24,7 @@ export default function NavbarForUser () {
           options={{
             tabBarLabel: "الصفحة الرئيسية",
             tabBarIcon: () => (
-              <MaterialCommunityIcons name="home" color={'rgb(155, 193, 155)'} size={40} />
+              <MaterialCommunityIcons name="home" color={'rgb(155, 193, 155)'} size={30} />
             ),
             headerShown: false
           }}
@@ -35,7 +35,7 @@ export default function NavbarForUser () {
             options={{
               tabBarLabel: " المفضله",
               tabBarIcon: () => (
-                <MaterialCommunityIcons name="home" color="orange" size={40} />
+                <MaterialCommunityIcons name="home" color={'rgb(155, 193, 155)'} size={30} />
               ),
             }}
 
