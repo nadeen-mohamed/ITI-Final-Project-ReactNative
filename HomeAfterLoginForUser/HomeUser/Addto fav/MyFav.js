@@ -53,10 +53,6 @@ const MyFav = () => {
       });
   }
 
-
-
-
-
   return (
     
     <>
@@ -137,7 +133,7 @@ const MyFav = () => {
           </View>
           <View style={{ width: 140, height: 140, marginRight: -40, borderRadius: '50%' }}>
             <Image
-              source={item?.foodImg[0]}
+              source={item.foodImg[0]&&item.foodImg[0]}
               style={{
                 width: '100%',
                 height: '100%',
