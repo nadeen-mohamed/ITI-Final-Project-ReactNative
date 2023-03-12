@@ -1,12 +1,26 @@
+import { useEffect, useState } from "react";
 import { View, Text, TextInput,Image } from "react-native";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from "./HeaderStyle.js";
+import { doc, onSnapshot } from "firebase/firestore";
+import { db } from "../../../firebase.js";
 export default function Header() {
+    const [userInfo,  setuserInfo] = useState('')
     let user=JSON.parse(localStorage.getItem('user'))
     console.log( user,'usssser')
+    useEffect(() => {
+        const q = doc(db, "users",`${user.uid}`);
+        onSnapshot(q, (snapshot) => {
+         console.log(snapshot.data())
+         setuserInfo( snapshot.data() )
+          })
+    
+     },[])
+
+console.log(userInfo, "user info in header")
     return (
         <View style={styles.header}>
-            <Image source={user?.photoURL}  style={styles.Image}/>
+           <Image source={userInfo.photo&&userInfo.photo}  style={styles.Image}/>
             <View style={styles.searchBox}>
                 <View style={styles.searchBtn}>
                     <Icon name="search"></Icon>

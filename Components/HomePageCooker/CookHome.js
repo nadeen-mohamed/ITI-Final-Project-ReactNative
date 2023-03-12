@@ -31,7 +31,7 @@ function CookHomeComponent(){
         <>
         <ScrollView>
 
-         <HeaderComponent Name = {userInfo?.fullName} photo={user? user.photoURL:profile} typeofworkcooker={userInfo?.typeofworkcooker}></HeaderComponent>
+         <HeaderComponent Name = {userInfo?.fullName} photo={userInfo.photo && userInfo.photo} typeofworkcooker={userInfo?.typeofworkcooker}></HeaderComponent>
          <CookInfoComponent  alldata={userInfo} phone={userInfo?.phone} address={userInfo?.address} country={userInfo?.country}></CookInfoComponent>
          <ReviewCard></ReviewCard>
         </ScrollView>

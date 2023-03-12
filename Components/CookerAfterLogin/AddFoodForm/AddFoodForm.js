@@ -7,7 +7,7 @@ import { Picker } from "react-native-web";
 import { uploadBytes } from "firebase/storage";
 import { v4 } from "uuid";
 import { useRef, useState } from "react";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+//import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { arrayUnion, doc, setDoc, updateDoc } from "firebase/firestore";
 import { db, myserverTimestamp, storage } from "../../../firebase";
 import OrderMeal from '../../../assets/order.jpg';
@@ -15,7 +15,7 @@ import * as ImagePicker from 'expo-image-picker';
 
 export default function AddFoodForm() {
     const [image,setImage]=useState([])
-    const [uploading, setUploading] = useState(false)
+   // const [uploading, setUploading] = useState(false)
     const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
           mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -200,7 +200,7 @@ export default function AddFoodForm() {
                     <Icon name='cloud-upload' size={50} color={image.length>=3? 'rgb(255, 0, 0)':'rgb(155, 193, 155)'} style={{ textAlign:'center'}}></Icon>
                     {image.length>=3 &&<Text style={{color:'red'}}>الحد الأقصي للصور ٣ </Text>}
                     </Pressable>
-                <Image source={OrderMeal} style={{width:100}} />
+               {/* <Image source={OrderMeal} style={{width:100}} />*/}
                {/* <Image source={{uri:image}} />*/}
                 {/*!uploading ? <Button title='Upload Image' onPress={uploadImage} />: <ActivityIndicator size={'small'} color='black' />*/}
                     </View>

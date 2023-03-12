@@ -13,7 +13,7 @@ function HeaderComponent(props){
     return(
         <>
        
-        <View style={Styles.container}>
+    <View style={Styles.container}>
     <ImageBackground source={require('../../assets/Try.jpg')} resizeMode="cover" style={Styles.image}>
     </ImageBackground>
     <View style={Styles.profileview}>
