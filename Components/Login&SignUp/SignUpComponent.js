@@ -11,6 +11,7 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { arrayUnion, doc, setDoc } from "@firebase/firestore";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import * as Yup from "yup";
+import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { async } from "@firebase/util";
 
 import * as ImagePicker from 'expo-image-picker';
@@ -95,7 +96,7 @@ function SignUPComponent({navigation}) {
                               })
                               console.log(res)
                               console.log(res.user);
-                              let y= res.user.displayName
+                            
                                let x=res.user&&res.user.displayName.split('@')[1]
                                localStorage.setItem("user",JSON.stringify(res.user))
 
