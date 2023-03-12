@@ -40,7 +40,7 @@ export default function App() {
       <NavigationContainer  >
 
         <Tab.Navigator >
-         {/* <Tab.Screen name="صفحة البداية" component={Index}
+          {/* <Tab.Screen name="صفحة البداية" component={Index}
             options={{
               tabBarLabel: 'صفحة البداية',
               tabBarIcon: () => (
@@ -120,7 +120,18 @@ export default function App() {
 
           />
 
-          
+          <Tab.Screen name="إنشاء حساب" component={SignUPComponent}
+            options={{
+              tabBarLabel: 'إنشاء حساب',
+              tabBarIcon: () => (
+                <MaterialCommunityIcons name="sign-text" color={'rgb(155, 193, 155)'} size={40} />
+              ),
+
+            }}
+
+
+          />
+
           <Tab.Screen name="تسجيل الدخول" component={LoginComponent}
             options={{
               tabBarLabel: 'تسجيل الدخول',
@@ -142,7 +153,7 @@ export default function App() {
             }}
 
           />
-           {/* <Tab.Screen   name="تفاصيل الأكله" component={Details}  
+          {/* <Tab.Screen   name="تفاصيل الأكله" component={Details}  
           options={{
             tabBarLabel: "تفاصيل الأكله",
             tabBarIcon: () => (
@@ -151,17 +162,17 @@ export default function App() {
           }}
           
         /> */}
-         <Tab.Screen   name=" MyFav" component={MyFav}  
-          options={{
-            tabBarLabel: " المفضله",
-            tabBarIcon: () => (
-              <MaterialCommunityIcons name="home" color="orange" size={40} />
-            ),
-          }}
-          
-        />
+          <Tab.Screen name=" MyFav" component={MyFav}
+            options={{
+              tabBarLabel: " المفضله",
+              tabBarIcon: () => (
+                <MaterialCommunityIcons name="home" color="orange" size={40} />
+              ),
+            }}
 
-           <Tab.Screen name="FoodCard" component={StackNavCooker}
+          />
+
+          <Tab.Screen name="FoodCard" component={StackNavCooker}
             options={{
               tabBarLabel: 'FoodCard',
               tabBarIcon: () => (
@@ -170,8 +181,8 @@ export default function App() {
               headerShown: false
             }}
           />
-          
-           {/* <Tab.Screen name="EditeEat" component={EditeEat}  
+
+          {/* <Tab.Screen name="EditeEat" component={EditeEat}  
           <Tab.Screen name="تفاصيل الأكله" component={Details}
             options={{
               tabBarLabel: "تفاصيل الأكله",
@@ -200,15 +211,15 @@ export default function App() {
             }}
 
           />
-           <Tab.Screen name="CheifHome" component={CookHome}  
-          options={{
-            tabBarLabel: 'Aboutcheif',
-            tabBarIcon: () => (
-              <MaterialCommunityIcons name="star" color="orange" size={40} />
-            ),
-            
-          }}
-          
+          <Tab.Screen name="CheifHome" component={CookHome}
+            options={{
+              tabBarLabel: 'Aboutcheif',
+              tabBarIcon: () => (
+                <MaterialCommunityIcons name="star" color="orange" size={40} />
+              ),
+
+            }}
+
           />
 
           {/* <Tab.Screen name="EditeEat" component={EditeEat}  
