@@ -1,5 +1,5 @@
 import React from 'react'
-import {StyleSheet,StatusBar,Text,View,Image,TextInput,Button,TouchableOpacity,} from "react-native";
+import {StyleSheet,StatusBar,Text,View,Image,TextInput,Button,TouchableOpacity, Pressable} from "react-native";
 import * as Yup from "yup";
 import { Formik } from "formik";
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -7,10 +7,64 @@ import { Picker } from "react-native-web";
 import { uploadBytes } from "firebase/storage";
 import { v4 } from "uuid";
 import { useRef, useState } from "react";
-//import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { arrayUnion, doc, setDoc, updateDoc } from "firebase/firestore";
 import { db, myserverTimestamp, storage } from "../../../firebase";
+
+import * as ImagePicker from 'expo-image-picker';
+
 export default function AddFoodForm() {
+    const [image,setImage]=useState('')
+    const [uploading, setUploading] = useState(false)
+    const pickImage = async () => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+          mediaTypes: ImagePicker.MediaTypeOptions.All,
+          allowsEditing: true,
+          aspect: [4, 3],
+          quality: 1,
+        });
+        console.log(result);
+        setImage(result.uri)
+      }
+
+   /*   const uploadImage = async () => {
+        const blob = await new Promise((resolve, reject) => {
+          const xhr = new XMLHttpRequest();
+          xhr.onload = function() {
+            resolve(xhr.response);
+          };
+          xhr.onerror = function() {
+            reject(new TypeError('Network request failed'));
+          };
+          xhr.responseType = 'blob';
+          xhr.open('GET', image, true);
+          xhr.send(null);
+        })
+        //const ref = firebase.storage().ref().child(`Pictures/Image1`)
+        const ref = ref(storage, `Pictures`);
+        const snapshot = ref.put(blob)
+        snapshot.on(firebase.storage.TaskEvent.STATE_CHANGED,
+          ()=>{
+            setUploading(true)
+          },
+          (error) => {
+            setUploading(false)
+            console.log(error)
+            blob.close()
+            return 
+          },
+          () => {
+            snapshot.snapshot.ref.getDownloadURL().then((url) => {
+              setUploading(false)
+              console.log("Download URL: ", url)
+              setImage(url)
+              blob.close()
+              return url
+            })
+          }
+          )
+      }*/
+       
     return (
         <Formik
         initialValues={{desc: "", name: "", type:"", price:""}}
@@ -45,14 +99,19 @@ export default function AddFoodForm() {
                   foodDiscription:values.desc,
                   timestamP: myserverTimestamp,
                   userName: user.displayName,
-                  userid: user.uid,
-                  foodImg: [
-                    "https://firebasestorage.googleapis.com/v0/b/finalproject-iti.appspot.com/o/foodimages%2Fhamam.jpg89829915-6316-4e18-8d76-566ab6335f8b?alt=media&token=708bce71-64db-4748-9dc2-1715dee9ca9a",
-                    "https://firebasestorage.googleapis.com/v0/b/finalproject-iti.appspot.com/o/foodimages%2Fhamam.jpg89829915-6316-4e18-8d76-566ab6335f8b?alt=media&token=708bce71-64db-4748-9dc2-1715dee9ca9a"]
-                  
+                  userid: user.uid
                 });
         
-             
+
+                /*const imageRef = ref(storage, `food/${'food'+ v4()}`);
+                  uploadBytes(imageRef, image).then((snapshot) => {
+                    getDownloadURL(snapshot.ref).then(async (url) => {
+                      await updateDoc(doc(db, "foods", x), {
+                        foodImg: arrayUnion(url),
+                      });
+                    });
+                  });*/
+
               /*  myimages.map((ele) => {
                   const imageRef = ref(storage, `foodimages/${ele.name + v4()}`);
                   uploadBytes(imageRef, ele).then((snapshot) => {
@@ -84,6 +143,8 @@ export default function AddFoodForm() {
                   /*setSelectedImages([])
                   textarea.current.value=""
                //  console.log(     textarea.current.textContent, textarea, textarea.current,textarea.textContent)*/
+
+             
               }
                catch (err){
                 console.log("errrrrrrrrrrrrrrrrrrrrr",err);
@@ -118,9 +179,8 @@ export default function AddFoodForm() {
               
 
                     <View style={{borderColor:'green', borderStyle:'dashed',  marginTop: 10, padding: 10, borderRadius: 10,borderWidth: 1}}>
-
-                        <Icon name='cloud-upload' size={50} color={'rgb(155, 193, 155)'} style={{ textAlign:'center' }} ></Icon>
-
+                <Pressable onPress={pickImage}><Icon name='cloud-upload' size={50} color={'rgb(155, 193, 155)'} style={{ textAlign:'center'}}></Icon></Pressable>
+                {/*!uploading ? <Button title='Upload Image' onPress={uploadImage} />: <ActivityIndicator size={'small'} color='black' />*/}
                     </View>
                 </View>
                 <View style={styles.inputWrapper}>

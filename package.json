@@ -27,6 +27,7 @@
     "exp": "^57.2.1",
     "expo": "^48.0.6",
     "expo-constants": "~13.2.4",
+    "expo-image-picker": "^14.1.1",
     "expo-status-bar": "~1.4.0",
     "file-saver": "^2.0.5",
     "firebase": "^9.17.2",
