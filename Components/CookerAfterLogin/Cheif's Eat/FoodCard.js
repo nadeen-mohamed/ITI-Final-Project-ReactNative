@@ -71,7 +71,7 @@ export default function FoodCard({ navigation }) {
                                icon={ <Text style={styles.icon}>
                               <DeleteEat targetitem={CheifItem}/>
                               
-                              <EditFoodFormPopUp/>
+                              <EditFoodFormPopUp  targetEditeItem={CheifItem}  />
                                 <Icon onPress={() => navigation.navigate('Details',{id:CheifItem.id})}
                                    name='info' size={20} color={'orange'} style={{ margin: '6px' }} ></Icon>
                               

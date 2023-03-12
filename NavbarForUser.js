@@ -35,7 +35,7 @@ export default function NavbarForUser () {
             options={{
               tabBarLabel: " المفضله",
               tabBarIcon: () => (
-                <MaterialCommunityIcons name="home" color={'rgb(155, 193, 155)'} size={30} />
+                <MaterialCommunityIcons name="heart" color={'rgb(155, 193, 155)'} size={30} />
               ),
             }}
 

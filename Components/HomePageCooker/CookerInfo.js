@@ -16,7 +16,7 @@ function CookInfoComponent(props){
         <View style={{  flexDirection: 'column', justifyContent: 'flex-start', borderWidth: 2,
         borderColor: 'green',margin:10 ,borderRadius:40}}>
         
-           <EditFormPopUp editecookerpersonal={props}></EditFormPopUp>
+           <EditFormPopUp editecookerpersonal={props.alldata}></EditFormPopUp>
             <View style={{  flexDirection: 'row', justifyContent: 'flex-end' }}>
             <View  ><Text style={{fontSize:19 }}>من 9 صباحا الي 9 مساءا</Text></View>
             <View style={Styles.containerinfo}><Text style={{fontSize:23 ,marginLeft:15}}>مواعيد العمل</Text></View>

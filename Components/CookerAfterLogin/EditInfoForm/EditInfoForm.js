@@ -22,159 +22,146 @@ import { arrayUnion, doc, setDoc, updateDoc } from "firebase/firestore";
 
 export default function EditInfoForm(props) {
     const user = JSON.parse(localStorage.getItem("user"));
-  
-    const textarea = useRef('')
-    
-//Upload image
-     /* 
-        async function docPicker() {
-       
-         try {
-           const res = await DocumentPicker.pickMultiple({
-     
-              type: [DocumentPicker.types.allFiles],
-           });
-         
-           this.uploadAPICall(res);//here you can call your API and send the data to that API
-         } catch (err) {
-           if (DocumentPicker.isCancel(err)) {
-             console.log("error -----", err);
-           } else {
-             throw err;
-           }
-         }
-       } */
-       const [data, setData] = useState({
-        fullName: props.cookerpersonal.alldata.fullName,
-      
-        detailscooker:props.cookerpersonal.alldata.detailscooker ? props.cookerpersonal.alldata.detailscooker :"تفاصيل اكتر",
-        address: props.cookerpersonal.alldata.address,
-        tele: props.cookerpersonal.alldata.phone,
-        // amcooker: props.cookerpersonal.amcooker ? props.cookerpersonal.amcooker : "",
-        Apoint : props.cookerpersonal.alldata.pmcooker ? props.cookerpersonal.alldata.pmcooker : "3",
-        
-      });
+
+    const [data, setData] = useState({
+        name: props.cookerpersonal.fullName,
+        type: props.cookerpersonal.typeofworkcooker && props.cookerpersonal.typeofworkcooker,
+        details: props.cookerpersonal.detailscooker ? props.cookerpersonal.detailscooker : "تفاصيل عني",
+        address: props.cookerpersonal.address,
+        tele: props.cookerpersonal.phone,
+
+        Apoint: props.cookerpersonal.pmcooker ? props.cookerpersonal.pmcooker : "3",
+
+    });
+
+
+
     return (
-    <>
-    {console.log(data)} 
-    
-        <Formik
-            initialValues={{ name: "",detailscooker:"", Apoint:"", type:"",tele:"", address:""}}
-            validationSchema={Yup.object({
-                name: Yup.string()
-                    .min(3, 'يجب الا يقل الاسم عن 3 حروف')
-                    .max(20, 'لقد تجاوزت الحد الاقصي ')
-                    .required(' يجب ادخال الاسم  '),
-                desc: Yup.string()
-                    .min(3, 'يجب الا يقل الاسم عن 3 احرف')
-                    .max(20, 'لقد تجاوزت الحد الاقصي ')
+        <>
+            {console.log(data)}
 
-                    .required('يجب اخال اسم العائلة'),
-                type: Yup.string()
-                    .max(15, 'Must be 15 characters or less')
-                    .required('ادخل صورتك '),
-                Apoint: Yup.string()
+            <Formik
+                initialValues={{ name: "", details: "", Apoint: "", type: "", tele: "", address: "" }}
+                validationSchema={Yup.object({
+                    name: Yup.string()
+                        .min(3, 'يجب الا يقل الاسم عن 3 حروف')
+                        .max(20, 'لقد تجاوزت الحد الاقصي ')
+                        .required(' يجب ادخال الاسم  '),
+                    desc: Yup.string()
+                        .min(3, 'يجب الا يقل الاسم عن 3 احرف')
+                        .max(20, 'لقد تجاوزت الحد الاقصي ')
 
-                    .required('برجاء ادخال  مواعيد العمل'),
+                        .required('يجب اخال اسم العائلة'),
+                    type: Yup.string()
+                        .max(15, 'Must be 15 characters or less')
+                        .required('ادخل صورتك '),
+                    Apoint: Yup.string()
+
+                        .required('برجاء ادخال  مواعيد العمل'),
                     info: Yup.string()
-                    .min(50, 'يجب الا يقل الاسم عن 50 احرف')
-                    
-                    .required('برجاء ادخال تفاصيل اكتر'),
-            })}
-            onSubmit={async values => {
-                console.log(values+"dataaaaaaaaaaaaa")
-                try {
-    
-                   await updateDoc(doc(db, "cookers", `${JSON.parse(localStorage.getItem("user")).uid}`), {
-            
-                      fullName: data.fullName,
-                    
-                      detailscooker : data.detailscooker,
-                      address: data.address,
-                      phone: data.tele,
-                      Apoint: data.Apoint,
-                   
-            
-            
-                    });
-                    console.log('bbbbbbbbb')
-            
-            
-                        // for(let i=0;i<8;i++){
-                        //   // console.log(e.target[i].value='');
-                        //   if(e.target[i].name!=('btnremove')){
-            
-                        //    e.target[i].value=""
-            
-                        //   }
-                        // }
-                        //   setData(   {
-                        //     namecooker: "",
-                        //     typeofworkcooker: "",
-                        //     detailscooker:"",
-                        //     addresscooker: "",
-                        //     phonecooker: "",
-                        //     amcooker: 0,
-                        //     pmcooker:0,
-                        //     amcookerselect: "",
-                        //     pmcookerselect:"",
-                        //   })
-                        
-                        //   textarea.current.value=""
-                    //  console.log(     textarea.current.textContent, textarea, textarea.current,textarea.textContent)
-            
-            
-            
-                  } catch (err) {
-                    console.log(err);
-                  }
-                
-            }}
-         
-        >
-             {props => (
-                <View style={styles.wrapper}>
-                    <StatusBar barStyle={'light-content'} />
+                        .min(50, 'يجب الا يقل الاسم عن 50 احرف')
 
-                    <View style={styles.formContainer}>
-                        <Text style={styles.title}>تعديل الملف الشخصي </Text>
-                        <View style={styles.inputWrapper}>
-                            <TextInput onChangeText={props.handleChange("name")}  value={data.fullName} style={styles.inputStyle} placeholder="الاسم  ">  </TextInput>
-                            {props.touched.name && props.errors.name ? (<Text style={styles.errorTxt}>{props.errors.name} </Text>) : null}
+                        .required('برجاء ادخال تفاصيل اكتر'),
+                })}
+                onSubmit={(values) => {
+                    try {
+
+                        updateDoc(doc(db, "cookers", `${JSON.parse(localStorage.getItem("user")).uid}`), {
+
+                            fullName: values.name,
+                            typeofworkcooker: values.type,
+                            detailscooker: values.details,
+                            address: values.address,
+                            phone: values.tele,
+                           
+                            pmcooker: values.Apoint,
+                            
+                        });
+                        console.log('bbbbbbbbb')
+                        //      myimages.map((ele) => {
+                        //       const imageRef = ref(storage, `foodimages/${ele.name + v4()}`);
+                        //       uploadBytes(imageRef, ele).then((snapshot) => {
+                        //         getDownloadURL(snapshot.ref).then(async (url) => {
+                        //           await updateDoc(doc(db, "foods",  props.targetEditeItem.id), {
+                        //             foodImg: arrayUnion(url),
+                        //           });
+                        //         });
+                        //       });
+                        //     }); 
+
+                        //     for(let i=0;i<8;i++){
+                        //       // console.log(e.target[i].value='');
+                        //       if(e.target[i].name!=('btnremove')){
+
+                        //        e.target[i].value=""
+
+                        //       }
+                        //     }
+                        //       setData(   {
+                        //         foodName: "",
+                        //         foodTextarea: "",
+                        //         cateogry: "",
+                        //         bigPrice: 0,
+                        //         middlePrice: 0,
+                        //         smallPrice: 0,
+                        //         images: [],
+                        //       })
+                        //       setSelectedImages([])
+                        //       textarea.current.value=""
+                        // //  console.log(     textarea.current.textContent, textarea, textarea.current,textarea.textContent)
+
+
+
+                    } catch(error) {
+                        console.log(error);
+                    }
+
+                }}
+
+            >
+                {props => (
+                    <View style={styles.wrapper}>
+                        <StatusBar barStyle={'light-content'} />
+
+                        <View style={styles.formContainer}>
+                            <Text style={styles.title}>تعديل الملف الشخصي </Text>
+                            <View style={styles.inputWrapper}>
+                                <TextInput onChangeText={props.handleChange("name")} style={styles.inputStyle} placeholder=" ادخل اسمك " defaultValue={data.name}></TextInput>
+                                {/* {props.touched.name && props.errors.name ? (<Text style={styles.errorTxt}>{props.errors.name} </Text>) : null} */}
+                            </View>
+                            {/* <View style={styles.inputWrapper}>
+                                <TextInput onChangeText={props.handleChange("tele")} style={styles.inputStyle} placeholder=" رقم التليفون" defaultValue={data.tele}></TextInput>
+                                {props.touched.tele && props.errors.tele ? (<Text style={styles.errorTxt}>{props.errors.tele} </Text>) : null}
+
+                            </View>
+                            <View style={styles.inputWrapper}>
+                                <TextInput onChangeText={props.handleChange("address")} style={styles.inputStyle} placeholder=" العنوان " defaultValue={data.address}></TextInput>
+                                {props.touched.address && props.errors.address ? (<Text style={styles.errorTxt}>{props.errors.address} </Text>) : null}
+
+                            </View>
+                            <View style={styles.inputWrapper}>
+                                <TextInput onChangeText={props.handleChange("Apoint")} style={styles.inputStyle} placeholder="مواعيد العمل" defaultValue={data.Apoint}></TextInput>
+                                {props.touched.Apoint && props.errors.Apoint ? (<Text style={styles.errorTxt}>{props.errors.Apoint} </Text>) : null}
+
+                            </View>
+                            <View style={styles.inputWrapper}>
+                                <TextInput onChangeText={props.handleChange("details")} style={styles.inputStyle} placeholder="اسم الأكلة" defaultValue={data.details}></TextInput>
+                                {props.touched.details && props.errors.details ? (<Text style={styles.errorTxt}>{props.errors.details} </Text>) : null}
+                            </View> */}
+
+                            < TouchableOpacity onPress={props.handleSubmit} style={styles.submitBtn}>
+                                <Text style={styles.submitBtnTxt}>حــــفـــظ</Text>
+                            </ TouchableOpacity>
+                             {/* <Button color="green" onPress={props.handleSubmit} title="حفظ" /> */}
                         </View>
-                        {/* <View style={styles.inputWrapper}>
-                            <TextInput onChangeText={props.handleChange("tele")} style={styles.inputStyle} placeholder=" رقم التليفون">{data.tele}</TextInput>
-                            {props.touched.tele && props.errors.tele ? (<Text style={styles.errorTxt}>{props.errors.tele} </Text>) : null}
 
-                        </View>
-                        <View style={styles.inputWrapper}>
-                            <TextInput onChangeText={props.handleChange("address")} style={styles.inputStyle} placeholder=" العنوان ">{data.address}</TextInput>
-                            {props.touched.address && props.errors.address ? (<Text style={styles.errorTxt}>{props.errors.address} </Text>) : null}
 
-                        </View>
-                        <View style={styles.inputWrapper}>
-                            <TextInput onChangeText={props.handleChange("Apoint")} style={styles.inputStyle} placeholder="مواعيد العمل">{data.Apoint}</TextInput>
-                            {props.touched.Apoint && props.errors.Apoint ? (<Text style={styles.errorTxt}>{props.errors.Apoint} </Text>) : null}
 
-                        </View> */}
-                        {/* <View style={styles.inputWrapper}>
-                            <TextInput onChangeText={props.handleChange("detailscooker")} style={styles.inputStyle} placeholder="تفاصيل اكتر">  {props.cookerpersonal.detailscooker&&data.detailscooker}</TextInput>
-                            {props.touched.detailscooker && props.errors.detailscooker ? (<Text style={styles.errorTxt}>{props.errors.detailscooker} </Text>) : null}
-
-                        </View> */}
-                   
-                        < TouchableOpacity onPress={props.handleSubmit} style={styles.submitBtn}>
-                            <Text style={styles.submitBtnTxt}>حــــفـــظ</Text>
-                        </ TouchableOpacity>
                     </View>
+                )}
 
-
-
-                </View>
-            )}
-           
-        </Formik>
-        </> 
+            </Formik>
+        </>
     )
 }
 const styles = StyleSheet.create({

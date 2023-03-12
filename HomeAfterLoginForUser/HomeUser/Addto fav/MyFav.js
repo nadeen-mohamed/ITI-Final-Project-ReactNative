@@ -90,9 +90,8 @@ const MyFav = () => {
               style={{
                 width: 50,
                 height: 50,
-                backgroundColor: 'orange',
-                borderTopRightRadius: 20,
-                borderBottomLeftRadius: 20,
+                backgroundColor: 'rgba(0, 0, 0, .04)',
+              borderRadius:30,
                 justifyContent: 'center',
                 alignItems: 'center',
               }}>
@@ -104,7 +103,7 @@ const MyFav = () => {
                 }}>
                 <Entypo
                   name="trash"
-                  style={{ fontSize: 18, color: 'black' }}
+                  style={{ fontSize: 18, color: 'red' }}
                   onPress={()=>removeFav(item)}
                 />
                 {/* <Text
@@ -125,9 +124,21 @@ const MyFav = () => {
                 color: "black",
                 fontWeight: 'bold',
                 paddingTop: 10,
-                textAlign: 'center'
+              paddingLeft:'50px',
+                direction:'ltr'
               }}>
               {item?.foodName}
+            </Text>
+            <Text
+              style={{
+                fontSize: 22,
+                color: "black",
+                fontWeight: 'bold',
+                
+              
+               textAlign:"center"
+              }}>
+              {/* {item?.bigPrice} */}
             </Text>
  
           </View>
@@ -159,23 +170,23 @@ const MyFav = () => {
               }}>
               <AntDesign
                 name="star"
-                style={{ fontSize: 30, color: 'orange', paddingRight: 5 }}
+                style={{ fontSize: 25, color: 'orange', paddingRight: 5 }}
               />
               <AntDesign
                 name="star"
-                style={{ fontSize: 30, color: 'orange', paddingRight: 5 }}
+                style={{ fontSize: 25, color: 'orange', paddingRight: 5 }}
               />
               <AntDesign
                 name="star"
-                style={{ fontSize: 30, color: 'orange', paddingRight: 5 }}
+                style={{ fontSize: 25, color: 'orange', paddingRight: 5 }}
               />
               <AntDesign
                 name="star"
-                style={{ fontSize: 30, color: 'orange', paddingRight: 5 }}
+                style={{ fontSize: 25, color: 'orange', paddingRight: 5 }}
               />
               <AntDesign
                 name="star"
-                style={{ fontSize: 30, color: 'orange', paddingRight: 5 }}
+                style={{ fontSize: 25, color: 'orange', paddingRight: 5 }}
               />
             </View>
           </View>

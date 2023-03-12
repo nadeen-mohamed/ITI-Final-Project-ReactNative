@@ -11,7 +11,7 @@ import {onAuthStateChanged ,createUserWithEmailAndPassword, updateProfile } from
 import { arrayUnion, doc, setDoc } from "@firebase/firestore";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import * as Yup from "yup";
-import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+
 import { async } from "@firebase/util";
 
 import * as ImagePicker from 'expo-image-picker';
