@@ -145,9 +145,9 @@ export default function App() {
 
           <Tab.Screen name="الصفحة الرئيسية" component={StackNavigate}
             options={{
-              tabBarLabel: "الصفحة الرئيسية",
+              tabBarLabel: " ",
               tabBarIcon: () => (
-                <MaterialCommunityIcons name="home" color={'rgb(155, 193, 155)'} size={40} />
+                <MaterialCommunityIcons name="" color={'rgb(155, 193, 155)'} size={40} />
               ),
               headerShown: false
             }}
@@ -208,6 +208,7 @@ export default function App() {
               tabBarIcon: () => (
                 <MaterialCommunityIcons name="home" color="orange" size={40} />
               ),
+              
             }}
 
           />
