@@ -2,23 +2,32 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-import { ScrollView, Text, StyleSheet, I18nManager } from "react-native";
+import { ScrollView, Text, StyleSheet, Pressable } from "react-native";
 import { Button, TextInput, View } from 'react-native';
 import { Formik } from 'formik';
 import { Picker } from "react-native-web";
 import { auth , db, myserverTimestamp  } from '../../firebase'
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { doc, setDoc } from "@firebase/firestore";
-
+import { arrayUnion, doc, setDoc } from "@firebase/firestore";
+import Icon from 'react-native-vector-icons/FontAwesome';
 import * as Yup from "yup";
 import { async } from "@firebase/util";
 
+import * as ImagePicker from 'expo-image-picker';
 
-function SignUPComponent() {
-
-//   const [SelectedValue1,setSelectedValue1]=useState('')
-//   const [SelectedValue2,setSelectedValue2]=useState('')
-
+function SignUPComponent({navigation}) {
+    const [image,setImage]=useState([])
+    // const [uploading, setUploading] = useState(false)
+     const pickImage = async () => {
+         let result = await ImagePicker.launchImageLibraryAsync({
+           mediaTypes: ImagePicker.MediaTypeOptions.All,
+           allowsEditing: true,
+           aspect: [4, 3],
+           quality: 1,
+         });
+         console.log(result.assets[0].uri)
+         setImage(result.assets[0].uri) 
+       }
 
     return (
         <ScrollView>
@@ -28,7 +37,7 @@ function SignUPComponent() {
       
             <Text style={{ textAlign: 'center', fontSize: 30, margin: 10, color: "green", fontFamily: 'Open Sans' }}>انشاء حساب</Text>
             <Formik style={Styles.form}
-                initialValues={{ email: '', firstname:'' ,secondname:'' ,password:'',phone:'',address:'' ,setSelectedValue1 :'',setSelectedValue2:''}}
+                initialValues={{ email: '', firstname:'' ,secondname:'' ,password:'',phone:'',address:'' ,setSelectedValue1 :'',setSelectedValue2:'', photo:''}}
                 validationSchema={Yup.object({
                     firstname : Yup.string()
                         .min(2, 'يجب الا يقل الاسم عن 3 احرف')
@@ -65,12 +74,11 @@ function SignUPComponent() {
                                 values.email,
                                values.password
                              );
-                    console.log(res)
-                    console.log(res.user);
+               
 
                     await updateProfile(res.user, {
                                 displayName: `${values.firstname} ${values.secondname}@${values.setSelectedValue2}`,
-                                // photoURL: downloadURL,
+                                //photoURL: arrayUnion(image),
                               });
                   
                             //   console.log("res.kindUser",data.kindUser)
@@ -82,10 +90,40 @@ function SignUPComponent() {
                                 address: values.address,
                                 kindUser:values.setSelectedValue2,
                                 country:values.setSelectedValue1,
-                                // photo: downloadURL,
+                                photo: image,
                                 registerTime: myserverTimestamp
                               })
+                              console.log(res)
+                              console.log(res.user);
+                              let y= res.user.displayName
+                               let x=res.user&&res.user.displayName.split('@')[1]
+                               localStorage.setItem("user",JSON.stringify(res.user))
 
+                               onAuthStateChanged(auth, (user) => {
+                    
+                                if (user.displayName.split('@')[1]=="user") {
+                                  console.log(user);
+                        
+                                  dispatch(authStatuesForUser(true))
+                                  sessionStorage.setItem('authUser',true)
+                                  sessionStorage.removeItem('authCooker')
+                                        
+                                } 
+                        
+                        
+                        
+                                else if(user.displayName.split('@')[1]=="cook"){
+                                  dispatch(authStatuesForCooker(true))
+                                  sessionStorage.setItem('authCooker',true)
+                                  sessionStorage.removeItem('authUser')
+                                }
+                                else {
+                                  console.log("else",user);
+                                }
+                              }
+                              )
+                              
+                             await res.user&&(x=='user' ? navigation.navigate("NavbarForUser"):navigation.navigate("NavbarForCook"))
                            
                 
                 
@@ -192,7 +230,10 @@ function SignUPComponent() {
                             <Picker.Item label="مستخدم" value="user" />
                         </Picker>
                         {touched.setSelectedValue2 && errors.setSelectedValue2 ? (<Text style={Styles.errorTxt}>{errors.setSelectedValue2} </Text>) : null}
-
+                       
+                    <Pressable onPress={pickImage} disabled={image.length>=1 ? true : false}>
+                    <Icon name='cloud-upload' size={30} color={'rgb(155, 193, 155)'} style={{ textAlign:'center'}}></Icon>
+                    </Pressable>
                         <Button color="green" onPress={handleSubmit} title="انشاء" />
                     </View>
 
