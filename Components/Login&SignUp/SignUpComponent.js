@@ -2,7 +2,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-import { ScrollView, Text, StyleSheet, Pressable } from "react-native";
+import { ScrollView, Text, StyleSheet, Pressable , TouchableOpacity } from "react-native";
 import { Button, TextInput, View } from 'react-native';
 import { Formik } from 'formik';
 import { Picker } from "react-native-web";
@@ -36,9 +36,8 @@ function SignUPComponent({navigation}) {
 
         
       
-            <Text style={{ textAlign: 'center', fontSize: 30, margin: 10, color: "green", fontFamily: 'Open Sans' }}>انشاء حساب</Text>
             <Formik style={Styles.form}
-                initialValues={{ email: '', firstname:'' ,secondname:'' ,password:'',phone:'',address:'' ,setSelectedValue1 :'',setSelectedValue2:'', photo:''}}
+                initialValues={{ email: '', firstname:'' ,secondname:'' ,password:'',phone:'',address:'' ,setSelectedValue1 :'',setSelectedValue2:''}}
                 validationSchema={Yup.object({
                     firstname : Yup.string()
                         .min(2, 'يجب الا يقل الاسم عن 3 احرف')
@@ -63,6 +62,8 @@ function SignUPComponent({navigation}) {
                     .required('يجب أن تختر بلدتك'),
                     setSelectedValue2:Yup.string()
                     .required('يجب أن تختر نوع حسابك '),
+                    // photo :Yup.string()
+                    // .required('يجب أن تختر صورتك'),
 
                     
                 })}
@@ -139,8 +140,11 @@ function SignUPComponent({navigation}) {
                         borderColor: 'green',
 
                     }}>
+                     <Text style={{ textAlign: 'center', fontSize: 30, margin: 10, color: "green", fontFamily: 'Open Sans' }}>انشاء حساب</Text>
 
-                        <View style={{ flex: -1, flexDirection: 'row', justifyContent: 'center' }}>
+
+                        <View style={{ flex: -1, flexDirection: 'row', justifyContent: 'center' , marginRight:'5px' }}>
+                            <View style={{ justifyContent: 'center' , width:'48%' }}>
                             <TextInput
                                 style={Styles.input}
                                 onChangeText={handleChange('secondname')}
@@ -151,7 +155,10 @@ function SignUPComponent({navigation}) {
                             />
                             {touched.secondname && errors.secondname ? (<Text style={Styles.errorTxt}>{errors.secondname} </Text>) : null}
 
-                            <TextInput
+                            </View>
+                           
+                           <View style={{ justifyContent: 'center' , width:'48%' }}> 
+                           <TextInput
                                  style={Styles.input}
                                  onChangeText={handleChange('firstname')}
                                 onBlur={handleBlur('firstname')}
@@ -163,6 +170,9 @@ function SignUPComponent({navigation}) {
 
 
                         </View>
+
+                           </View>
+                          
                         <TextInput
                             style={Styles.input2}
                             onChangeText={handleChange('email')}
@@ -193,9 +203,22 @@ function SignUPComponent({navigation}) {
                         />
                      {touched.phone && errors.phone ? (<Text style={Styles.errorTxt}>{errors.phone} </Text>) : null}
 
+                     <View style={{ borderColor: 'green', borderStyle: 'dashed', margin:'14px', padding: 10, borderRadius: 10, borderWidth: 1 }}>
+
+                     <Pressable onPress={pickImage} disabled={image.length>=1 ? true : false} >
+                       <Icon name='cloud-upload' size={30} color={'rgb(155, 193, 155)'} style={{ textAlign:'center' }}></Icon>
+
+
+                     </Pressable>
+
+                     </View>
+                     {/* {touched.photo && errors.photo ? (<Text style={Styles.errorTxt}>{errors.photo} </Text>) : null} */}
+
+
 
 
                         <View style={{ flex: -1, flexDirection: 'row', justifyContent: 'center' }}>
+                        <View style={{ justifyContent: 'center' , width:'48%' }}>
                             <TextInput
                                 style={Styles.input}
                                 onChangeText={handleChange('address')}
@@ -205,7 +228,9 @@ function SignUPComponent({navigation}) {
                                 keyboardType="numeric"
                             />
                         {touched.address && errors.address ? (<Text style={Styles.errorTxt}>{errors.address} </Text>) : null}
+                        </View>
                          
+                        <View style={{ justifyContent: 'center' , width:'48%' }}>
                             <Picker
 
                                 style={Styles.peacker}
@@ -218,9 +243,10 @@ function SignUPComponent({navigation}) {
                             </Picker>
                             {touched.setSelectedValue1 && errors.setSelectedValue1 ? (<Text style={Styles.errorTxt}>{errors.setSelectedValue1} </Text>) : null}
 
-
+                        </View>
 
                         </View>
+                       
                         <Text style={{ margin: 10 }}>نوع الحساب</Text>
                         <Picker
 
@@ -231,11 +257,14 @@ function SignUPComponent({navigation}) {
                             <Picker.Item label="مستخدم" value="user" />
                         </Picker>
                         {touched.setSelectedValue2 && errors.setSelectedValue2 ? (<Text style={Styles.errorTxt}>{errors.setSelectedValue2} </Text>) : null}
-                       
-                    <Pressable onPress={pickImage} disabled={image.length>=1 ? true : false}>
-                    <Icon name='cloud-upload' size={30} color={'rgb(155, 193, 155)'} style={{ textAlign:'center'}}></Icon>
-                    </Pressable>
-                        <Button color="green" onPress={handleSubmit} title="انشاء" />
+
+                 
+                    
+                        {/* <Button color="green" onPress={handleSubmit} title="انشاء" /> */}
+
+                        < TouchableOpacity onPress={handleSubmit} style={Styles.submitBtn}>
+                            <Text style={Styles.submitBtnTxt}>انشاء</Text>
+                        </ TouchableOpacity>
                     </View>
 
                 )}
@@ -259,28 +288,31 @@ const Styles = StyleSheet.create({
 
     },
     input: {
-        height: 60,
-        width: "100%",
+        height: 46,
+        width: "90%",
         borderRadius: 40,
         margin: 12,
 
         borderWidth: 1,
         padding: 10,
-        borderColor: 'green'
+        borderColor: 'green',
+        textAlign:'right',
+       
     },
     input2: {
-        height: 60,
-        width: "97%",
+        height: 50,
+        width: "90%",
         borderRadius: 40,
-        margin: 10,
+        margin: 12,
 
         borderWidth: 1,
         padding: 10,
-        borderColor: 'green'
+        borderColor: 'green',
+        textAlign:'right'
     },
     peacker: {
-        height: 60,
-        width: "97%",
+        height: 46,
+        width: "90%",
         borderRadius: 40,
         margin: 12,
 
@@ -305,7 +337,27 @@ const Styles = StyleSheet.create({
     },
     errorTxt: {
         color: 'red',
-        fontSize: 12
+        fontSize: 12,
+        marginRight: 14,
+    },
+    submitBtnTxt: {
+        color: 'white',
+        textAlign: 'center',
+        fontSize: 18,
+        fontWeight: '700',
+        fontFamily: 'Open Sans'
+    },
+    submitBtn: {
+        backgroundColor: "green",
+        padding: 10,
+        justifyContent: 'center',
+        borderRadius: 25,
+        width:200,
+        textAlign:'center',
+        alignItems:'center',
+        margin:'auto',
+        marginBottom :20,
+        marginTop:20
     },
 
 })

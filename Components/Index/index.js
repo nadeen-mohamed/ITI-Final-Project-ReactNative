@@ -69,9 +69,9 @@ function Index() {
 
             <View style={{ flex: -1, flexDirection: 'column', justifyContent: 'center'  , marginTop:'90px'}}>
 
-                <Image style={{ width: 300, height: 300,margin:'auto',borderRadius:'30%' }} source={require('../../assets/Eat.jpg')}></Image>
-                <Text style={{ textAlign: 'center', fontSize: 25, color: 'orange', marginTop: 5 ,fontWeight:'bold'}}>محتار تتعشي إيه!؟ 🙄</Text>
-                <Text style={{ textAlign: 'center', fontSize: 14, marginTop: 5 ,marginBottom:10}}>عندنا هتلاقي كل اللي نفسك فيه متشغلش بالك بالتجهيز</Text>
+                <Image style={{ width: 300, height: 300,margin:'auto',borderRadius:'15%' }} source={require('../../assets/Eat.jpg')}></Image>
+                <Text style={{ textAlign: 'center', fontSize: 25, color: 'orange', marginTop: 10 ,fontWeight:'bold'}}>محتار تتعشي إيه!؟ 🙄</Text>
+                <Text style={{ textAlign: 'center', fontSize: 14, marginTop: 10 ,marginBottom:10}}>عندنا هتلاقي كل اللي نفسك فيه متشغلش بالك بالتجهيز</Text>
                 < TouchableOpacity  style={Styles.submitBtn}>
                                 <Text style={Styles.submitBtnTxt}>مقتراحات</Text>
                             </ TouchableOpacity>
