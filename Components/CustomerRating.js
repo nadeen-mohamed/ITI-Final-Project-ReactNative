@@ -89,7 +89,7 @@ export default function CustomerRating() {
               <View style={styles.subCardView}>
                 <Image
                 source={require('../assets/4.png')}
-                  resizeMode="contain"
+                 
                   style={{
                     borderRadius: 25,
                     height: 100,
