@@ -11,9 +11,9 @@ export default function DownloadApp() {
                style={styles.img}
            />
            <View >
-           <Text style={{fontSize:'20px', textAlign:'center', color:'orange'}}>  لا تشعر بالجوع ابدا وحمل تطبيقنا الأن واستمتع ب ألذ الأطعمة </Text>
+           <Text style={{fontSize:'15px', textAlign:'center', color:'orange' , marginTop:'15px' , marginBottom:'30px' , marginLeft:'25px',marginRight:'25px'}}>  لا تشعر بالجوع ابدا وحمل تطبيقنا الأن واستمتع ب ألذ الأطعمة </Text>
          
-<View  style={{display:'flex', flexDirection:'row', justifyContent:'space-around', alignItems:'center'}} >
+<View  style={{ justifyContent:'space-around', alignItems:'center'}} >
 
             <View>
             <Image
@@ -36,8 +36,8 @@ export default function DownloadApp() {
 const styles = StyleSheet.create({
     img:{
         width:200,
-        height:200,
-        marginTop:10,
+        height:270,
+        marginTop:70,
         justifyContent: "space-between",
         alignSelf:'center'
       },
@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
      margin:'auto',
      marginTop:'20',
      borderColor:'black',
-     borderWidth:1
+     borderWidth:1,
+     marginTop:10
       }
   });

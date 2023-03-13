@@ -120,9 +120,10 @@ export default function AddFoodForm() {
                   middlePrice: 70,
                   foodDiscription:values.desc,
                   timestamP: myserverTimestamp,
-                  userName: user.displayName,
-                  userid: user.uid,
-                  foodImg: image
+                  cookerName: user.displayName,
+                  cookerId: user.uid,
+                  foodImg: image,
+                 
                 })
         
 

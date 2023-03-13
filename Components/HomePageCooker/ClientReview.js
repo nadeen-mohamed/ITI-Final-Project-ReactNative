@@ -21,13 +21,13 @@ function ReviewCard() {
                 }}>
                     <View style={{ flexDirection: 'column', justifyContent: 'center' ,marginRight:15}}>
                         <Text style={{ fontSize: 23,fontWeight:"bold" , textAlign:"center"}}>تقوي علي</Text>
-                        <Text style={{ fontSize: 18 ,}}>الاكل اكتر من رائع تسلم ايدك</Text>
+                        <Text style={{ fontSize: 14 ,}}>الاكل اكتر من رائع تسلم ايدك</Text>
                         <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
 
                             <Icon
                                 name="star"
 
-                                style={{ color: "#FFFF00", margin: 7 }}
+                                style={{ color: "#FFFF00", marginBottom:7, marginTop:7 }}
                                 size={30}
                             >
 
@@ -35,7 +35,7 @@ function ReviewCard() {
                             <Icon
                                 name="star"
 
-                                style={{ color: "#FFFF00", margin: 7 }}
+                                style={{ color: "#FFFF00", marginBottom:7, marginTop:7  }}
                                 size={30}
                             >
 
@@ -43,14 +43,14 @@ function ReviewCard() {
                             <Icon
                                 name="star"
 
-                                style={{ color: "#FFFF00", margin: 7 }}
+                                style={{ color: "#FFFF00", marginBottom:7, marginTop:7  }}
                                 size={30}
                             >
 
                             </Icon> <Icon
                                 name="star"
 
-                                style={{ color: "#FFFF00", margin: 7 }}
+                                style={{ color: "#FFFF00",marginBottom:7, marginTop:7   }}
                                 size={30}
                             >
 
@@ -58,7 +58,7 @@ function ReviewCard() {
                             <Icon
                                 name="star"
 
-                                style={{ color: "#FFFF00", margin: 7 }}
+                                style={{ color: "#FFFF00",marginBottom:7, marginTop:7   }}
                                 size={30}
                             >
 
@@ -71,6 +71,7 @@ function ReviewCard() {
                 </View>
             </View>
         </>
+       
     )
 }
 

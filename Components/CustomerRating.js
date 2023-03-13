@@ -7,29 +7,37 @@ export default function CustomerRating() {
 
     return (
         <>
-          <View>
+          <View style={{marginTop:'60px'}}>
            <Text style={styles.title}>
                الاراء
            </Text>
-           <Text style={styles.text}> ماذا يقول عملائنا <Text style={styles.text}> عن خدمتنا &#128525;</Text></Text>
+           <Text style={styles.text}> ماذا يقول عملائنا  عن خدمتنا &#128525;</Text>
 
-           <Image
+           {/* <Image
                source={require('../assets/shape.svg')}
                style={styles.img}
-           /></View> 
+           /> */}
+
+           {/* <Text style={styles.text}>____________________________</Text> */}
+           
+           
+           
+           </View> 
        <View style={{display:'flex', flexDirection:'column', width:'100%'}}>
         
           <View style={styles.mainCardView}>
-            <View style={{flexDirection: 'row', alignItems: 'center',width:'50%'}}>
+            <View style={{flexDirection: 'row',width:'50%'}}>
               <View style={styles.subCardView}>
                 <Image
                 source={require('../assets/6.png')}
                   resizeMode="contain"
                   style={{
                     borderRadius: 25,
-                    height: 100,
-                    width: 100,
-                    borderRadius:200
+                    height: 80,
+                    width: 80,
+                    // borderRadius:200,
+                    alignItems:'left',
+                    marginRight:'50px'
                   }}
                 />
               </View>
@@ -47,7 +55,8 @@ export default function CustomerRating() {
                 </Text>
                 <Text
                   style={{
-                    fontSize: 15,
+                    fontSize: 12,
+                    margin:'3px',
                
                     color: 'gray',
                     fontWeight: 'bold',
@@ -66,15 +75,15 @@ export default function CustomerRating() {
                  
                <Text style={styles.icon}>
                     <Icon
-                        name='star' size={20} color={'orange'} style={{ margin: '6px' }} ></Icon>
+                        name='star' size={18} color={'orange'} style={{ marginTop: '6px' , marginBottom:'6px' }} ></Icon>
                     <Icon
-                        name='star' size={20} color={'orange'} style={{ margin: '6px' }} ></Icon>
+                        name='star' size={18} color={'orange'} style={{ marginTop: '6px' , marginBottom:'6px' }} ></Icon>
                     <Icon
-                        name='star' size={20} color={'orange'} style={{ margin: '6px' }} ></Icon>
+                        name='star' size={18} color={'orange'} style={{ marginTop: '6px' , marginBottom:'6px' }} ></Icon>
                     <Icon
-                        name='star' size={20} color={'orange'} style={{ margin: '6px' }} ></Icon>
+                        name='star' size={18} color={'orange'} style={{ marginTop: '6px' , marginBottom:'6px' }} ></Icon>
                     <Icon
-                        name='star' size={20} color={'orange'} style={{ margin: '6px' }} ></Icon>
+                        name='star' size={18} color={'orange'} style={{ marginTop: '6px' , marginBottom:'6px' }} ></Icon>
 
                 </Text>
                  
@@ -89,12 +98,13 @@ export default function CustomerRating() {
               <View style={styles.subCardView}>
                 <Image
                 source={require('../assets/4.png')}
-                  resizeMode="contain"
+                 
                   style={{
                     borderRadius: 25,
-                    height: 100,
-                    width: 100,
-                    borderRadius:200
+                    height: 80,
+                    width: 80,
+                   marginRight:'50px'
+
                   }}
                 />
               </View>
@@ -113,7 +123,8 @@ export default function CustomerRating() {
                 </Text>
                 <Text
                   style={{
-                    fontSize: 15,
+                    fontSize: 12,
+                    margin:'3px',
                        color: 'gray',
                        fontWeight: 'bold',
                        fontFamily: 'nunitoBold',
@@ -131,16 +142,16 @@ export default function CustomerRating() {
                   }}>
                  
                <Text style={styles.icon}>
+               <Icon
+                        name='star' size={18} color={'orange'} style={{ marginTop: '6px' , marginBottom:'6px' }} ></Icon>
                     <Icon
-                        name='star' size={20} color={'orange'} style={{ margin: '6px' }} ></Icon>
+                        name='star' size={18} color={'orange'} style={{ marginTop: '6px' , marginBottom:'6px' }} ></Icon>
                     <Icon
-                        name='star' size={20} color={'orange'} style={{ margin: '6px' }} ></Icon>
+                        name='star' size={18} color={'orange'} style={{ marginTop: '6px' , marginBottom:'6px' }} ></Icon>
                     <Icon
-                        name='star' size={20} color={'orange'} style={{ margin: '6px' }} ></Icon>
+                        name='star' size={18} color={'orange'} style={{ marginTop: '6px' , marginBottom:'6px' }} ></Icon>
                     <Icon
-                        name='star' size={20} color={'orange'} style={{ margin: '6px' }} ></Icon>
-                    <Icon
-                        name='star-o' size={20} color={'orange'} style={{ margin: '6px' }} ></Icon>
+                        name='star-o' size={18} color={'orange'} style={{ marginTop: '6px' , marginBottom:'6px' }} ></Icon>
 
                 </Text>
                  
@@ -193,20 +204,22 @@ const styles = StyleSheet.create({
       width: 50,
       borderRadius: 25,
    
-      borderWidth: 1,
-      borderStyle: 'solid',
+     
+     
       alignItems: 'center',
       justifyContent: 'center',
+     
     },
     img: {
-                width: 220,
-                height: 50,
+                width: 120,
+                height: 10,
                 alignSelf: 'center',
         
             },
             text: {
                 color: "black",
-                fontSize: '20px',
+                fontSize: '18px',
+                marginBottom:20,
         
                 padding: 10,
                 alignSelf: 'center',
@@ -216,8 +229,9 @@ const styles = StyleSheet.create({
             title: {
         
                 alignSelf: 'center',
-                color: '#ff8243',
+                color: 'orange',
                 fontSize: '25px',
+                fontWeight:'bold'
         
             },
    
