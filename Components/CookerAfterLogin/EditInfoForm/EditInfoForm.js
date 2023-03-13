@@ -17,7 +17,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { Picker } from "react-native-web";
 
 import { useEffect, useRef, useState } from "react";
-import { db } from "../../../firebase"
+import { db , myserverTimestamp} from "../../../firebase"
 import { arrayUnion, doc, setDoc, updateDoc } from "firebase/firestore";
 
 export default function EditInfoForm(props) {
@@ -44,7 +44,7 @@ export default function EditInfoForm(props) {
 
     return (
         <>
-            {console.log(data)}
+        
 
             <Formik
                 initialValues={{ name: "", details: "", Apoint: "",  tele: "", address: "" }}
@@ -84,39 +84,8 @@ export default function EditInfoForm(props) {
                             pmcooker: values.Apoint
                             
                         });
-                        console.log('bbbbbbbbb')
-                        //      myimages.map((ele) => {
-                        //       const imageRef = ref(storage, `foodimages/${ele.name + v4()}`);
-                        //       uploadBytes(imageRef, ele).then((snapshot) => {
-                        //         getDownloadURL(snapshot.ref).then(async (url) => {
-                        //           await updateDoc(doc(db, "foods",  props.targetEditeItem.id), {
-                        //             foodImg: arrayUnion(url),
-                        //           });
-                        //         });
-                        //       });
-                        //     }); 
-
-                        //     for(let i=0;i<8;i++){
-                        //       // console.log(e.target[i].value='');
-                        //       if(e.target[i].name!=('btnremove')){
-
-                        //        e.target[i].value=""
-
-                        //       }
-                        //     }
-                        //       setData(   {
-                        //         foodName: "",
-                        //         foodTextarea: "",
-                        //         cateogry: "",
-                        //         bigPrice: 0,
-                        //         middlePrice: 0,
-                        //         smallPrice: 0,
-                        //         images: [],
-                        //       })
-                        //       setSelectedImages([])
-                        //       textarea.current.value=""
-                        // //  console.log(     textarea.current.textContent, textarea, textarea.current,textarea.textContent)
-
+                        console.log(values +'bhbhbhbh')
+                      
 
 
                     } catch(error) {
@@ -166,6 +135,7 @@ export default function EditInfoForm(props) {
 
 
                     </View>
+                    </>
                 )}
 
             </Formik>

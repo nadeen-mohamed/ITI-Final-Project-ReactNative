@@ -193,7 +193,7 @@ console.log(data.image +'imageeeeeeeeeeeeeeeeeee')
 
                         </View>
 
-                        < TouchableOpacity onPress={props.handleSubmit} style={styles.submitBtn}>
+                        < TouchableOpacity onPress={props.handleSubmit()} style={styles.submitBtn}>
                             <Text style={styles.submitBtnTxt}>حــــفـــظ</Text>
                         </ TouchableOpacity>
                     </View>

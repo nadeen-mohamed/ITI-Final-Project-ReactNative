@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, ViewComponent } from 'react-native';
+import { StyleSheet, Text, View, ViewComponent,Image } from 'react-native';
 import Index from "./Components/Index"
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -47,7 +47,8 @@ export default function App() {
 
         <Tab.Navigator >
         
-          <Tab.Screen name="صفحة البداية" component={Index}
+          <Tab.Screen name=" الأكيلة" component={Index}
+         
             options={{
               tabBarLabel: 'صفحة البداية',
               tabBarIcon: () => (

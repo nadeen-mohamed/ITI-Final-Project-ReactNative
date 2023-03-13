@@ -11,8 +11,8 @@ function ReviewCard() {
 
 
     return (
-        <>
-                        <Text style={{textAlign:"center",fontSize:20,fontWeight:"bold"}}>رأي العميل</Text>
+        // <>
+        //                 <Text style={{textAlign:"center",fontSize:20,fontWeight:"bold"}}>رأي العميل</Text>
                   
             <View style={{ padding: 10 }}>
                 <View style={{
@@ -24,53 +24,54 @@ function ReviewCard() {
                         <Text style={{ fontSize: 14 ,}}>الاكل اكتر من رائع تسلم ايدك</Text>
                         <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
 
-                            <Icon
-                                name="star"
+        //                     <Icon
+        //                         name="star"
 
                                 style={{ color: "#FFFF00", marginBottom:7, marginTop:7 }}
                                 size={30}
                             >
 
-                            </Icon>
-                            <Icon
-                                name="star"
+        //                     </Icon>
+        //                     <Icon
+        //                         name="star"
 
                                 style={{ color: "#FFFF00", marginBottom:7, marginTop:7  }}
                                 size={30}
                             >
 
-                            </Icon>
-                            <Icon
-                                name="star"
+        //                     </Icon>
+        //                     <Icon
+        //                         name="star"
 
                                 style={{ color: "#FFFF00", marginBottom:7, marginTop:7  }}
                                 size={30}
                             >
 
-                            </Icon> <Icon
-                                name="star"
+        //                     </Icon> <Icon
+        //                         name="star"
 
                                 style={{ color: "#FFFF00",marginBottom:7, marginTop:7   }}
                                 size={30}
                             >
 
-                            </Icon>
-                            <Icon
-                                name="star"
+        //                     </Icon>
+        //                     <Icon
+        //                         name="star"
 
                                 style={{ color: "#FFFF00",marginBottom:7, marginTop:7   }}
                                 size={30}
                             >
 
-                            </Icon>
+        //                     </Icon>
 
-                        </View>
-                    </View>
-                    <Image style={Styles.profile} source={require('../../assets/user1.jpg')} resizeMode="cover"></Image>
+        //                 </View>
+        //             </View>
+        //             <Image style={Styles.profile} source={require('../../assets/user1.jpg')} resizeMode="cover"></Image>
 
-                </View>
-            </View>
-        </>
+        //         </View>
+        //     </View>
+        // </>
+        <></>
     )
 }
 
