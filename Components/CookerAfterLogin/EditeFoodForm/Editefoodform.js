@@ -21,6 +21,8 @@ import { Formik } from "formik";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Picker } from "react-native-web";
 import * as ImagePicker from 'expo-image-picker';
+
+
 export default function EditFoodForm(props) {
     const [image,setImage]=useState([])
     const pickImage = async () => {

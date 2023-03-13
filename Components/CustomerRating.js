@@ -7,7 +7,7 @@ export default function CustomerRating() {
 
     return (
         <>
-          <View>
+          <View style={{marginTop:'70px'}}>
            <Text style={styles.title}>
                الاراء
            </Text>
@@ -16,20 +16,27 @@ export default function CustomerRating() {
            <Image
                source={require('../assets/shape.svg')}
                style={styles.img}
-           /></View> 
+           />
+
+           {/* <Text style={styles.text}>____________________________</Text> */}
+           
+           
+           
+           </View> 
        <View style={{display:'flex', flexDirection:'column', width:'100%'}}>
         
           <View style={styles.mainCardView}>
-            <View style={{flexDirection: 'row', alignItems: 'center',width:'50%'}}>
+            <View style={{flexDirection: 'row',width:'50%'}}>
               <View style={styles.subCardView}>
                 <Image
                 source={require('../assets/6.png')}
                   resizeMode="contain"
                   style={{
                     borderRadius: 25,
-                    height: 100,
-                    width: 100,
-                    borderRadius:200
+                    height: 80,
+                    width: 80,
+                    borderRadius:200,
+                    alignItems:'left'
                   }}
                 />
               </View>
@@ -47,7 +54,8 @@ export default function CustomerRating() {
                 </Text>
                 <Text
                   style={{
-                    fontSize: 15,
+                    fontSize: 12,
+                    margin:'3px',
                
                     color: 'gray',
                     fontWeight: 'bold',
@@ -66,15 +74,15 @@ export default function CustomerRating() {
                  
                <Text style={styles.icon}>
                     <Icon
-                        name='star' size={20} color={'orange'} style={{ margin: '6px' }} ></Icon>
+                        name='star' size={18} color={'orange'} style={{ marginTop: '6px' , marginBottom:'6px' }} ></Icon>
                     <Icon
-                        name='star' size={20} color={'orange'} style={{ margin: '6px' }} ></Icon>
+                        name='star' size={18} color={'orange'} style={{ marginTop: '6px' , marginBottom:'6px' }} ></Icon>
                     <Icon
-                        name='star' size={20} color={'orange'} style={{ margin: '6px' }} ></Icon>
+                        name='star' size={18} color={'orange'} style={{ marginTop: '6px' , marginBottom:'6px' }} ></Icon>
                     <Icon
-                        name='star' size={20} color={'orange'} style={{ margin: '6px' }} ></Icon>
+                        name='star' size={18} color={'orange'} style={{ marginTop: '6px' , marginBottom:'6px' }} ></Icon>
                     <Icon
-                        name='star' size={20} color={'orange'} style={{ margin: '6px' }} ></Icon>
+                        name='star' size={18} color={'orange'} style={{ marginTop: '6px' , marginBottom:'6px' }} ></Icon>
 
                 </Text>
                  
@@ -92,8 +100,8 @@ export default function CustomerRating() {
                   resizeMode="contain"
                   style={{
                     borderRadius: 25,
-                    height: 100,
-                    width: 100,
+                    height: 80,
+                    width: 80,
                     borderRadius:200
                   }}
                 />
@@ -113,7 +121,8 @@ export default function CustomerRating() {
                 </Text>
                 <Text
                   style={{
-                    fontSize: 15,
+                    fontSize: 12,
+                    margin:'3px',
                        color: 'gray',
                        fontWeight: 'bold',
                        fontFamily: 'nunitoBold',
@@ -131,16 +140,16 @@ export default function CustomerRating() {
                   }}>
                  
                <Text style={styles.icon}>
+               <Icon
+                        name='star' size={18} color={'orange'} style={{ marginTop: '6px' , marginBottom:'6px' }} ></Icon>
                     <Icon
-                        name='star' size={20} color={'orange'} style={{ margin: '6px' }} ></Icon>
+                        name='star' size={18} color={'orange'} style={{ marginTop: '6px' , marginBottom:'6px' }} ></Icon>
                     <Icon
-                        name='star' size={20} color={'orange'} style={{ margin: '6px' }} ></Icon>
+                        name='star' size={18} color={'orange'} style={{ marginTop: '6px' , marginBottom:'6px' }} ></Icon>
                     <Icon
-                        name='star' size={20} color={'orange'} style={{ margin: '6px' }} ></Icon>
+                        name='star' size={18} color={'orange'} style={{ marginTop: '6px' , marginBottom:'6px' }} ></Icon>
                     <Icon
-                        name='star' size={20} color={'orange'} style={{ margin: '6px' }} ></Icon>
-                    <Icon
-                        name='star-o' size={20} color={'orange'} style={{ margin: '6px' }} ></Icon>
+                        name='star-o' size={18} color={'orange'} style={{ marginTop: '6px' , marginBottom:'6px' }} ></Icon>
 
                 </Text>
                  
@@ -199,14 +208,14 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
     },
     img: {
-                width: 220,
-                height: 50,
+                width: 180,
+                height: 30,
                 alignSelf: 'center',
         
             },
             text: {
                 color: "black",
-                fontSize: '20px',
+                fontSize: '18px',
         
                 padding: 10,
                 alignSelf: 'center',
