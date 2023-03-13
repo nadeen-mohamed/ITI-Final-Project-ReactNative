@@ -37,7 +37,7 @@ function SignUPComponent({navigation}) {
         
       
             <Formik style={Styles.form}
-                initialValues={{ email: '', firstname:'' ,secondname:'' ,password:'',phone:'',address:'' ,setSelectedValue1 :'',setSelectedValue2:'', photo:''}}
+                initialValues={{ email: '', firstname:'' ,secondname:'' ,password:'',phone:'',address:'' ,setSelectedValue1 :'',setSelectedValue2:''}}
                 validationSchema={Yup.object({
                     firstname : Yup.string()
                         .min(2, 'يجب الا يقل الاسم عن 3 احرف')
@@ -62,8 +62,8 @@ function SignUPComponent({navigation}) {
                     .required('يجب أن تختر بلدتك'),
                     setSelectedValue2:Yup.string()
                     .required('يجب أن تختر نوع حسابك '),
-                    photo :Yup.string()
-                    .required('يجب أن تختر صورتك'),
+                    // photo :Yup.string()
+                    // .required('يجب أن تختر صورتك'),
 
                     
                 })}
@@ -212,7 +212,7 @@ function SignUPComponent({navigation}) {
                      </Pressable>
 
                      </View>
-                     {touched.photo && errors.photo ? (<Text style={Styles.errorTxt}>{errors.photo} </Text>) : null}
+                     {/* {touched.photo && errors.photo ? (<Text style={Styles.errorTxt}>{errors.photo} </Text>) : null} */}
 
 
 

@@ -135,7 +135,7 @@ export default function EditInfoForm(props) {
 
 
                     </View>
-                    </>
+                    
                 )}
 
             </Formik>

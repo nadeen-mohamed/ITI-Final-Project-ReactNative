@@ -7,16 +7,16 @@ export default function CustomerRating() {
 
     return (
         <>
-          <View style={{marginTop:'70px'}}>
+          <View style={{marginTop:'60px'}}>
            <Text style={styles.title}>
                الاراء
            </Text>
-           <Text style={styles.text}> ماذا يقول عملائنا <Text style={styles.text}> عن خدمتنا &#128525;</Text></Text>
+           <Text style={styles.text}> ماذا يقول عملائنا  عن خدمتنا &#128525;</Text>
 
-           <Image
+           {/* <Image
                source={require('../assets/shape.svg')}
                style={styles.img}
-           />
+           /> */}
 
            {/* <Text style={styles.text}>____________________________</Text> */}
            
@@ -35,8 +35,9 @@ export default function CustomerRating() {
                     borderRadius: 25,
                     height: 80,
                     width: 80,
-                    borderRadius:200,
-                    alignItems:'left'
+                    // borderRadius:200,
+                    alignItems:'left',
+                    marginRight:'50px'
                   }}
                 />
               </View>
@@ -97,12 +98,13 @@ export default function CustomerRating() {
               <View style={styles.subCardView}>
                 <Image
                 source={require('../assets/4.png')}
-                  resizeMode="contain"
+                 
                   style={{
                     borderRadius: 25,
                     height: 80,
                     width: 80,
-                    borderRadius:200
+                   marginRight:'50px'
+
                   }}
                 />
               </View>
@@ -202,20 +204,22 @@ const styles = StyleSheet.create({
       width: 50,
       borderRadius: 25,
    
-      borderWidth: 1,
-      borderStyle: 'solid',
+     
+     
       alignItems: 'center',
       justifyContent: 'center',
+     
     },
     img: {
-                width: 180,
-                height: 30,
+                width: 120,
+                height: 10,
                 alignSelf: 'center',
         
             },
             text: {
                 color: "black",
                 fontSize: '18px',
+                marginBottom:20,
         
                 padding: 10,
                 alignSelf: 'center',
@@ -225,8 +229,9 @@ const styles = StyleSheet.create({
             title: {
         
                 alignSelf: 'center',
-                color: '#ff8243',
+                color: 'orange',
                 fontSize: '25px',
+                fontWeight:'bold'
         
             },
    

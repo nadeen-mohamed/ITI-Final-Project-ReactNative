@@ -101,8 +101,8 @@ console.log(data.image +'imageeeeeeeeeeeeeeeeeee')
                       foodImg: image,
                       foodDiscription:values.desc,
                       timestamP: myserverTimestamp,
-                      userName: user.displayName,
-                      userid: user.uid,
+                      cookerName: user.displayName,
+                      cookerId: user.uid,
                       
                     }); 
                      console.log('bbbbbbbbb')
