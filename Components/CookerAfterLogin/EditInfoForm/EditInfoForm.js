@@ -17,7 +17,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { Picker } from "react-native-web";
 
 import { useEffect, useRef, useState } from "react";
-import { db } from "../../../firebase"
+import { db , myserverTimestamp} from "../../../firebase"
 import { arrayUnion, doc, setDoc, updateDoc } from "firebase/firestore";
 
 export default function EditInfoForm(props) {
@@ -38,7 +38,7 @@ export default function EditInfoForm(props) {
 
     return (
         <>
-            {console.log(data)}
+        
 
             <Formik
                 initialValues={{ name: "", details: "", Apoint: "", type: "", tele: "", address: "" }}
@@ -47,7 +47,7 @@ export default function EditInfoForm(props) {
                         .min(3, 'يجب الا يقل الاسم عن 3 حروف')
                         .max(20, 'لقد تجاوزت الحد الاقصي ')
                         .required(' يجب ادخال الاسم  '),
-                    desc: Yup.string()
+                        details: Yup.string()
                         .min(3, 'يجب الا يقل الاسم عن 3 احرف')
                         .max(20, 'لقد تجاوزت الحد الاقصي ')
 
@@ -58,7 +58,7 @@ export default function EditInfoForm(props) {
                     Apoint: Yup.string()
 
                         .required('برجاء ادخال  مواعيد العمل'),
-                    info: Yup.string()
+                        address: Yup.string()
                         .min(50, 'يجب الا يقل الاسم عن 50 احرف')
 
                         .required('برجاء ادخال تفاصيل اكتر'),
@@ -67,49 +67,19 @@ export default function EditInfoForm(props) {
                     try {
 
                         updateDoc(doc(db, "cookers", `${JSON.parse(localStorage.getItem("user")).uid}`), {
-
                             fullName: values.name,
                             typeofworkcooker: values.type,
                             detailscooker: values.details,
                             address: values.address,
                             phone: values.tele,
-                           
+                            timestamP: myserverTimestamp,
+                      userName: user.displayName,
+                      userid: user.uid,
                             pmcooker: values.Apoint,
                             
                         });
-                        console.log('bbbbbbbbb')
-                        //      myimages.map((ele) => {
-                        //       const imageRef = ref(storage, `foodimages/${ele.name + v4()}`);
-                        //       uploadBytes(imageRef, ele).then((snapshot) => {
-                        //         getDownloadURL(snapshot.ref).then(async (url) => {
-                        //           await updateDoc(doc(db, "foods",  props.targetEditeItem.id), {
-                        //             foodImg: arrayUnion(url),
-                        //           });
-                        //         });
-                        //       });
-                        //     }); 
-
-                        //     for(let i=0;i<8;i++){
-                        //       // console.log(e.target[i].value='');
-                        //       if(e.target[i].name!=('btnremove')){
-
-                        //        e.target[i].value=""
-
-                        //       }
-                        //     }
-                        //       setData(   {
-                        //         foodName: "",
-                        //         foodTextarea: "",
-                        //         cateogry: "",
-                        //         bigPrice: 0,
-                        //         middlePrice: 0,
-                        //         smallPrice: 0,
-                        //         images: [],
-                        //       })
-                        //       setSelectedImages([])
-                        //       textarea.current.value=""
-                        // //  console.log(     textarea.current.textContent, textarea, textarea.current,textarea.textContent)
-
+                        console.log(values +'bhbhbhbh')
+                      
 
 
                     } catch(error) {
@@ -119,7 +89,8 @@ export default function EditInfoForm(props) {
                 }}
 
             >
-                {props => (
+                  {props => (
+                    <>
                     <View style={styles.wrapper}>
                         <StatusBar barStyle={'light-content'} />
 
@@ -127,27 +98,24 @@ export default function EditInfoForm(props) {
                             <Text style={styles.title}>تعديل الملف الشخصي </Text>
                             <View style={styles.inputWrapper}>
                                 <TextInput onChangeText={props.handleChange("name")} style={styles.inputStyle} placeholder=" ادخل اسمك " defaultValue={data.name}></TextInput>
-                                {/* {props.touched.name && props.errors.name ? (<Text style={styles.errorTxt}>{props.errors.name} </Text>) : null} */}
+                                 {props.touched.name && props.errors.name ? (<Text style={styles.errorTxt}>{props.errors.name} </Text>) : null}
                             </View>
-                            {/* <View style={styles.inputWrapper}>
+                          <View style={styles.inputWrapper}>
                                 <TextInput onChangeText={props.handleChange("tele")} style={styles.inputStyle} placeholder=" رقم التليفون" defaultValue={data.tele}></TextInput>
                                 {props.touched.tele && props.errors.tele ? (<Text style={styles.errorTxt}>{props.errors.tele} </Text>) : null}
-
                             </View>
                             <View style={styles.inputWrapper}>
                                 <TextInput onChangeText={props.handleChange("address")} style={styles.inputStyle} placeholder=" العنوان " defaultValue={data.address}></TextInput>
                                 {props.touched.address && props.errors.address ? (<Text style={styles.errorTxt}>{props.errors.address} </Text>) : null}
-
                             </View>
                             <View style={styles.inputWrapper}>
                                 <TextInput onChangeText={props.handleChange("Apoint")} style={styles.inputStyle} placeholder="مواعيد العمل" defaultValue={data.Apoint}></TextInput>
                                 {props.touched.Apoint && props.errors.Apoint ? (<Text style={styles.errorTxt}>{props.errors.Apoint} </Text>) : null}
-
                             </View>
                             <View style={styles.inputWrapper}>
                                 <TextInput onChangeText={props.handleChange("details")} style={styles.inputStyle} placeholder="اسم الأكلة" defaultValue={data.details}></TextInput>
                                 {props.touched.details && props.errors.details ? (<Text style={styles.errorTxt}>{props.errors.details} </Text>) : null}
-                            </View> */}
+                            </View> 
 
                             < TouchableOpacity onPress={props.handleSubmit} style={styles.submitBtn}>
                                 <Text style={styles.submitBtnTxt}>حــــفـــظ</Text>
@@ -158,6 +126,7 @@ export default function EditInfoForm(props) {
 
 
                     </View>
+                    </>
                 )}
 
             </Formik>
