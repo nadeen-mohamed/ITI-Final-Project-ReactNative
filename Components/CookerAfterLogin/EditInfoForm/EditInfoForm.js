@@ -27,7 +27,7 @@ export default function EditInfoForm(props) {
     const [data, setData] = useState({
         name: props.cookerpersonal.fullName,
         type: props.cookerpersonal.typeofworkcooker && props.cookerpersonal.typeofworkcooker,
-        details: props.cookerpersonal.detailscooker ? props.cookerpersonal.detailscooker : "تفاصيل عني",
+        detailscooker: props.cookerpersonal.detailscooker && props.cookerpersonal.detailscooker,
         address: props.cookerpersonal.address,
         tele: props.cookerpersonal.phone,
 
@@ -47,7 +47,7 @@ export default function EditInfoForm(props) {
         
 
             <Formik
-                initialValues={{ name: "", details: "", Apoint: "",  tele: "", address: "" }}
+                initialValues={{ name: "", detailscooker: "", Apoint: "",  tele: "", address: "" }}
                 validationSchema={Yup.object({
                     name: Yup.string()
                         .min(2, 'يجب الا يقل الاسم عن 2 حروف')
@@ -64,7 +64,7 @@ export default function EditInfoForm(props) {
                     Apoint: Yup.string()
 
                         .required('برجاء ادخال  مواعيد العمل'),
-                   details: Yup.string()
+                        detailscooker: Yup.string()
                         .min(20, 'يجب الا يقل الاسم عن 50 احرف')
 
                         .required('برجاء ادخال تفاصيل اكتر'),
@@ -76,8 +76,8 @@ export default function EditInfoForm(props) {
                         updateDoc(doc(db, "cookers",props.cookerpersonal.userid ), {
 
                             fullName: values.name,
-                            // typeofworkcooker: values.type,
-                            detailscooker: values.details,
+                          
+                            detailscooker: values.detailscooker,
                             address: values.address,
                             phone: values.tele,
                            
@@ -122,8 +122,8 @@ export default function EditInfoForm(props) {
 
                             </View>
                             <View style={styles.inputWrapper}>
-                                <TextInput onChangeText={handleChange("details")} style={styles.inputStyle} placeholder="اسم الأكلة" defaultValue={data.details}></TextInput>
-                                {touched.details && errors.details ? (<Text style={styles.errorTxt}>{errors.details} </Text>) : null}
+                                <TextInput onChangeText={handleChange("detailscooker")} style={styles.inputStyle}  defaultValue={data.detailscooker}></TextInput>
+                                {touched.detailscooker && errors.detailscooker ? (<Text style={styles.errorTxt}>{errors.detailscooker} </Text>) : null}
                             </View>
 
                             {/* < TouchableOpacity onPress={handleSubmit} style={styles.submitBtn}>

@@ -19,6 +19,7 @@ import DeleteEat from '../DeletePOPup/DeleteEat';
 import Card from './Card';
 import EditFoodFormPopUp from '../EditeFoodForm/EditFoodFormPopUp';
 export default function FoodCard({ navigation }) {
+    const s=['d','f','j']
     let user = JSON.parse(localStorage.getItem("user"));
     const [userfood, setuserfood] = useState([]);
     const [show,setShow]=useState(true)
@@ -51,7 +52,9 @@ export default function FoodCard({ navigation }) {
 </View>
             <View style={styles.container}>
                 <ScrollView>
-               { userfood&& userfood.filter(ele=>ele.userid==user.uid)?.map((CheifItem, index) => {
+                {console.log(userfood)}
+               { userfood?.filter(ele=>ele.cookerId==user.uid)?.map((CheifItem, index) => {
+                
                                 return (
                     <Card source={CheifItem.foodImg[0]&&CheifItem.foodImg[0]}
                   
