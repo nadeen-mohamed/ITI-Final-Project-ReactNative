@@ -1,49 +1,13 @@
-// import React from 'react'
-// import { View, Text, Image, Pressable, ScrollView } from 'react-native-web';
-// import Icon from 'react-native-vector-icons/FontAwesome';
-// import styles from './DetailsStyle.js'
-// import food from '../../assets/potatoKofta.jpg'
-// // style={{ flexDirection: 'column'}}
-// export default function Details() {
-
-//     return (
-//         <ScrollView>
-//             <View >
-//                 <View style={styles.imageCon}>
-//                 <Image source={food} style={styles.Image}/> 
-//                 </View>
-           
-//                 <View style={{ marginRight: 'auto', marginLeft: 'auto' }}>
-//                 <View>
-//                     <Text style={styles.foodName}>اسم الأكله</Text>
-//                     <Text style={styles.foodDesc}>وصف الأكله</Text>
-//                 </View>
-//                     <View style={styles.priceCon}>
-//                     <Text style={styles.price}>السعر</Text>
-//                      <Text style={styles.priceInfo}>١٠٠ جنيه مصري</Text>
-//                     </View>
-//                     <View style={styles.btnCon}>
-//                       <Pressable style={[styles.foodCart, {marginRight:10}]}><Icon name="shopping-cart" size={20} style={styles.icon}></Icon></Pressable>
-//                       <Pressable style={styles.foodCart}><Icon name="star" size={20} style={styles.icon}></Icon></Pressable>
-//                     </View>
-//                 </View>
-//             </View>
-//             </ScrollView>
-//     )
-// }
-//اكله جديده 2e29a0c0-f4d7-46a2-ae02-0628d391cba7
-
 import React from 'react'
 import { View, Text, Image, Pressable, ScrollView } from 'react-native-web';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import styles from './DetailsStyle.js'
-import food from '../../assets/potatoKofta.jpg'
+import styles from './DetailsCookerStyle'
 import { useState,useEffect } from 'react';
-// import { useParams } from 'react-router-dom';
+
 import { doc, getDoc, updateDoc,arrayUnion} from 'firebase/firestore';
-import { db } from '../../firebase';
-// style={{ flexDirection: 'column'}}
-export default function Details({navigation , route}) {
+import { db } from '../../../firebase';
+
+export default function DetailsCooker({navigation , route}) {
     // const  { id } = useParams(); 
     // console.log(id) //اكله%20من%20عمو%20مصطفي33a09d9f-eb34-405e-a32b-3869948ef3a1
 
@@ -124,7 +88,6 @@ console.log(fav,"favArr")
 
                         </View>
                    
-                   
                         <View style={{ marginRight: 'auto', marginLeft: 'auto' }}>
                         <View>
                             <Text style={styles.foodName}>{food1?.foodName} </Text>
@@ -134,10 +97,7 @@ console.log(fav,"favArr")
                             <Text style={styles.price}>السعر</Text>
                              <Text style={styles.priceInfo}> {food1?.bigPrice} جنيه مصري  </Text>
                             </View>
-                            <View style={styles.btnCon}>
-                              {/* <Pressable style={[styles.foodCart, {marginRight:10}]}><Icon name="shopping-cart" size={20} style={styles.icon}></Icon></Pressable> */}
-                              <Pressable style={styles.foodCart} ><Icon name="star" size={20} style={styles.icon} onPress={()=>addToFavBtn(food1)} ></Icon></Pressable>
-                            </View>
+                            
                         </View>
                         {/* </>
                      }

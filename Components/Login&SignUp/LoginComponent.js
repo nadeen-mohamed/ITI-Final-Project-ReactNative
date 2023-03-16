@@ -2,7 +2,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-import { ScrollView, Text, StyleSheet, I18nManager } from "react-native";
+import { ScrollView, Text, StyleSheet, I18nManager,TouchableOpacity} from "react-native";
 import { Button, TextInput, View } from 'react-native';
 import { Formik } from 'formik';
 import { Picker } from "react-native-web";
@@ -16,7 +16,6 @@ function LoginComponent({navigation}){
 
     return(
         <>
-        <Text style={{ textAlign: 'center', fontSize: 30, margin: 10, color: "green", fontFamily: 'Open Sans' }}>تسجيل الدخول</Text>
         <Formik style={Styles.form}
             initialValues={{ email: '',password:'' }}
             validationSchema={Yup.object({
@@ -40,13 +39,14 @@ function LoginComponent({navigation}){
                   //   sessionStorage.setItem(`authorized${x}`,true)
                   
                     console.log(res.user)
+                    console.log(x ,'typpppppe')
               
               
               
                     onAuthStateChanged(auth, (user) => {
                     
                       if (user.displayName.split('@')[1]=="user") {
-                        console.log(user);
+                        console.log(user,'usssssssssssssssssss');
               
                         dispatch(authStatuesForUser(true))
                         sessionStorage.setItem('authUser',true)
@@ -67,7 +67,7 @@ function LoginComponent({navigation}){
                     }
                     )
                     
-                   await res.user&&(x=='user' ? navigation.navigate("صفحة البداية"):navigation.navigate("CookHomeComponent"))
+                   await res.user&&(x=='user' ? navigation.navigate("NavbarForUser"):navigation.navigate("NavbarForCook"))
               
                  
             }}
@@ -78,8 +78,12 @@ function LoginComponent({navigation}){
                     borderWidth: 2,
                     borderRadius: 10,
                     borderColor: 'green',
+                    fontFamily: 'Open Sans'
 
                 }}>
+
+                   <Text style={{ textAlign: 'center', fontSize: 30, margin: 10,  color: 'rgb(155, 193, 155)', fontFamily: 'Open Sans' }}>تسجيل الدخول</Text>
+
 
                    
                     <TextInput
@@ -94,9 +98,11 @@ function LoginComponent({navigation}){
 
                     <TextInput
                         style={Styles.input2}
+                        secureTextEntry={true}
                         onChangeText={handleChange('password')}
                         onBlur={handleBlur('password')}
                         value={values.password}
+
                         placeholder="كلمة السر "
                         keyboardType="email-address"
                     />
@@ -107,7 +113,10 @@ function LoginComponent({navigation}){
 
                  
                   
-                    <Button color="green" onPress={handleSubmit} title="تسجيل" />
+                    {/* <Button color="green" onPress={handleSubmit} title="تسجيل" style={Styles.submitBtnTxt} /> */}
+                    < TouchableOpacity onPress={handleSubmit} style={Styles.submitBtn}>
+                            <Text style={Styles.submitBtnTxt}>تسجيل</Text>
+                        </ TouchableOpacity>
                 </View>
 
             )}
@@ -125,28 +134,37 @@ const Styles = StyleSheet.create({
         backgroundColor: '#000',
         borderWidth: 3,
         borderColor: 'green',
-        margin: 10,
-        padding: 10,
+        // margin: 10,
+        // padding: 10,
+        fontFamily: 'Open Sans',
+        alignItems:'center',
+        justifyContent:'center',
+        alignSelf:'center',
+        margin:'auto'
+
 
     },
     input: {
         height: 60,
-        width: "97%",
+        width: "93%",
         borderRadius: 40,
         margin: 12,
 
         borderWidth: 1,
         padding: 10,
-        borderColor: 'green'
+        borderColor: 'green',
+        fontFamily: 'Open Sans'
     },
     input2: {
         height: 60,
-        width: "97%",
+        width: "93%",
         borderRadius: 40,
         margin: 12,
         borderWidth: 1,
         padding: 10,
-        borderColor: 'green'
+        borderColor: 'green',
+        fontFamily: 'Open Sans',
+        textAlign:'right'
     },
     peacker: {
         height: 40,
@@ -165,7 +183,32 @@ const Styles = StyleSheet.create({
     form: {
         borderWidth: 5,
         padding: 10,
-        borderColor: "green"
+        borderColor: "green",
+        fontFamily: 'Open Sans'
     
        
-            }})
+            },
+            submitBtn: {
+                backgroundColor: "green",
+                padding: 10,
+                justifyContent: 'center',
+                borderRadius: 25,
+                width:200,
+                textAlign:'center',
+                alignItems:'center',
+                margin:'auto',
+                marginBottom :20,
+                marginTop:20
+            },
+            submitBtnTxt: {
+                color: 'white',
+                textAlign: 'center',
+                fontSize: 18,
+                fontWeight: '700',
+                fontFamily: 'Open Sans'
+            },
+            errorTxt: {
+                color: 'red',
+                fontSize: 12
+            },
+        })

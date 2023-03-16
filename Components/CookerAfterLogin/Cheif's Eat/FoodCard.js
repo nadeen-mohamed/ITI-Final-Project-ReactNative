@@ -19,6 +19,7 @@ import DeleteEat from '../DeletePOPup/DeleteEat';
 import Card from './Card';
 import EditFoodFormPopUp from '../EditeFoodForm/EditFoodFormPopUp';
 export default function FoodCard({ navigation }) {
+    const s=['d','f','j']
     let user = JSON.parse(localStorage.getItem("user"));
     const [userfood, setuserfood] = useState([]);
     const [show,setShow]=useState(true)
@@ -37,6 +38,7 @@ export default function FoodCard({ navigation }) {
     
      
         }, [])
+        console.log(userfood,'fooooooooooooooood')
         return (
             <>
              
@@ -50,16 +52,19 @@ export default function FoodCard({ navigation }) {
 </View>
             <View style={styles.container}>
                 <ScrollView>
-               { userfood&& userfood.filter(ele=>ele.userid==user.uid)?.map((CheifItem, index) => {
+                {console.log(userfood)}
+               { userfood?.filter(ele=>ele.cookerId==user.uid)?.map((CheifItem, index) => {
+                
                                 return (
                     <Card source={CheifItem.foodImg[0]&&CheifItem.foodImg[0]}
                   
                                width={300}
                                height={200}
-                            //    titleColor={'black'}
+                   //    titleColor={'black'}
                                descColor={'yellow'}
                                titlestyle={styles.desc}
-                              
+                               style={{ObjectFit:'cover',objectPosition:'center'}}
+                    
                           title={<Text> 
                             <Text>
                             {CheifItem?.foodName}
@@ -71,7 +76,7 @@ export default function FoodCard({ navigation }) {
                                icon={ <Text style={styles.icon}>
                               <DeleteEat targetitem={CheifItem}/>
                               
-                              <EditFoodFormPopUp/>
+                              <EditFoodFormPopUp  targetEditeItem={CheifItem}  />
                                 <Icon onPress={() => navigation.navigate('Details',{id:CheifItem.id})}
                                    name='info' size={20} color={'orange'} style={{ margin: '6px' }} ></Icon>
                               
