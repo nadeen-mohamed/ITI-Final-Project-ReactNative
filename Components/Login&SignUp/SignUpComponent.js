@@ -40,11 +40,14 @@ function SignUPComponent({navigation}) {
                 initialValues={{ email: '', firstname:'' ,secondname:'' ,password:'',phone:'',address:'' ,setSelectedValue1 :'',setSelectedValue2:''}}
                 validationSchema={Yup.object({
                     firstname : Yup.string()
-                        .min(2, 'يجب الا يقل الاسم عن 3 احرف')
+                     
+                        .matches( /^[a-zA-Z\u0600-\u06FF]{2,20}$/i, 'يجب ان لا يحتوي الاسم علي مسافات او ارقام')
                         .required('برجاء ادخال اسم الاول'),
+                       
                      secondname: Yup.string()
-                        .min(2, 'يجب الا يقل الاسم عن 3 احرف')
-                        .required('برجاء ادخال الاسم الثاني '),
+                     .min(2, 'يجب الا يقل الاسم عن 2 احرف')
+                     .matches( /^[a-zA-Z\u0600-\u06FF]{2,20}$/i, 'يجب ان لا يحتوي الاسم علي مسافات او ارقام')
+                     .required('برجاء ادخال اسم الاول'),
                     email: Yup.string()
                      .matches(/^[a-z0-9._]+@gmail\?|.com|.org|.net|.edu|.eg$/,'برجاء ادخال البريد الالكتروني صحيحا')
                      .required('برجاء ادخال البريد الالكتروني '),
@@ -185,6 +188,7 @@ function SignUPComponent({navigation}) {
                        
                         <TextInput
                             style={Styles.input2}
+                            secureTextEntry={true}
                             onChangeText={handleChange('password')}
                             onBlur={handleBlur('password')}
                             value={values.password}
