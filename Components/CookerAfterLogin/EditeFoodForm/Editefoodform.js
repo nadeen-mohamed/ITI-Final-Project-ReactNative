@@ -71,6 +71,7 @@ export default function EditFoodForm(props) {
      
       });
 console.log(data.image +'imageeeeeeeeeeeeeeeeeee')
+console.log(props.targetEditeItem.id,'iiiiiiiiiid')
     return (
         <Formik
             initialValues={{ desc: "", name: "", type: "", price: "" }}
@@ -92,6 +93,7 @@ console.log(data.image +'imageeeeeeeeeeeeeeeeeee')
                     .required('برجاء ادخال سعر الأكلة'),
             })}
             onSubmit={(values) => {
+                console.log(props.targetEditeItem.id,'iiiiiiiiiid')
                 try {
         
                     updateDoc(doc(db, "foods", props.targetEditeItem.id), {
@@ -146,9 +148,11 @@ console.log(data.image +'imageeeeeeeeeeeeeeeeeee')
                     console.log(error);
                   }
             }}
+            
         // onsubmit 
         >
             {props => (
+                
                 <View style={styles.wrapper}>
                     <StatusBar barStyle={'light-content'} />
 
@@ -193,7 +197,7 @@ console.log(data.image +'imageeeeeeeeeeeeeeeeeee')
 
                         </View>
 
-                        < TouchableOpacity onPress={props.handleSubmit()} style={styles.submitBtn}>
+                        < TouchableOpacity onPress={props.handleSubmit} style={styles.submitBtn}>
                             <Text style={styles.submitBtnTxt}>حــــفـــظ</Text>
                         </ TouchableOpacity>
                     </View>

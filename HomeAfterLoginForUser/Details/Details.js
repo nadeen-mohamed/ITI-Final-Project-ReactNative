@@ -135,7 +135,7 @@ console.log(fav,"favArr")
                              <Text style={styles.priceInfo}> {food1?.bigPrice} جنيه مصري  </Text>
                             </View>
                             <View style={styles.btnCon}>
-                              <Pressable style={[styles.foodCart, {marginRight:10}]}><Icon name="shopping-cart" size={20} style={styles.icon}></Icon></Pressable>
+                              {/* <Pressable style={[styles.foodCart, {marginRight:10}]}><Icon name="shopping-cart" size={20} style={styles.icon}></Icon></Pressable> */}
                               <Pressable style={styles.foodCart} ><Icon name="star" size={20} style={styles.icon} onPress={()=>addToFavBtn(food1)} ></Icon></Pressable>
                             </View>
                         </View>

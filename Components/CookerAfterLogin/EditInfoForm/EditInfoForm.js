@@ -59,13 +59,13 @@ export default function EditInfoForm(props) {
 
                         .required('يجب ادخال التفاصيل '),
                     address: Yup.string()
-                        .max(15, 'Must be 15 characters or less')
-                        .required('ادخل عنوانك '),
+                        .max(15, 'Must be 15 characters or less'),
+                        // .required('ادخل عنوانك '),
                     Apoint: Yup.string()
 
                         .required('برجاء ادخال  مواعيد العمل'),
                         detailscooker: Yup.string()
-                        .min(20, 'يجب الا يقل الاسم عن 50 احرف')
+                        .min(10, 'يجب الا يقل الاسم عن 20 احرف')
 
                         .required('برجاء ادخال تفاصيل اكتر'),
                 })}

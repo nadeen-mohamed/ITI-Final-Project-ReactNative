@@ -26,7 +26,7 @@ export default function NavbarForCooker () {
        
         <Tab.Screen name="FoodCard" component={StackNavCooker}
             options={{
-              tabBarLabel: 'FoodCard',
+              tabBarLabel: 'اكلاتي',
               tabBarIcon: () => (
                 <MaterialCommunityIcons name="food" color={'rgb(155, 193, 155)'} size={30} />
               ),
@@ -37,16 +37,16 @@ export default function NavbarForCooker () {
             options={{
               tabBarLabel: "طلباتي",
               tabBarIcon: () => (
-                <MaterialCommunityIcons name="home" color={'rgb(155, 193, 155)'} size={30} />
+                <MaterialCommunityIcons name="food-takeout-box-outline" color={'rgb(155, 193, 155)'} size={30} />
               ),
             }}
 
           />
           <Tab.Screen name="CheifHome" component={CookHomeComponent}
             options={{
-              tabBarLabel: 'Aboutcheif',
+              tabBarLabel: 'الصفحه الشخصيه',
               tabBarIcon: () => (
-                <MaterialCommunityIcons name="star" color={'rgb(155, 193, 155)'} size={30} />
+                <MaterialCommunityIcons name="information-outline" color={'rgb(155, 193, 155)'} size={30} />
               ),
 
             }}

@@ -98,9 +98,11 @@ function LoginComponent({navigation}){
 
                     <TextInput
                         style={Styles.input2}
+                        secureTextEntry={true}
                         onChangeText={handleChange('password')}
                         onBlur={handleBlur('password')}
                         value={values.password}
+
                         placeholder="كلمة السر "
                         keyboardType="email-address"
                     />

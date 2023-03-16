@@ -63,6 +63,7 @@ export default function FoodCard({ navigation }) {
                    //    titleColor={'black'}
                                descColor={'yellow'}
                                titlestyle={styles.desc}
+                               style={{ObjectFit:'cover',objectPosition:'center'}}
                     
                           title={<Text> 
                             <Text>
