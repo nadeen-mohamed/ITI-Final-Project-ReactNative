@@ -37,6 +37,7 @@ export default function FoodCard({ navigation }) {
     
      
         }, [])
+        console.log(userfood,'fooooooooooooooood')
         return (
             <>
              
@@ -56,10 +57,10 @@ export default function FoodCard({ navigation }) {
                   
                                width={300}
                                height={200}
-                            //    titleColor={'black'}
+                   //    titleColor={'black'}
                                descColor={'yellow'}
                                titlestyle={styles.desc}
-                              
+                    
                           title={<Text> 
                             <Text>
                             {CheifItem?.foodName}

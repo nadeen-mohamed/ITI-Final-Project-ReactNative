@@ -244,7 +244,6 @@ function SignUPComponent({navigation}) {
                             {touched.setSelectedValue1 && errors.setSelectedValue1 ? (<Text style={Styles.errorTxt}>{errors.setSelectedValue1} </Text>) : null}
 
                         </View>
-
                         </View>
                        
                         <Text style={{ margin: 10 }}>نوع الحساب</Text>

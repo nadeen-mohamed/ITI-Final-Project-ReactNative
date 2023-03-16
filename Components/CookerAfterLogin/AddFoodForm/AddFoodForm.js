@@ -123,6 +123,8 @@ export default function AddFoodForm() {
                   cookerName: user.displayName,
                   cookerId: user.uid,
                   foodImg: image,
+                  foodId:x,
+                  quantity:1
                  
                 })
         
