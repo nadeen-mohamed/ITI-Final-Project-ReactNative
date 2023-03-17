@@ -22,11 +22,12 @@ console.log(userInfo, "user info in header")
         <View style={styles.header}>
            <Image source={userInfo.photo&&userInfo.photo}  style={styles.Image}/>
             <View style={styles.searchBox}>
-                <View style={styles.searchBtn}>
+                {/* <View style={styles.searchBtn}>
                     <Icon name="search"></Icon>
                 </View>
-                <TextInput placeholder="ابحث عن اكلتك" style={styles.Input}/>
+                <TextInput placeholder="ابحث عن اكلتك" style={styles.Input}/> */}
             </View>
+          
             <Text style={styles.text}>مرحبا بك في الاكيله 🤤 </Text>
         </View>
     )
