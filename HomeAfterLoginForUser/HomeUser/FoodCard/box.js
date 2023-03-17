@@ -21,7 +21,7 @@ export default function Box(props) {
         <Text  style={{color:'black', fontSize:'14px'}}> {props.element?.foodDiscription}</Text>
         <Text  style={{color:'green', fontSize:'14px'}}> <Text>{props.element?.middlePrice} </Text>السعر</Text>
       </View>
-      <Pressable style={style.btn} onPress={() => props.nav.navigate('Details',{id: props.element.id})} ><Icon name="shopping-cart" size={15} color="#fff" ></Icon></Pressable> 
+      <Pressable style={style.btn} onPress={() => props.nav.navigate('Details',{id: props.element.id})} ><Icon name="info" size={15} color="#fff" ></Icon></Pressable> 
       {/* onPress={() => navigation.navigate("Details", {id : props.element.id})} */}
     </View>
   )

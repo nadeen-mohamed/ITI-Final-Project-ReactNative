@@ -2,7 +2,7 @@ const React = require("react-native");
 const { StyleSheet } = React;
 const styles = StyleSheet.create({
     searchBox: {
-        backgroundColor: '#C5C5C5',
+        // backgroundColor: '#C5C5C5',
         width: 150,
         height:45,
         borderRadius: 15,
@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
         marginBottom:15,
         marginLeft:30,
         marginRight:30,
+        justifyContent: 'space-between'
     },
     searchBtn:{
      color: '#000',

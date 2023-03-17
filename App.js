@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, ViewComponent } from 'react-native';
+import { StyleSheet, Text, View, ViewComponent,Image } from 'react-native';
 import Index from "./Components/Index"
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -31,7 +31,14 @@ import Details from './HomeAfterLoginForUser/Details/Details';
 import StackNavigate from './StackNavigate';
 import Orders from './Components/CookerAfterLogin/Orders/Orders'
 import StackNavCooker from './StackNavCooker';
+import NavbarForUser from './NavbarForUser';
+import NavbarForCooker from './NavbarForCooker';
+import MainNavbar from './MainNavbar';
 export default function App() {
+  let user= JSON.parse(localStorage.getItem("user"))
+  // let y= res.user.displayName
+ 
+  //  let x=res.user&&res.user.displayName.split('@')[1]
   const Tab = createBottomTabNavigator();
   return (
     <View style={styles.container}>
@@ -40,226 +47,58 @@ export default function App() {
       <NavigationContainer  >
 
         <Tab.Navigator >
-          {/* <Tab.Screen name="صفحة البداية" component={Index}
+        
+          <Tab.Screen name=" الأكيلة" component={MainNavbar}
+         
             options={{
               tabBarLabel: 'صفحة البداية',
               tabBarIcon: () => (
-                <MaterialCommunityIcons name="home" color={'rgb(155, 193, 155)'} size={40} />
+                <MaterialCommunityIcons name="home" color={'rgb(155, 193, 155)'} size={30} />
               ),
+              tabBarStyle: { display: "none" },
+              headerShown: false,
+              tabBarButton: () => null,
+              tabBarVisible: false,
             }}
 
           />
 
-
-          <Tab.Screen name="تسجيل الدخول" component={LoginComponent}
-            options={{
-              tabBarLabel: 'تسجيل الدخول',
-              tabBarIcon: () => (
-                <MaterialCommunityIcons name="login" color={'rgb(155, 193, 155)'} size={40} />
-              ),
-
-            }}
-
-          />
-          <Tab.Screen name="إنشاء حساب" component={SignUPComponent}
-            options={{
-              tabBarLabel: 'إنشاء حساب',
-              tabBarIcon: () => (
-                <MaterialCommunityIcons name="sign-text" color={'rgb(155, 193, 155)'} size={40} />
-              ),
-
-            }}
-
-
-          />
-          <Tab.Screen name="CookHomeComponent" component={CookHomeComponent}
-            options={{
-              tabBarLabel: 'CookHomeComponent',
-              tabBarIcon: () => (
-                <MaterialCommunityIcons name="food" color={'rgb(155, 193, 155)'} size={40} />
-              ),
-
-            }}
-          />
-            <Tab.Screen name="FoodCard" component={StackNavCooker}  
-          options={{
-            tabBarLabel: 'FoodCard',
-            tabBarIcon: () => (
-              <MaterialCommunityIcons name="food" color={'rgb(155, 193, 155)'} size={40} />
-            ),
-            headerShown: false
-            
-          }}
-          />
        
-       <Tab.Screen   name="الصفحة الرئيسية" component={StackNavigate}  
-          options={{
-            tabBarLabel: "الصفحة الرئيسية",
-            tabBarIcon: () => (
-              <MaterialCommunityIcons name="home" color={'rgb(155, 193, 155)'} size={40} />
-            ),
-            headerShown: false
-          }}
+            <Tab.Screen name="NavbarForUser" component={NavbarForUser}
+            options={{
+              tabBarLabel: 'صفحة المستخدم',
+              tabBarIcon: () => (
+                <MaterialCommunityIcons name="home" color={'rgb(155, 193, 155)'} size={30} />
+              ),
+              tabBarStyle: { display: "none" },
+              headerShown: false,
+              tabBarButton: () => null,
+              tabBarVisible: false,
+
+            }}
+
+          />
+            <Tab.Screen name="NavbarForCook" component={NavbarForCooker}
+            options={{
+              tabBarLabel: 'صفحة الطباخ',
+              tabBarIcon: () => (
+                <MaterialCommunityIcons name="home" color={'rgb(155, 193, 155)'} size={30} />
+              ),
+              tabBarStyle: { display: "none" },
+              headerShown: false,
+              Visible: false,
+              tabBarButton: () => null,
+              tabBarVisible: false,
+            }}
+
+          />
+
           
-          <Tab.Screen name="FoodCard" component={FoodCard}
-            options={{
-              tabBarLabel: 'FoodCard',
-              tabBarIcon: () => (
-                <MaterialCommunityIcons name="food" color={'rgb(155, 193, 155)'} size={40} />
-              ),
+         
 
-            }}
-          />*/}
-          <Tab.Screen name="صفحة البداية" component={Index}
-            options={{
-              tabBarLabel: 'صفحة البداية',
-              tabBarIcon: () => (
-                <MaterialCommunityIcons name="home" color={'rgb(155, 193, 155)'} size={40} />
-              ),
-            }}
+         
 
-          />
-
-          <Tab.Screen name="إنشاء حساب" component={SignUPComponent}
-            options={{
-              tabBarLabel: 'إنشاء حساب',
-              tabBarIcon: () => (
-                <MaterialCommunityIcons name="sign-text" color={'rgb(155, 193, 155)'} size={40} />
-              ),
-
-            }}
-
-
-          />
-
-          <Tab.Screen name="تسجيل الدخول" component={LoginComponent}
-            options={{
-              tabBarLabel: 'تسجيل الدخول',
-              tabBarIcon: () => (
-                <MaterialCommunityIcons name="login" color={'rgb(155, 193, 155)'} size={40} />
-              ),
-
-            }}
-
-          />
-
-          <Tab.Screen name="الصفحة الرئيسية" component={StackNavigate}
-            options={{
-              tabBarLabel: "الصفحة الرئيسية",
-              tabBarIcon: () => (
-                <MaterialCommunityIcons name="home" color={'rgb(155, 193, 155)'} size={40} />
-              ),
-              headerShown: false
-            }}
-
-          />
-          {/* <Tab.Screen   name="تفاصيل الأكله" component={Details}  
-          options={{
-            tabBarLabel: "تفاصيل الأكله",
-            tabBarIcon: () => (
-              <MaterialCommunityIcons name="home" color="orange" size={40} />
-            ),
-          }}
-          
-        /> */}
-          <Tab.Screen name=" MyFav" component={MyFav}
-            options={{
-              tabBarLabel: " المفضله",
-              tabBarIcon: () => (
-                <MaterialCommunityIcons name="home" color="orange" size={40} />
-              ),
-            }}
-
-          />
-
-          <Tab.Screen name="FoodCard" component={StackNavCooker}
-            options={{
-              tabBarLabel: 'FoodCard',
-              tabBarIcon: () => (
-                <MaterialCommunityIcons name="food" color={'rgb(155, 193, 155)'} size={40} />
-              ),
-              headerShown: false
-            }}
-          />
-
-          {/* <Tab.Screen name="EditeEat" component={EditeEat}  
-          <Tab.Screen name="تفاصيل الأكله" component={Details}
-            options={{
-              tabBarLabel: "تفاصيل الأكله",
-              tabBarIcon: () => (
-                <MaterialCommunityIcons name="home" color="orange" size={40} />
-              ),
-            }}
-
-          />
-        {/*}  <Tab.Screen name=" MyFav" component={MyFav}
-            options={{
-              tabBarLabel: " المفضلة",
-              tabBarIcon: () => (
-                <MaterialCommunityIcons name="home" color="orange" size={40} />
-              ),
-            }}
-
-          />*/}
-
-          <Tab.Screen name="طلباتي" component={Orders}
-            options={{
-              tabBarLabel: "طلباتي",
-              tabBarIcon: () => (
-                <MaterialCommunityIcons name="home" color="orange" size={40} />
-              ),
-            }}
-
-          />
-          <Tab.Screen name="CheifHome" component={CookHome}
-            options={{
-              tabBarLabel: 'Aboutcheif',
-              tabBarIcon: () => (
-                <MaterialCommunityIcons name="star" color="orange" size={40} />
-              ),
-
-            }}
-
-          />
-
-          {/* <Tab.Screen name="EditeEat" component={EditeEat}  
-          
-           <Tab.Screen name="MyFav" component={MyFav}  
-          options={{
-            tabBarLabel: 'MyFav',
-            tabBarIcon: () => (
-              <MaterialCommunityIcons name="star" color={'rgb(155, 193, 155)'} size={40} />
-            ),
-            
-          }}
-          
-          />
-
-         <Tab.Screen name="CheifHome" component={CookHome}  
-          options={{
-            tabBarLabel: 'Aboutcheif',
-            tabBarIcon: () => (
-              <MaterialCommunityIcons name="star" color="orange" size={40} />
-            ),
-            
-          }}
-          
-          />
-       
-        
-        
-       
-
-        </Tab.Navigator>  
-     
-      </NavigationContainer>
-   
-
-      {/* <SignUPComponent></SignUPComponent>
- <LoginComponent></LoginComponent> */}
-          {/* <CustomerRating/>
-  <DownloadApp/>
-     <FooterSection/> */}
+      
         </Tab.Navigator >
       </NavigationContainer>
     </View>

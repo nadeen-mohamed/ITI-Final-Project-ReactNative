@@ -65,6 +65,8 @@ const EditFormPopUp = (props) => {
         </View>
                 <View style={{ alignItems: 'center' }}>
 <EditInfoForm cookerpersonal={props.editecookerpersonal}/>
+                             {/* <Button color="green" onPress={()=>console.log('ggggggggggggggg')} title="حفظ" /> */}
+
                 </View>
                 
 
