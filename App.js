@@ -33,6 +33,7 @@ import Orders from './Components/CookerAfterLogin/Orders/Orders'
 import StackNavCooker from './StackNavCooker';
 import NavbarForUser from './NavbarForUser';
 import NavbarForCooker from './NavbarForCooker';
+import MainNavbar from './MainNavbar';
 export default function App() {
   let user= JSON.parse(localStorage.getItem("user"))
   // let y= res.user.displayName
@@ -47,40 +48,22 @@ export default function App() {
 
         <Tab.Navigator >
         
-          <Tab.Screen name=" الأكيلة" component={Index}
+          <Tab.Screen name=" الأكيلة" component={MainNavbar}
          
             options={{
               tabBarLabel: 'صفحة البداية',
               tabBarIcon: () => (
                 <MaterialCommunityIcons name="home" color={'rgb(155, 193, 155)'} size={30} />
               ),
-              
+              tabBarStyle: { display: "none" },
+              headerShown: false,
+              tabBarButton: () => null,
+              tabBarVisible: false,
             }}
 
           />
 
-          <Tab.Screen name="إنشاء حساب" component={SignUPComponent}
-            options={{
-              tabBarLabel: 'إنشاء حساب',
-              tabBarIcon: () => (
-                <MaterialCommunityIcons name="sign-text" color={'rgb(155, 193, 155)'} size={30} />
-              ),
-
-            }}
-
-
-          />
-
-          <Tab.Screen name="تسجيل الدخول" component={LoginComponent}
-            options={{
-              tabBarLabel: 'تسجيل الدخول',
-              tabBarIcon: () => (
-                <MaterialCommunityIcons name="login" color={'rgb(155, 193, 155)'} size={30} />
-              ),
-
-            }}
-
-          />
+       
             <Tab.Screen name="NavbarForUser" component={NavbarForUser}
             options={{
               tabBarLabel: 'صفحة المستخدم',

@@ -9,18 +9,21 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import MyFav from './HomeAfterLoginForUser/HomeUser/Addto fav/MyFav';
 
 import StackNavigate from './StackNavigate';
+import Index from './Components/Index';
+import App from './App';
+import MainNavbar from './MainNavbar';
 
-export default function NavbarForUser () {
+export default function NavbarForUser() {
   const Tab = createBottomTabNavigator();
   return (
     <View style={styles.container}>
 
 
-   
-        <Tab.Navigator >
-        
-       
-       <Tab.Screen   name="الصفحة الرئيسية" component={StackNavigate}  
+
+      <Tab.Navigator >
+
+
+        <Tab.Screen name="الصفحة الرئيسية" component={StackNavigate}
           options={{
             tabBarLabel: "الصفحة الرئيسية",
             tabBarIcon: () => (
@@ -28,28 +31,43 @@ export default function NavbarForUser () {
             ),
             headerShown: false
           }}
-          />
-          
-       
-          <Tab.Screen name=" MyFav" component={MyFav}
-            options={{
-              tabBarLabel: " المفضله",
-              tabBarIcon: () => (
-                <MaterialCommunityIcons name="heart" color={'rgb(155, 193, 155)'} size={30} />
-              ),
-            }}
+        />
 
-          />
 
-         
+        <Tab.Screen name=" MyFav" component={MyFav}
+          options={{
+            tabBarLabel: " المفضله",
+            tabBarIcon: () => (
+              <MaterialCommunityIcons name="heart" color={'rgb(155, 193, 155)'} size={30} />
+            ),
+          }}
 
-         
+        />
 
-          
+        <Tab.Screen name="تسجيل الخروج" component={MainNavbar}
+          options={{
+            tabBarLabel: 'تسجيل الخروج',
+            tabBarIcon: () => (
+              <MaterialCommunityIcons name="login" color={'rgb(155, 193, 155)'} size={30} />
+            ),
+            
 
-         
-        </Tab.Navigator >
-     
+          }}
+
+        />
+
+
+
+
+
+
+
+
+
+
+
+      </Tab.Navigator >
+
     </View>
 
   );

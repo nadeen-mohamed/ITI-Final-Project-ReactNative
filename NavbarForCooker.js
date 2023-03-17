@@ -12,6 +12,7 @@ import StackNavigate from './StackNavigate';
 import StackNavCooker from './StackNavCooker';
 import Orders from './Components/CookerAfterLogin/Orders/Orders';
 import CookHomeComponent from './Components/HomePageCooker/CookHome';
+import MainNavbar from './MainNavbar';
 
 export default function NavbarForCooker () {
   const Tab = createBottomTabNavigator();
@@ -52,6 +53,17 @@ export default function NavbarForCooker () {
             }}
 
           />
+           <Tab.Screen name="تسجيل الخروج" component={MainNavbar}
+          options={{
+            tabBarLabel: 'تسجيل الخروج',
+            tabBarIcon: () => (
+              <MaterialCommunityIcons name="login" color={'rgb(155, 193, 155)'} size={30} />
+            ),
+            
+
+          }}
+
+        />
 
 
          
