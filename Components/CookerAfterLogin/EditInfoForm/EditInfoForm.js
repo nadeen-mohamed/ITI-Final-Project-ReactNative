@@ -25,25 +25,7 @@ export default function EditInfoForm(props) {
   
     const textarea = useRef('')
     
-//Upload image
-     /* 
-        async function docPicker() {
-       
-         try {
-           const res = await DocumentPicker.pickMultiple({
-     
-              type: [DocumentPicker.types.allFiles],
-           });
-         
-           this.uploadAPICall(res);//here you can call your API and send the data to that API
-         } catch (err) {
-           if (DocumentPicker.isCancel(err)) {
-             console.log("error -----", err);
-           } else {
-             throw err;
-           }
-         }
-       } */
+
        const [data, setData] = useState({
         fullName: props.cookerpersonal.alldata.fullName,
       
